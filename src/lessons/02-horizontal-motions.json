@@ -1,0 +1,64 @@
+{
+  "slug": "horizontal-motions",
+  "title": "Horizontal Motions",
+  "category": "motions",
+  "order": 2,
+  "intro": "Moving one character at a time is slow. `w` jumps forward one word, `b` jumps back, `e` jumps to a word's end. `0` jumps to the start of the line, `$` to the end. `f{char}` jumps forward onto the next occurrence of a character.",
+  "exercises": [
+    {
+      "id": "hmotions-1",
+      "type": "motion",
+      "instruction": "Jump to the start of the word `error` using `w`.",
+      "initialCode": "const result = parse(input); // error here",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 32 } },
+      "allowedKeys": ["w"],
+      "parKeystrokes": 8,
+      "hints": ["`w` also stops on punctuation groups like `(` and `//`."]
+    },
+    {
+      "id": "hmotions-2",
+      "type": "motion",
+      "instruction": "Jump to the end of the line with `$`.",
+      "initialCode": "let total = price * quantity;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 28 } },
+      "allowedKeys": ["$"],
+      "parKeystrokes": 1,
+      "hints": ["`$` jumps straight to the last character of the line."]
+    },
+    {
+      "id": "hmotions-3",
+      "type": "motion",
+      "instruction": "Now jump back to the start of the line with `0`.",
+      "initialCode": "let total = price * quantity;",
+      "initialCursor": { "line": 0, "ch": 28 },
+      "goal": { "cursor": { "line": 0, "ch": 0 } },
+      "allowedKeys": ["0"],
+      "parKeystrokes": 1,
+      "hints": ["`0` jumps to column zero, no matter where you are."]
+    },
+    {
+      "id": "hmotions-4",
+      "type": "motion",
+      "instruction": "Jump onto the opening parenthesis using `f(`.",
+      "initialCode": "function add(a, b) {",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 12 } },
+      "allowedKeys": ["f", "("],
+      "parKeystrokes": 2,
+      "hints": ["`f` waits for a character, then jumps onto its next occurrence."]
+    },
+    {
+      "id": "hmotions-5",
+      "type": "motion",
+      "instruction": "Jump backwards to the start of the word `three` using `b`.",
+      "initialCode": "one two three four",
+      "initialCursor": { "line": 0, "ch": 17 },
+      "goal": { "cursor": { "line": 0, "ch": 8 } },
+      "allowedKeys": ["b"],
+      "parKeystrokes": 2,
+      "hints": ["Each press of `b` jumps back one word."]
+    }
+  ]
+}

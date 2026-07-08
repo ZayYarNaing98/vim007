@@ -1,0 +1,488 @@
+:root {
+  --bg: #0f1117;
+  --bg-raised: #161a23;
+  --bg-card: #1c212e;
+  --border: #2a3040;
+  --text: #e2e6ef;
+  --text-muted: #8b93a7;
+  --accent: #7aa2f7;
+  --green: #9ece6a;
+  --yellow: #e0af68;
+  --red: #f7768e;
+  --purple: #bb9af7;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+code,
+kbd {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+}
+
+code {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  color: var(--purple);
+  font-size: 0.9em;
+}
+
+kbd {
+  display: inline-block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  margin: 0 0.15em;
+  color: var(--accent);
+  font-size: 0.85em;
+}
+
+/* ---------- layout ---------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header .brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.app-header nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.app-header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.app-header nav a.active {
+  color: var(--accent);
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.page h1 {
+  margin-top: 0;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0f1117;
+  font-weight: 600;
+}
+
+.btn-ghost:hover,
+.btn-primary:hover {
+  filter: brightness(1.15);
+}
+
+.btn-danger {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+/* ---------- home ---------- */
+
+.hero {
+  text-align: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: var(--text-muted);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lesson-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+
+.lesson-card:hover {
+  border-color: var(--accent);
+}
+
+.lesson-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lesson-card-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  flex: 1;
+}
+
+.lesson-order {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.lesson-progress {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.lesson-progress.complete {
+  color: var(--green);
+}
+
+.lesson-card-intro {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0.6rem 0 0;
+}
+
+/* ---------- lesson page ---------- */
+
+.lesson-header h1 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.lesson-intro {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.instruction-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.instruction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exercise-counter {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.allowed-keys {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.instruction-text {
+  font-size: 1.1rem;
+  margin: 0.75rem 0 0;
+}
+
+.blocked-key-warning {
+  color: var(--yellow);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+
+.hint-area {
+  margin-top: 0.75rem;
+}
+
+.hint-text {
+  color: var(--yellow);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ---------- editor ---------- */
+
+.editor-wrap {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.editor-wrap .cm-editor {
+  font-size: 15px;
+}
+
+.vim-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-raised);
+  border-top: 1px solid var(--border);
+  padding: 0.4rem 0.9rem;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.85rem;
+}
+
+.vim-mode {
+  font-weight: 700;
+}
+
+.vim-mode-normal {
+  color: var(--accent);
+}
+
+.vim-mode-insert {
+  color: var(--green);
+}
+
+.vim-mode-visual {
+  color: var(--purple);
+}
+
+.vim-keystrokes {
+  color: var(--text-muted);
+}
+
+/* ---------- feedback overlay ---------- */
+
+.feedback-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 17, 23, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.feedback-card {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2.5rem;
+}
+
+.feedback-card h2 {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--green);
+}
+
+.feedback-rank {
+  font-size: 2.4rem;
+  font-weight: 800;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.rank-S {
+  color: var(--yellow);
+}
+
+.rank-A {
+  color: var(--green);
+}
+
+.rank-B {
+  color: var(--accent);
+}
+
+.rank-C {
+  color: var(--text-muted);
+}
+
+.feedback-stats {
+  margin: 0.25rem 0;
+  color: var(--text);
+}
+
+.feedback-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0 1rem;
+}
+
+.feedback-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lesson-complete {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* ---------- progress page ---------- */
+
+.stats-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.skill-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill-name {
+  width: 7.5rem;
+  text-transform: capitalize;
+  font-size: 0.95rem;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 5px;
+  transition: width 0.4s ease-out;
+}
+
+.skill-value {
+  width: 2.5rem;
+  text-align: right;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.85rem;
+}
+
+.practice-suggestion {
+  color: var(--yellow);
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 640px) {
+  main {
+    padding: 1rem;
+  }
+
+  .stats-row {
+    flex-direction: column;
+  }
+}
