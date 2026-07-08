@@ -1,18 +1,19 @@
+/* Dark theme: Ubuntu terminal — aubergine background with Tango palette. */
 :root {
-  --bg: #0f1117;
-  --bg-raised: #161a23;
-  --bg-card: #1c212e;
-  --border: #2a3040;
-  --text: #e2e6ef;
-  --text-muted: #8b93a7;
-  --accent: #7aa2f7;
-  --green: #9ece6a;
-  --yellow: #e0af68;
-  --red: #f7768e;
-  --purple: #bb9af7;
-  --on-accent: #0f1117;
-  --overlay: rgba(15, 17, 23, 0.82);
-  --practice-tint: rgba(187, 154, 247, 0.12);
+  --bg: #300a24;
+  --bg-raised: #260820;
+  --bg-card: #3d1230;
+  --border: #582b49;
+  --text: #eeeeec;
+  --text-muted: #ad7fa8;
+  --accent: #34e2e2;
+  --green: #8ae234;
+  --yellow: #fce94f;
+  --red: #ef2929;
+  --purple: #d38ac7;
+  --on-accent: #300a24;
+  --overlay: rgba(48, 10, 36, 0.85);
+  --practice-tint: rgba(211, 138, 199, 0.12);
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
@@ -366,6 +367,20 @@ main {
 
 .editor-wrap .cm-editor {
   font-size: 15px;
+}
+
+/* Match the Ubuntu-terminal aubergine in dark mode (the stock dark theme is gray). */
+:root:not([data-theme="light"]) .editor-wrap .cm-editor,
+:root:not([data-theme="light"]) .editor-wrap .cm-gutters {
+  background: var(--bg-raised);
+}
+
+:root:not([data-theme="light"]) .editor-wrap .cm-activeLine {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root:not([data-theme="light"]) .editor-wrap .cm-activeLineGutter {
+  background: rgba(255, 255, 255, 0.07);
 }
 
 /* Vim search/ex prompt (`/`, `:`) panel */
