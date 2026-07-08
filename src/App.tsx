@@ -8,7 +8,8 @@ export default function App() {
     <BrowserRouter>
       <header className="app-header">
         <NavLink to="/" className="brand">
-          ⌨️ Vim TypeTutor
+          <span className="brand-badge" aria-hidden="true">V7</span>
+          Vim TypeTutor
         </NavLink>
         <nav>
           <NavLink to="/" end>

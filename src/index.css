@@ -62,10 +62,28 @@ kbd {
 }
 
 .app-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
   text-decoration: none;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #0f1117;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .app-header nav {
