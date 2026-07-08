@@ -10,7 +10,27 @@
   --yellow: #e0af68;
   --red: #f7768e;
   --purple: #bb9af7;
+  --on-accent: #0f1117;
+  --overlay: rgba(15, 17, 23, 0.82);
+  --practice-tint: rgba(187, 154, 247, 0.12);
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f6f8;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --border: #d8dce5;
+  --text: #1f2330;
+  --text-muted: #5c6270;
+  --accent: #3b62c4;
+  --green: #4d7a1f;
+  --yellow: #8f5e15;
+  --red: #c0344b;
+  --purple: #7847bd;
+  --on-accent: #ffffff;
+  --overlay: rgba(245, 246, 248, 0.85);
+  --practice-tint: rgba(120, 71, 189, 0.08);
 }
 
 * {
@@ -22,6 +42,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  transition: background 0.2s, color 0.2s;
 }
 
 code,
@@ -82,7 +103,7 @@ kbd {
   height: 1.7rem;
   border-radius: 7px;
   background: linear-gradient(135deg, var(--accent), var(--purple));
-  color: #0f1117;
+  color: var(--on-accent);
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.82rem;
   font-weight: 800;
@@ -91,7 +112,22 @@ kbd {
 
 .app-header nav {
   display: flex;
+  align-items: center;
   gap: 1.25rem;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
 }
 
 .app-header nav a {
@@ -133,7 +169,7 @@ main {
 .btn-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0f1117;
+  color: var(--on-accent);
   font-weight: 600;
 }
 
@@ -283,7 +319,7 @@ main {
 
 .practice-badge {
   display: inline-block;
-  background: rgba(187, 154, 247, 0.12);
+  background: var(--practice-tint);
   color: var(--purple);
   border: 1px solid var(--purple);
   border-radius: 999px;
@@ -387,7 +423,7 @@ main {
 .feedback-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 17, 23, 0.82);
+  background: var(--overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -536,14 +572,75 @@ main {
   color: var(--yellow);
 }
 
-/* ---------- mobile ---------- */
+/* ---------- responsive ---------- */
 
 @media (max-width: 640px) {
   main {
     padding: 1rem;
   }
 
+  .app-header {
+    padding: 0.6rem 1rem;
+  }
+
+  .app-header nav {
+    gap: 0.85rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .instruction-panel {
+    padding: 0.85rem 1rem;
+  }
+
+  .instruction-text {
+    font-size: 1rem;
+  }
+
+  .editor-wrap .cm-editor {
+    font-size: 14px;
+  }
+
+  .feedback-card {
+    padding: 1.25rem 1.5rem;
+    max-width: 92%;
+  }
+
   .stats-row {
     flex-direction: column;
+  }
+
+  .skill-name {
+    width: 5.5rem;
+    font-size: 0.85rem;
+  }
+
+  .feedback-actions {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-header .brand {
+    font-size: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .lesson-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .lesson-card-header h2 {
+    font-size: 1rem;
+  }
+
+  .vim-status-bar {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
   }
 }

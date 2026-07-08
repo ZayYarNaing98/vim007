@@ -5,6 +5,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { EditorView, type ViewUpdate } from "@codemirror/view";
 import { Prec } from "@codemirror/state";
 import type { CursorPos } from "../lessons/types";
+import { useThemeStore } from "../store/useThemeStore";
 
 export type VimMode = "normal" | "insert" | "visual";
 
@@ -33,6 +34,7 @@ export function VimEditor({
   onModeChange,
   onBlockedKey,
 }: Props) {
+  const theme = useThemeStore((s) => s.theme);
   const callbacksRef = useRef({ onKeystroke, onBlockedKey, allowedKeys, disabled });
   callbacksRef.current = { onKeystroke, onBlockedKey, allowedKeys, disabled };
 
@@ -145,7 +147,7 @@ export function VimEditor({
         ref={editorRef}
         value={initialCode}
         height="320px"
-        theme="dark"
+        theme={theme}
         extensions={extensions}
         onUpdate={handleUpdate}
         editable={!disabled}
