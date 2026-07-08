@@ -1,0 +1,53 @@
+{
+  "slug": "yank-paste",
+  "title": "Yank & Paste",
+  "category": "operators",
+  "order": 7,
+  "intro": "`y` yanks (copies) with any motion: `yy` a whole line, `yw` a word. `p` pastes after the cursor, `P` before it. Deleted text is also yanked — `dd` + `p` moves a line.",
+  "exercises": [
+    {
+      "id": "yank-1",
+      "type": "edit",
+      "instruction": "Classic typo fix: the letters are swapped. Swap them back with `xp` (delete the character, paste it after the next one).",
+      "initialCode": "teh",
+      "initialCursor": { "line": 0, "ch": 1 },
+      "goal": { "buffer": "the" },
+      "allowedKeys": ["x", "p"],
+      "parKeystrokes": 2,
+      "hints": ["`x` deletes `e`, `p` pastes it after the `h`."]
+    },
+    {
+      "id": "yank-2",
+      "type": "edit",
+      "instruction": "Duplicate this line with `yy` then `p`.",
+      "initialCode": "const a = 1;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const a = 1;\nconst a = 1;" },
+      "allowedKeys": ["y", "p"],
+      "parKeystrokes": 3,
+      "hints": ["`yy` yanks the whole line; `p` pastes it below."]
+    },
+    {
+      "id": "yank-3",
+      "type": "edit",
+      "instruction": "Move the first line below the second using `dd` then `p`.",
+      "initialCode": "first();\nsecond();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "second();\nfirst();" },
+      "allowedKeys": ["d", "p"],
+      "parKeystrokes": 3,
+      "hints": ["`dd` deletes (and yanks) the line; `p` pastes it below the cursor line."]
+    },
+    {
+      "id": "yank-4",
+      "type": "edit",
+      "instruction": "Duplicate the word `hello` using `yw` then `P` (paste before the cursor).",
+      "initialCode": "hello world",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "hello hello world" },
+      "allowedKeys": ["y", "w", "P"],
+      "parKeystrokes": 3,
+      "hints": ["`yw` yanks the word plus its trailing space; `P` pastes it at the cursor."]
+    }
+  ]
+}

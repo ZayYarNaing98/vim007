@@ -1,0 +1,52 @@
+{
+  "slug": "text-objects",
+  "title": "Text Objects",
+  "category": "text-objects",
+  "order": 8,
+  "intro": "Text objects describe what's around the cursor: `i\"` is inside quotes, `a\"` includes the quotes, `i(` is inside parentheses. Combine them with operators: `ci\"`, `di(`, `da\"` — from anywhere inside the object.",
+  "exercises": [
+    {
+      "id": "tobjects-1",
+      "type": "combined",
+      "instruction": "The string should say `right`. Change inside the quotes with `ci\"`, type `right`, then press `Esc`.",
+      "initialCode": "let msg = \"wrong\";",
+      "initialCursor": { "line": 0, "ch": 11 },
+      "goal": { "buffer": "let msg = \"right\";", "mode": "normal" },
+      "allowedKeys": ["c", "i", "\"", "r", "g", "h", "t"],
+      "parKeystrokes": 9,
+      "hints": ["`ci\"` empties the string and drops you into Insert mode — from anywhere inside it."]
+    },
+    {
+      "id": "tobjects-2",
+      "type": "edit",
+      "instruction": "Delete everything inside the parentheses with `di(`.",
+      "initialCode": "cleanup(oldData);",
+      "initialCursor": { "line": 0, "ch": 8 },
+      "goal": { "buffer": "cleanup();" },
+      "allowedKeys": ["d", "i", "("],
+      "parKeystrokes": 3,
+      "hints": ["`i(` is the text object \"inside parentheses\"."]
+    },
+    {
+      "id": "tobjects-3",
+      "type": "edit",
+      "instruction": "Delete the string including its quotes with `da\"`.",
+      "initialCode": "console.log(\"debug\");",
+      "initialCursor": { "line": 0, "ch": 13 },
+      "goal": { "buffer": "console.log();" },
+      "allowedKeys": ["d", "a", "\""],
+      "parKeystrokes": 3,
+      "hints": ["`a\"` = the string *and* its quotes; `i\"` would leave them."]
+    },
+    {
+      "id": "tobjects-4",
+      "type": "combined",
+      "instruction": "Change the arguments to `x, y`: use `ci(`, type the new arguments, then press `Esc`.",
+      "initialCode": "sum(a, b);",
+      "initialCursor": { "line": 0, "ch": 4 },
+      "goal": { "buffer": "sum(x, y);", "mode": "normal" },
+      "parKeystrokes": 8,
+      "hints": ["`ci(` clears everything between the parentheses and enters Insert mode."]
+    }
+  ]
+}

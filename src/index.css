@@ -290,6 +290,25 @@ main {
   font-size: 15px;
 }
 
+/* Vim search/ex prompt (`/`, `:`) panel */
+.editor-wrap .cm-panels {
+  background: var(--bg-raised);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+}
+
+.editor-wrap .cm-panels input {
+  background: transparent;
+  color: var(--text);
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 .vim-status-bar {
   display: flex;
   justify-content: space-between;

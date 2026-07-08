@@ -5,9 +5,22 @@ import operators from "./03-operators.json";
 import verticalMotions from "./04-vertical-motions.json";
 import countsRepeat from "./05-counts-repeat.json";
 import visualMode from "./06-visual-mode.json";
+import yankPaste from "./07-yank-paste.json";
+import textObjects from "./08-text-objects.json";
+import searchReplace from "./09-search-replace.json";
 
 export const lessons: Lesson[] = (
-  [survival, horizontalMotions, operators, verticalMotions, countsRepeat, visualMode] as Lesson[]
+  [
+    survival,
+    horizontalMotions,
+    operators,
+    verticalMotions,
+    countsRepeat,
+    visualMode,
+    yankPaste,
+    textObjects,
+    searchReplace,
+  ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 
 export function getLesson(slug: string): Lesson | undefined {

@@ -1,0 +1,50 @@
+{
+  "slug": "search-replace",
+  "title": "Search & Replace",
+  "category": "search",
+  "order": 9,
+  "intro": "`/pattern` + `Enter` jumps to the next match, `n` repeats the search, `*` searches for the word under the cursor. `:%s/old/new/g` replaces every occurrence in the file.",
+  "exercises": [
+    {
+      "id": "search-1",
+      "type": "motion",
+      "instruction": "Find the word `bug`: type `/bug` and press `Enter`.",
+      "initialCode": "line one here\nnothing special\nthe bug is here",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 2, "ch": 4 } },
+      "parKeystrokes": 5,
+      "hints": ["`/` opens the search prompt; `Enter` jumps to the first match."]
+    },
+    {
+      "id": "search-2",
+      "type": "motion",
+      "instruction": "Search for `item` with `/item` + `Enter`, then press `n` to jump to the next match on the last line.",
+      "initialCode": "item = 1\nitem = 2\nitem = 3",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 2, "ch": 0 } },
+      "parKeystrokes": 7,
+      "hints": ["`n` repeats the last search in the same direction."]
+    },
+    {
+      "id": "search-3",
+      "type": "motion",
+      "instruction": "The cursor is on `count`. Jump to its next occurrence with `*`.",
+      "initialCode": "count = count + step;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 8 } },
+      "allowedKeys": ["*"],
+      "parKeystrokes": 1,
+      "hints": ["`*` searches forward for the exact word under the cursor."]
+    },
+    {
+      "id": "search-4",
+      "type": "edit",
+      "instruction": "Replace every `cat` with `dog` in one command: type `:%s/cat/dog/g` and press `Enter`.",
+      "initialCode": "cat cat cat",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "dog dog dog" },
+      "parKeystrokes": 14,
+      "hints": ["`%` means the whole file, `g` means every match on each line."]
+    }
+  ]
+}

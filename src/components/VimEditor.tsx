@@ -127,21 +127,35 @@ export function VimEditor({
     [onStateChange]
   );
 
+  // Keys typed into Vim's search/ex prompt (`/`, `:`) land on an <input>
+  // in the editor's panel, outside contentDOM, so the domEventHandlers
+  // counter never sees them. Catch them here as they bubble.
+  const handlePanelKeyDown = useCallback((event: React.KeyboardEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.tagName !== "INPUT") return;
+    const { onKeystroke, disabled } = callbacksRef.current;
+    if (!disabled && !MODIFIER_KEYS.has(event.key)) {
+      onKeystroke(event.key);
+    }
+  }, []);
+
   return (
-    <CodeMirror
-      ref={editorRef}
-      value={initialCode}
-      height="320px"
-      theme="dark"
-      extensions={extensions}
-      onUpdate={handleUpdate}
-      editable={!disabled}
-      basicSetup={{
-        lineNumbers: true,
-        highlightActiveLine: true,
-        foldGutter: false,
-        autocompletion: false,
-      }}
-    />
+    <div onKeyDown={handlePanelKeyDown}>
+      <CodeMirror
+        ref={editorRef}
+        value={initialCode}
+        height="320px"
+        theme="dark"
+        extensions={extensions}
+        onUpdate={handleUpdate}
+        editable={!disabled}
+        basicSetup={{
+          lineNumbers: true,
+          highlightActiveLine: true,
+          foldGutter: false,
+          autocompletion: false,
+        }}
+      />
+    </div>
   );
 }
