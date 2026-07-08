@@ -1,0 +1,42 @@
+{
+  "slug": "indentation",
+  "title": "Indentation",
+  "category": "editing",
+  "order": 12,
+  "intro": "`>>` indents the current line, `<<` dedents it. In Visual mode, `>` and `<` shift the whole selection. Prefix with a count to affect several lines: `3>>`.",
+  "exercises": [
+    {
+      "id": "indent-1",
+      "type": "edit",
+      "instruction": "Indent this line one level with `>>` (adds two spaces).",
+      "initialCode": "return true;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "  return true;" },
+      "allowedKeys": [">"],
+      "parKeystrokes": 2,
+      "hints": ["Press `>` twice to indent the current line."]
+    },
+    {
+      "id": "indent-2",
+      "type": "edit",
+      "instruction": "This line is over-indented. Remove one level with `<<`.",
+      "initialCode": "    let x = 1;",
+      "initialCursor": { "line": 0, "ch": 6 },
+      "goal": { "buffer": "  let x = 1;" },
+      "allowedKeys": ["<"],
+      "parKeystrokes": 2,
+      "hints": ["Press `<` twice to dedent the current line one level."]
+    },
+    {
+      "id": "indent-3",
+      "type": "edit",
+      "instruction": "Indent both lines at once: select them with `V` then `j`, and press `>`.",
+      "initialCode": "a();\nb();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "  a();\n  b();" },
+      "allowedKeys": ["V", "j", ">"],
+      "parKeystrokes": 3,
+      "hints": ["In Visual mode a single `>` indents the whole selection."]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "insert-append",
+  "title": "Insert & Append",
+  "category": "editing",
+  "order": 10,
+  "intro": "There are many ways into Insert mode: `i` before the cursor, `a` after it, `A` at the end of the line, `I` at the first non-blank. `o` opens a new line below, `O` above. Pick the one that saves motions.",
+  "exercises": [
+    {
+      "id": "insert-1",
+      "type": "combined",
+      "instruction": "Add a semicolon at the end of the line: press `A`, type `;`, then `Esc`.",
+      "initialCode": "let x = 1",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "let x = 1;", "mode": "normal" },
+      "allowedKeys": ["A", ";"],
+      "parKeystrokes": 3,
+      "hints": ["`A` jumps to the end of the line and enters Insert mode — no need to move first."]
+    },
+    {
+      "id": "insert-2",
+      "type": "combined",
+      "instruction": "Add `const ` at the very start of the line: press `I`, type `const ` (with a trailing space), then `Esc`.",
+      "initialCode": "x = 1;",
+      "initialCursor": { "line": 0, "ch": 4 },
+      "goal": { "buffer": "const x = 1;", "mode": "normal" },
+      "parKeystrokes": 8,
+      "hints": ["`I` jumps to the first non-blank character and enters Insert mode."]
+    },
+    {
+      "id": "insert-3",
+      "type": "combined",
+      "instruction": "Open a new line below and add `return;`: press `o`, type `return;`, then `Esc`.",
+      "initialCode": "function f() {",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "function f() {\nreturn;", "mode": "normal" },
+      "parKeystrokes": 9,
+      "hints": ["`o` opens a fresh line below the cursor and enters Insert mode."]
+    },
+    {
+      "id": "insert-4",
+      "type": "combined",
+      "instruction": "Open a line ABOVE and add a comment: press `O`, type `// header`, then `Esc`.",
+      "initialCode": "const config = {};",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "// header\nconst config = {};", "mode": "normal" },
+      "parKeystrokes": 11,
+      "hints": ["`O` (Shift+o) opens a line above the cursor."]
+    }
+  ]
+}

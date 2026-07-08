@@ -1,0 +1,52 @@
+{
+  "slug": "replace-join",
+  "title": "Replace, Case & Join",
+  "category": "editing",
+  "order": 11,
+  "intro": "Quick edits without entering Insert mode: `r` replaces a single character, `~` toggles the case of the character under the cursor, `J` joins the next line onto the current one. `cc` changes an entire line.",
+  "exercises": [
+    {
+      "id": "replace-1",
+      "type": "edit",
+      "instruction": "There's a typo: `hxllo` should be `hello`. The cursor is on the `x` — replace it with `re`.",
+      "initialCode": "hxllo world",
+      "initialCursor": { "line": 0, "ch": 1 },
+      "goal": { "buffer": "hello world" },
+      "allowedKeys": ["r", "e"],
+      "parKeystrokes": 2,
+      "hints": ["`r` replaces the single character under the cursor with the next key you press."]
+    },
+    {
+      "id": "replace-2",
+      "type": "edit",
+      "instruction": "Capitalize the first letter: the cursor is on `h` — toggle its case with `~`.",
+      "initialCode": "hello",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "Hello" },
+      "allowedKeys": ["~"],
+      "parKeystrokes": 1,
+      "hints": ["`~` flips the case of the character under the cursor and moves right."]
+    },
+    {
+      "id": "replace-3",
+      "type": "edit",
+      "instruction": "Join these two lines into one with `J` (a space is added automatically).",
+      "initialCode": "const sum = a\n+ b;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const sum = a + b;" },
+      "allowedKeys": ["J"],
+      "parKeystrokes": 1,
+      "hints": ["`J` (Shift+j) joins the line below onto the current line."]
+    },
+    {
+      "id": "replace-4",
+      "type": "combined",
+      "instruction": "Rewrite the whole line: press `cc`, type `const y = 2;`, then `Esc`.",
+      "initialCode": "var x=1",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const y = 2;", "mode": "normal" },
+      "parKeystrokes": 14,
+      "hints": ["`cc` clears the entire line and drops you into Insert mode at the right indent."]
+    }
+  ]
+}

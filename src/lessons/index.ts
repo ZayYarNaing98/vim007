@@ -8,6 +8,9 @@ import visualMode from "./06-visual-mode.json";
 import yankPaste from "./07-yank-paste.json";
 import textObjects from "./08-text-objects.json";
 import searchReplace from "./09-search-replace.json";
+import insertAppend from "./10-insert-append.json";
+import replaceJoin from "./11-replace-join.json";
+import indentation from "./12-indentation.json";
 
 export const lessons: Lesson[] = (
   [
@@ -20,6 +23,9 @@ export const lessons: Lesson[] = (
     yankPaste,
     textObjects,
     searchReplace,
+    insertAppend,
+    replaceJoin,
+    indentation,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 
