@@ -1,0 +1,53 @@
+{
+  "slug": "vertical-motions",
+  "title": "Vertical Motions",
+  "category": "motions",
+  "order": 4,
+  "intro": "Move through a file fast: `gg` jumps to the first line, `G` to the last line. `{` and `}` jump between paragraphs (blank lines).",
+  "exercises": [
+    {
+      "id": "vmotions-1",
+      "type": "motion",
+      "instruction": "Jump to the first line with `gg`.",
+      "initialCode": "const app = express();\napp.use(cors());\napp.use(express.json());\napp.listen(3000);",
+      "initialCursor": { "line": 3, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 0 } },
+      "allowedKeys": ["g"],
+      "parKeystrokes": 2,
+      "hints": ["Press `g` twice."]
+    },
+    {
+      "id": "vmotions-2",
+      "type": "motion",
+      "instruction": "Jump to the last line with `G`.",
+      "initialCode": "const app = express();\napp.use(cors());\napp.use(express.json());\napp.listen(3000);",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 3, "ch": 0 } },
+      "allowedKeys": ["G"],
+      "parKeystrokes": 1,
+      "hints": ["`G` is Shift+g."]
+    },
+    {
+      "id": "vmotions-3",
+      "type": "motion",
+      "instruction": "Jump forward to the blank line between the functions with `}`.",
+      "initialCode": "function first() {\n  return 1;\n}\n\nfunction second() {\n  return 2;\n}",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 3, "ch": 0 } },
+      "allowedKeys": ["}", "{"],
+      "parKeystrokes": 1,
+      "hints": ["`}` jumps to the next blank line (paragraph boundary)."]
+    },
+    {
+      "id": "vmotions-4",
+      "type": "motion",
+      "instruction": "Now from the bottom, jump back to that blank line with `{`.",
+      "initialCode": "function first() {\n  return 1;\n}\n\nfunction second() {\n  return 2;\n}",
+      "initialCursor": { "line": 6, "ch": 0 },
+      "goal": { "cursor": { "line": 3, "ch": 0 } },
+      "allowedKeys": ["{", "}"],
+      "parKeystrokes": 1,
+      "hints": ["`{` jumps to the previous blank line."]
+    }
+  ]
+}

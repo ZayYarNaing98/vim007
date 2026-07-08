@@ -84,7 +84,10 @@ export function VimEditor({
     const init = () => {
       if (cancelled) return;
       const view = editorRef.current?.view;
-      if (!view) {
+      // Wait until the document is actually loaded: the value prop can be
+      // applied after view creation, and that replacement moves the cursor,
+      // clobbering any selection dispatched too early.
+      if (!view || view.state.doc.toString() !== initialCode) {
         requestAnimationFrame(init);
         return;
       }

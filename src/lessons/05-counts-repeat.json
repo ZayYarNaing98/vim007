@@ -1,0 +1,64 @@
+{
+  "slug": "counts-repeat",
+  "title": "Counts & Repeat",
+  "category": "counts",
+  "order": 5,
+  "intro": "Prefix any motion or operator with a number to repeat it: `3w` jumps three words, `2dd` deletes two lines, `d2w` deletes two words. The `.` command repeats your last change.",
+  "exercises": [
+    {
+      "id": "counts-1",
+      "type": "motion",
+      "instruction": "Jump three words forward to `four` with `3w`.",
+      "initialCode": "one two three four five",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 14 } },
+      "allowedKeys": ["3", "w"],
+      "parKeystrokes": 2,
+      "hints": ["Type the count first, then the motion: `3` `w`."]
+    },
+    {
+      "id": "counts-2",
+      "type": "edit",
+      "instruction": "Delete both middle lines at once with `2dd`.",
+      "initialCode": "const keep1 = true;\nconst remove1 = false;\nconst remove2 = false;\nconst keep2 = true;",
+      "initialCursor": { "line": 1, "ch": 0 },
+      "goal": { "buffer": "const keep1 = true;\nconst keep2 = true;" },
+      "allowedKeys": ["2", "d"],
+      "parKeystrokes": 3,
+      "hints": ["`2dd` = delete two lines starting from the cursor."]
+    },
+    {
+      "id": "counts-3",
+      "type": "edit",
+      "instruction": "There are two extra `e`s. The cursor is on the first one — delete both at once with `2x`.",
+      "initialCode": "heeello",
+      "initialCursor": { "line": 0, "ch": 1 },
+      "goal": { "buffer": "hello" },
+      "allowedKeys": ["2", "x"],
+      "parKeystrokes": 2,
+      "hints": ["`2x` deletes two characters starting at the cursor."]
+    },
+    {
+      "id": "counts-4",
+      "type": "edit",
+      "instruction": "Delete the first two words in one command with `d2w`.",
+      "initialCode": "one two three rest",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "three rest" },
+      "allowedKeys": ["d", "2", "w"],
+      "parKeystrokes": 3,
+      "hints": ["Counts work inside operators too: `d` `2` `w`."]
+    },
+    {
+      "id": "counts-5",
+      "type": "edit",
+      "instruction": "Delete the word `bad` with `dw`, then press `.` twice to repeat the change until only `good code` remains.",
+      "initialCode": "bad bad bad good code",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "good code" },
+      "allowedKeys": ["d", "w", "."],
+      "parKeystrokes": 4,
+      "hints": ["`.` repeats your last change — `dw` once, then `.` `.`"]
+    }
+  ]
+}

@@ -2,9 +2,12 @@ import type { Exercise, Lesson } from "./types";
 import survival from "./01-survival.json";
 import horizontalMotions from "./02-horizontal-motions.json";
 import operators from "./03-operators.json";
+import verticalMotions from "./04-vertical-motions.json";
+import countsRepeat from "./05-counts-repeat.json";
+import visualMode from "./06-visual-mode.json";
 
 export const lessons: Lesson[] = (
-  [survival, horizontalMotions, operators] as Lesson[]
+  [survival, horizontalMotions, operators, verticalMotions, countsRepeat, visualMode] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 
 export function getLesson(slug: string): Lesson | undefined {
