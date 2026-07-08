@@ -14,6 +14,9 @@ import indentation from "./12-indentation.json";
 import findTill from "./13-find-till.json";
 import operatorsTargets from "./14-operators-targets.json";
 import macros from "./15-macros.json";
+import wordMotions from "./16-word-motions.json";
+import changingCase from "./17-changing-case.json";
+import registers from "./18-registers.json";
 
 export const lessons: Lesson[] = (
   [
@@ -32,6 +35,9 @@ export const lessons: Lesson[] = (
     findTill,
     operatorsTargets,
     macros,
+    wordMotions,
+    changingCase,
+    registers,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 

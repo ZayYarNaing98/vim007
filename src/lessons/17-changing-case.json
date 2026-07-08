@@ -1,0 +1,53 @@
+{
+  "slug": "changing-case",
+  "title": "Changing Case",
+  "category": "editing",
+  "order": 17,
+  "intro": "Case operators transform text without retyping it: `gU` uppercases, `gu` lowercases, `g~` toggles. Combine them with a motion or text object: `gUiw` uppercases a word, `guu` lowercases the whole line, `gUU` uppercases it.",
+  "exercises": [
+    {
+      "id": "case-1",
+      "type": "edit",
+      "instruction": "The constant name should be shouty. The cursor is on `max`. Uppercase the whole word with `gUiw`.",
+      "initialCode": "const max = 100;",
+      "initialCursor": { "line": 0, "ch": 6 },
+      "goal": { "buffer": "const MAX = 100;" },
+      "allowedKeys": ["g", "U", "i", "w"],
+      "parKeystrokes": 4,
+      "hints": ["`gU` is the uppercase operator; `iw` is the \"inner word\" text object."]
+    },
+    {
+      "id": "case-2",
+      "type": "edit",
+      "instruction": "This shouting should stop. Lowercase the entire line with `guu`.",
+      "initialCode": "STOP SHOUTING",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "stop shouting" },
+      "allowedKeys": ["g", "u"],
+      "parKeystrokes": 3,
+      "hints": ["`guu` (like `dd` or `yy`, the doubled operator) applies to the whole line."]
+    },
+    {
+      "id": "case-3",
+      "type": "edit",
+      "instruction": "Toggle the case of the whole line with `g~~`.",
+      "initialCode": "Hello World",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "hELLO wORLD" },
+      "allowedKeys": ["g", "~"],
+      "parKeystrokes": 3,
+      "hints": ["`g~~` flips every letter's case on the current line."]
+    },
+    {
+      "id": "case-4",
+      "type": "edit",
+      "instruction": "Uppercase from the cursor to the end of the line with `gU$`.",
+      "initialCode": "prefix_KEEP tail here",
+      "initialCursor": { "line": 0, "ch": 11 },
+      "goal": { "buffer": "prefix_KEEP TAIL HERE" },
+      "allowedKeys": ["g", "U", "$"],
+      "parKeystrokes": 3,
+      "hints": ["`gU` takes any motion — `$` means \"to end of line\"."]
+    }
+  ]
+}

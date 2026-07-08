@@ -1,0 +1,42 @@
+{
+  "slug": "registers",
+  "title": "Registers",
+  "category": "operators",
+  "order": 18,
+  "intro": "Yanks and deletes normally share one clipboard, so a delete overwrites what you yanked. Named registers fix that: prefix with `\"` and a letter to pick a specific register — `\"ayy` yanks a line into register a, `\"ap` pastes it back, untouched by any deletes in between.",
+  "exercises": [
+    {
+      "id": "reg-1",
+      "type": "edit",
+      "instruction": "Yank the first line into register a with `\"ayy`, move down twice with `jj`, then paste it below with `\"ap`.",
+      "initialCode": "HEADER\nline b\nline c",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "HEADER\nline b\nline c\nHEADER" },
+      "allowedKeys": ["\"", "a", "y", "j", "p"],
+      "parKeystrokes": 7,
+      "hints": ["`\"a` selects register a for the very next yank or paste."]
+    },
+    {
+      "id": "reg-2",
+      "type": "edit",
+      "instruction": "Registers survive deletes. Yank line 1 into register a with `\"ayy`, delete line 2 with `dd`, then paste register a below it with `\"ap`.",
+      "initialCode": "keep me\ndelete me\ntail",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "keep me\ntail\nkeep me" },
+      "allowedKeys": ["\"", "a", "y", "d", "p", "j"],
+      "parKeystrokes": 9,
+      "hints": ["`dd` overwrites the default register but leaves register a alone."]
+    },
+    {
+      "id": "reg-3",
+      "type": "edit",
+      "instruction": "Register `0` always holds your last yank, even after a delete. Yank line 1 with `yy`, move down and delete `trash` with `jdd`, then paste the yank with `\"0p`. (Plain `p` would paste `trash` instead!)",
+      "initialCode": "keep\ntrash\nend",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "keep\nend\nkeep" },
+      "allowedKeys": ["y", "d", "p", "\"", "0", "j", "k"],
+      "parKeystrokes": 8,
+      "hints": ["`yy` fills register 0; the later `dd` fills the default register but not 0, so `\"0p` still pastes `keep`."]
+    }
+  ]
+}

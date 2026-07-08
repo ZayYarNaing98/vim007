@@ -1,0 +1,53 @@
+{
+  "slug": "big-word-motions",
+  "title": "Big-WORD Motions",
+  "category": "motions",
+  "order": 16,
+  "intro": "Lowercase `w b e` stop at every punctuation boundary. Their uppercase cousins `W B E` treat any run of non-blank characters as one WORD — so `foo.bar` is a single WORD. Use them to skip past punctuation-heavy code fast.",
+  "exercises": [
+    {
+      "id": "word-1",
+      "type": "motion",
+      "instruction": "Jump to the start of `baz-qux` with one press of `W` (it skips the whole `foo.bar` at once).",
+      "initialCode": "foo.bar baz-qux the-end",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 8 } },
+      "allowedKeys": ["W", "B", "E"],
+      "parKeystrokes": 1,
+      "hints": ["`W` moves to the next whitespace-separated WORD, ignoring the `.` and `-`."]
+    },
+    {
+      "id": "word-2",
+      "type": "motion",
+      "instruction": "Reach the last WORD `the-end` with `W`.",
+      "initialCode": "foo.bar baz-qux the-end",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 16 } },
+      "allowedKeys": ["W", "B"],
+      "parKeystrokes": 2,
+      "hints": ["Two presses of `W` skip past both `foo.bar` and `baz-qux`."]
+    },
+    {
+      "id": "word-3",
+      "type": "motion",
+      "instruction": "Jump to the END of the first WORD (`foo.bar`, the `r`) with `E`.",
+      "initialCode": "foo.bar baz-qux the-end",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 6 } },
+      "allowedKeys": ["E", "W", "B"],
+      "parKeystrokes": 1,
+      "hints": ["`E` lands on the last character of the current/next WORD."]
+    },
+    {
+      "id": "word-4",
+      "type": "motion",
+      "instruction": "The cursor is on the last WORD. Jump back to the start of `baz-qux` with `B`.",
+      "initialCode": "foo.bar baz-qux the-end",
+      "initialCursor": { "line": 0, "ch": 16 },
+      "goal": { "cursor": { "line": 0, "ch": 8 } },
+      "allowedKeys": ["B", "W"],
+      "parKeystrokes": 1,
+      "hints": ["`B` jumps back one WORD, treating punctuation as part of the WORD."]
+    }
+  ]
+}
