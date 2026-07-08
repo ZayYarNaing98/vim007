@@ -1,6 +1,6 @@
 # Vim TypeTutor (vim007)
 
-Interactive Vim learning app inspired by vim-hero.com. React-only SPA — no backend; progress lives in `localStorage`. The full design doc lives at `../../../aps/documents/vim-typetutor-implementation.md`.
+Interactive Vim learning app inspired by vim-hero.com. React-only SPA — no backend; progress lives in `localStorage`. The full design doc lives at `../documents/vim-typetutor-implementation.md`.
 
 ## Commands
 
