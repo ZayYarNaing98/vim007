@@ -1,0 +1,53 @@
+{
+  "slug": "find-till",
+  "title": "Find & Till",
+  "category": "motions",
+  "order": 13,
+  "intro": "Move precisely along a line: `f{char}` jumps onto the next occurrence of a character, `F{char}` searches backward. `t{char}` stops just before it. Repeat the last find with `;` (same direction) or `,` (reverse).",
+  "exercises": [
+    {
+      "id": "find-1",
+      "type": "motion",
+      "instruction": "Jump onto the `=` with `f=`.",
+      "initialCode": "foo = bar + baz;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 4 } },
+      "allowedKeys": ["f", "="],
+      "parKeystrokes": 2,
+      "hints": ["`f` waits for a character, then jumps onto its next occurrence."]
+    },
+    {
+      "id": "find-2",
+      "type": "motion",
+      "instruction": "Jump to the third `.` in the chain: `f.` finds the first, then `;` repeats it to reach the third.",
+      "initialCode": "a.b.c.d",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 5 } },
+      "allowedKeys": ["f", ".", ";", ","],
+      "parKeystrokes": 4,
+      "hints": ["`;` repeats the last `f` in the same direction — press it twice after `f.`"]
+    },
+    {
+      "id": "find-3",
+      "type": "motion",
+      "instruction": "Land just before the `;` using `t;` (till, not onto).",
+      "initialCode": "return value;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 11 } },
+      "allowedKeys": ["t", ";"],
+      "parKeystrokes": 2,
+      "hints": ["`t` stops one character before the target — `f` lands on it."]
+    },
+    {
+      "id": "find-4",
+      "type": "motion",
+      "instruction": "The cursor is at the end. Search backward onto the `=` with `F=`.",
+      "initialCode": "foo = bar + baz;",
+      "initialCursor": { "line": 0, "ch": 15 },
+      "goal": { "cursor": { "line": 0, "ch": 4 } },
+      "allowedKeys": ["F", "="],
+      "parKeystrokes": 2,
+      "hints": ["`F` (Shift+f) is `f` in reverse — it searches toward the start of the line."]
+    }
+  ]
+}

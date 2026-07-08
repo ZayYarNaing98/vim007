@@ -1,0 +1,53 @@
+{
+  "slug": "operators-targets",
+  "title": "Operators with Targets",
+  "category": "operators",
+  "order": 14,
+  "intro": "Operators combine with any motion, including line-range and find motions. `d$` deletes to end of line, `dG` to the end of the file, `dtx` deletes up to (but not including) the next `x`, and `dfx` deletes up to and including it.",
+  "exercises": [
+    {
+      "id": "optarget-1",
+      "type": "edit",
+      "instruction": "The cursor is on the `=`. Delete from here to the end of the line with `d$`.",
+      "initialCode": "let result = compute() + extra;",
+      "initialCursor": { "line": 0, "ch": 11 },
+      "goal": { "buffer": "let result " },
+      "allowedKeys": ["d", "$"],
+      "parKeystrokes": 2,
+      "hints": ["`$` is the \"end of line\" motion; `d$` deletes to it."]
+    },
+    {
+      "id": "optarget-2",
+      "type": "edit",
+      "instruction": "Delete everything up to (not including) the semicolon with `dt;`.",
+      "initialCode": "call();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": ";" },
+      "allowedKeys": ["d", "t", ";"],
+      "parKeystrokes": 3,
+      "hints": ["`t;` is \"till the next semicolon\" — it stops just before it."]
+    },
+    {
+      "id": "optarget-3",
+      "type": "edit",
+      "instruction": "Delete the parenthesized call including the closing paren with `df)`.",
+      "initialCode": "value = getName();",
+      "initialCursor": { "line": 0, "ch": 8 },
+      "goal": { "buffer": "value = ;" },
+      "allowedKeys": ["d", "f", ")"],
+      "parKeystrokes": 3,
+      "hints": ["`f)` finds the next `)`; `df)` deletes through it (unlike `t`, which stops before)."]
+    },
+    {
+      "id": "optarget-4",
+      "type": "edit",
+      "instruction": "Delete from the second line to the end of the file with `dG`.",
+      "initialCode": "keep this line\ndelete from here\nand this\nand this too",
+      "initialCursor": { "line": 1, "ch": 0 },
+      "goal": { "buffer": "keep this line" },
+      "allowedKeys": ["d", "G", "g"],
+      "parKeystrokes": 2,
+      "hints": ["`G` is the \"last line\" motion; `dG` deletes from the cursor line to the end."]
+    }
+  ]
+}

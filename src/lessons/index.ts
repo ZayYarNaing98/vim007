@@ -11,6 +11,9 @@ import searchReplace from "./09-search-replace.json";
 import insertAppend from "./10-insert-append.json";
 import replaceJoin from "./11-replace-join.json";
 import indentation from "./12-indentation.json";
+import findTill from "./13-find-till.json";
+import operatorsTargets from "./14-operators-targets.json";
+import macros from "./15-macros.json";
 
 export const lessons: Lesson[] = (
   [
@@ -26,6 +29,9 @@ export const lessons: Lesson[] = (
     insertAppend,
     replaceJoin,
     indentation,
+    findTill,
+    operatorsTargets,
+    macros,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 
