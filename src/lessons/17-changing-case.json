@@ -48,6 +48,28 @@
       "allowedKeys": ["g", "U", "$"],
       "parKeystrokes": 3,
       "hints": ["`gU` takes any motion — `$` means \"to end of line\"."]
+    },
+    {
+      "id": "case-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Calm it down: the cursor is on `INPUT` — lowercase it with `guiw`.",
+      "initialCode": "warning: check INPUT value",
+      "initialCursor": { "line": 0, "ch": 15 },
+      "goal": { "buffer": "warning: check input value" },
+      "parKeystrokes": 4,
+      "hints": ["`gu` is the lowercase operator — the mirror image of `gU`."]
+    },
+    {
+      "id": "case-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "This is a heading — uppercase the whole line with `gUU`.",
+      "initialCode": "make this heading loud",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "MAKE THIS HEADING LOUD" },
+      "parKeystrokes": 3,
+      "hints": ["Doubled operators act on the whole line, like `dd` and `yy`."]
     }
   ]
 }

@@ -19,6 +19,8 @@ export type Exercise = {
   allowedKeys?: string[];
   parKeystrokes: number;
   hints?: string[];
+  /** End-of-lesson practice exercise — shown as a separate "Practice" section. Must come after all core exercises. */
+  practice?: boolean;
 };
 
 export type Lesson = {

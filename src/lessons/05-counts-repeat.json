@@ -59,6 +59,39 @@
       "allowedKeys": ["d", "w", "."],
       "parKeystrokes": 4,
       "hints": ["`.` repeats your last change — `dw` once, then `.` `.`"]
+    },
+    {
+      "id": "counts-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Reach `five` with a single motion: `4w`.",
+      "initialCode": "one two three four five six",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 19 } },
+      "parKeystrokes": 2,
+      "hints": ["Count first, motion second: `4` then `w`."]
+    },
+    {
+      "id": "counts-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the first three words with one command: `d3w`.",
+      "initialCode": "aaa bbb ccc keep",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "keep" },
+      "parKeystrokes": 3,
+      "hints": ["The count can sit inside the operator: `d` `3` `w`."]
+    },
+    {
+      "id": "counts-practice-3",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Each line ends with a doubled semicolon. Delete one with `x`, move down with `j`, then repeat the change with `.`.",
+      "initialCode": "x = 1;;\ny = 2;;",
+      "initialCursor": { "line": 0, "ch": 5 },
+      "goal": { "buffer": "x = 1;\ny = 2;" },
+      "parKeystrokes": 3,
+      "hints": ["`x`, `j`, `.` — the dot replays the delete on the second line."]
     }
   ]
 }

@@ -48,6 +48,39 @@
       "allowedKeys": ["{", "}"],
       "parKeystrokes": 1,
       "hints": ["`{` jumps to the previous blank line."]
+    },
+    {
+      "id": "vmotions-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Hop forward two paragraphs: press `}` twice to land on the second blank line.",
+      "initialCode": "intro line\nsecond line\n\nmiddle starts\nmiddle ends\n\nfinal line",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 5, "ch": 0 } },
+      "parKeystrokes": 2,
+      "hints": ["Each `}` jumps to the next blank line."]
+    },
+    {
+      "id": "vmotions-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "From the bottom: jump to the top with `gg`, then down one paragraph with `}`.",
+      "initialCode": "intro line\nsecond line\n\nmiddle starts\nmiddle ends\n\nfinal line",
+      "initialCursor": { "line": 6, "ch": 0 },
+      "goal": { "cursor": { "line": 2, "ch": 0 } },
+      "parKeystrokes": 3,
+      "hints": ["`gg` first, then a single `}` lands on the first blank line."]
+    },
+    {
+      "id": "vmotions-practice-3",
+      "type": "motion",
+      "practice": true,
+      "instruction": "You're inside the middle paragraph. Jump to the last line with `G`, then back up one paragraph with `{`.",
+      "initialCode": "intro line\nsecond line\n\nmiddle starts\nmiddle ends\n\nfinal line",
+      "initialCursor": { "line": 3, "ch": 0 },
+      "goal": { "cursor": { "line": 5, "ch": 0 } },
+      "parKeystrokes": 2,
+      "hints": ["`G` to the bottom, then `{` back to the blank line above it."]
     }
   ]
 }

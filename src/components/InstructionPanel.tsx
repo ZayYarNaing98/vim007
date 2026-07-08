@@ -14,19 +14,23 @@ export function renderInstruction(text: string): ReactNode[] {
 
 type Props = {
   exercise: Exercise;
+  /** Index within the current section (core exercises or practice session). */
   index: number;
+  /** Size of the current section. */
   total: number;
   blockedKey: string | null;
 };
 
 export function InstructionPanel({ exercise, index, total, blockedKey }: Props) {
   const [showHint, setShowHint] = useState(false);
+  const isPractice = !!exercise.practice;
 
   return (
-    <div className="instruction-panel">
+    <div className={`instruction-panel${isPractice ? " practice" : ""}`}>
       <div className="instruction-header">
         <span className="exercise-counter">
-          Exercise {index + 1} / {total}
+          {isPractice && <span className="practice-badge">Practice</span>}
+          {isPractice ? "Round" : "Exercise"} {index + 1} / {total}
         </span>
         {exercise.allowedKeys && (
           <span className="allowed-keys">
@@ -38,6 +42,12 @@ export function InstructionPanel({ exercise, index, total, blockedKey }: Props) 
           </span>
         )}
       </div>
+
+      {isPractice && index === 0 && (
+        <p className="practice-note">
+          Practice session — put everything from this lesson together. All keys are open.
+        </p>
+      )}
 
       <p className="instruction-text">{renderInstruction(exercise.instruction)}</p>
 

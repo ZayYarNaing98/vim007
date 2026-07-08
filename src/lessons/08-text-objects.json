@@ -47,6 +47,39 @@
       "goal": { "buffer": "sum(x, y);", "mode": "normal" },
       "parKeystrokes": 8,
       "hints": ["`ci(` clears everything between the parentheses and enters Insert mode."]
+    },
+    {
+      "id": "tobjects-practice-1",
+      "type": "combined",
+      "practice": true,
+      "instruction": "The greeting is wrong. Change the string to `hello`: `ci\"`, type `hello`, then `Esc`.",
+      "initialCode": "greet(\"goodbye\");",
+      "initialCursor": { "line": 0, "ch": 8 },
+      "goal": { "buffer": "greet(\"hello\");", "mode": "normal" },
+      "parKeystrokes": 9,
+      "hints": ["`ci\"` works from anywhere inside the quotes."]
+    },
+    {
+      "id": "tobjects-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "The cursor is inside the INNER parentheses. Delete their contents with `di(`.",
+      "initialCode": "wrap(inner(data));",
+      "initialCursor": { "line": 0, "ch": 11 },
+      "goal": { "buffer": "wrap(inner());" },
+      "parKeystrokes": 3,
+      "hints": ["Text objects match the closest surrounding pair — here, `inner(...)`."]
+    },
+    {
+      "id": "tobjects-practice-3",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Remove the first argument, quotes and all, with `da\"`.",
+      "initialCode": "setTitle(\"draft\", true);",
+      "initialCursor": { "line": 0, "ch": 11 },
+      "goal": { "buffer": "setTitle(, true);" },
+      "parKeystrokes": 3,
+      "hints": ["`a\"` includes the quotes themselves; `i\"` would leave them behind."]
     }
   ]
 }

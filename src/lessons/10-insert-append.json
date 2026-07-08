@@ -45,6 +45,28 @@
       "goal": { "buffer": "// header\nconst config = {};", "mode": "normal" },
       "parKeystrokes": 11,
       "hints": ["`O` (Shift+o) opens a line above the cursor."]
+    },
+    {
+      "id": "insert-practice-1",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Add a semicolon to BOTH lines: `A;` `Esc` on the first, `j`, then `A;` `Esc` again.",
+      "initialCode": "let x = 1\nlet y = 2",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "let x = 1;\nlet y = 2;", "mode": "normal" },
+      "parKeystrokes": 7,
+      "hints": ["`A` jumps to the end of the line and enters Insert mode in one keystroke."]
+    },
+    {
+      "id": "insert-practice-2",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Add a comment above with `O`, type `// start`, press `Esc` — then `j` down and append a `;` with `A;` `Esc`.",
+      "initialCode": "doWork()",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "// start\ndoWork();", "mode": "normal" },
+      "parKeystrokes": 14,
+      "hints": ["`O` opens a line above; after `Esc`, `j` returns to the code line."]
     }
   ]
 }

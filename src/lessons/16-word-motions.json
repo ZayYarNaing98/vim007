@@ -48,6 +48,39 @@
       "allowedKeys": ["B", "W"],
       "parKeystrokes": 1,
       "hints": ["`B` jumps back one WORD, treating punctuation as part of the WORD."]
+    },
+    {
+      "id": "word-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Jump to `now` with two presses of `W` — the whole URL counts as one WORD.",
+      "initialCode": "fetch http://api.site.com/v2?q=1 now",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 33 } },
+      "parKeystrokes": 2,
+      "hints": ["Lowercase `w` would stop at every `/` and `.` — `W` skips the URL in one hop."]
+    },
+    {
+      "id": "word-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "The cursor is on `now`. Jump back onto the START of the URL with `B`.",
+      "initialCode": "fetch http://api.site.com/v2?q=1 now",
+      "initialCursor": { "line": 0, "ch": 33 },
+      "goal": { "cursor": { "line": 0, "ch": 6 } },
+      "parKeystrokes": 1,
+      "hints": ["`B` treats the entire URL as a single WORD."]
+    },
+    {
+      "id": "word-practice-3",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Land on the LAST character of the URL by pressing `E` twice.",
+      "initialCode": "fetch http://api.site.com/v2?q=1 now",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 31 } },
+      "parKeystrokes": 2,
+      "hints": ["The first `E` reaches the end of `fetch`; the second reaches the end of the URL."]
     }
   ]
 }

@@ -109,6 +109,16 @@ export function LessonPage() {
     resetExercise();
   }, [lesson, exIndex, resetExercise]);
 
+  // Core exercises come first in the array; practice exercises are appended after them.
+  const coreTotal = lesson ? lesson.exercises.filter((e) => !e.practice).length : 0;
+  const practiceTotal = lesson ? lesson.exercises.length - coreTotal : 0;
+  const isPractice = !!exercise?.practice;
+  const nextIsPractice =
+    !!lesson &&
+    !isPractice &&
+    exIndex + 1 < lesson.exercises.length &&
+    !!lesson.exercises[exIndex + 1].practice;
+
   if (!lesson || !exercise) {
     return (
       <div className="page">
@@ -160,8 +170,8 @@ export function LessonPage() {
 
       <InstructionPanel
         exercise={exercise}
-        index={exIndex}
-        total={lesson.exercises.length}
+        index={isPractice ? exIndex - coreTotal : exIndex}
+        total={isPractice ? practiceTotal : coreTotal}
         blockedKey={blockedKey}
       />
 
@@ -184,6 +194,7 @@ export function LessonPage() {
             keystrokes={keystrokes}
             par={exercise.parKeystrokes}
             isLastExercise={exIndex + 1 >= lesson.exercises.length}
+            nextIsPractice={nextIsPractice}
             onRetry={resetExercise}
             onNext={handleNext}
           />

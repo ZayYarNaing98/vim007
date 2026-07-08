@@ -277,6 +277,27 @@ main {
   font-size: 0.85rem;
 }
 
+.instruction-panel.practice {
+  border-color: var(--purple);
+}
+
+.practice-badge {
+  display: inline-block;
+  background: rgba(187, 154, 247, 0.12);
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  margin-right: 0.6rem;
+  font-size: 0.75rem;
+}
+
+.practice-note {
+  color: var(--purple);
+  font-size: 0.9rem;
+  margin: 0.6rem 0 0;
+}
+
 .instruction-text {
   font-size: 1.1rem;
   margin: 0.75rem 0 0;

@@ -34,6 +34,28 @@
       "goal": { "buffer": "a();\nb();\nc();\nd();", "mode": "normal" },
       "parKeystrokes": 11,
       "hints": ["A count before `@a` replays the macro that many times — `3@a` handles all three remaining lines."]
+    },
+    {
+      "id": "macros-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Turn every line into a list item: record `qa` `I- ` `Esc` `j` `q` on the first line, then replay with `2@a`.",
+      "initialCode": "item1\nitem2\nitem3",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "- item1\n- item2\n- item3", "mode": "normal" },
+      "parKeystrokes": 11,
+      "hints": ["Type `- ` (dash + space) after `I`, and end the recording with `q` before replaying."]
+    },
+    {
+      "id": "macros-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Quote every line: record `qa` `I\"` `Esc` `A\"` `Esc` `j` `q`, then replay with `2@a`.",
+      "initialCode": "red\ngreen\nblue",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "\"red\"\n\"green\"\n\"blue\"", "mode": "normal" },
+      "parKeystrokes": 13,
+      "hints": ["A macro can enter and leave Insert mode as often as it likes — `I\"` for the front, `A\"` for the back."]
     }
   ]
 }

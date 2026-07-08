@@ -59,6 +59,39 @@
       "allowedKeys": ["b"],
       "parKeystrokes": 2,
       "hints": ["Each press of `b` jumps back one word."]
+    },
+    {
+      "id": "hmotions-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Land on the `f` of `four` — any keys allowed. Try `$` then `b`, or three presses of `w`.",
+      "initialCode": "one two three four",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 14 } },
+      "parKeystrokes": 2,
+      "hints": ["`$` jumps to the end of the line, `b` backs up to the start of the word."]
+    },
+    {
+      "id": "hmotions-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "The cursor is at the end of the line. Press `0` to return to the start, then `f*` to land on the `*`.",
+      "initialCode": "let total = price * quantity;",
+      "initialCursor": { "line": 0, "ch": 28 },
+      "goal": { "cursor": { "line": 0, "ch": 18 } },
+      "parKeystrokes": 3,
+      "hints": ["`0` first, then `f` followed by `*`."]
+    },
+    {
+      "id": "hmotions-practice-3",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Land on the `t` of `it`: `w` to reach the word, then `e` to jump to its end.",
+      "initialCode": "make it count",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 6 } },
+      "parKeystrokes": 2,
+      "hints": ["`e` jumps to the last character of the current or next word."]
     }
   ]
 }

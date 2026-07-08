@@ -59,6 +59,39 @@
       "allowedKeys": ["c", "i", "w", "o", "u", "n", "t"],
       "parKeystrokes": 9,
       "hints": ["`ciw` deletes the inner word and drops you into Insert mode."]
+    },
+    {
+      "id": "operators-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the whole comment: jump onto the `/` with `f/`, then delete to the end of the line with `D`.",
+      "initialCode": "const value = 42; // obsolete comment",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const value = 42;" },
+      "parKeystrokes": 3,
+      "hints": ["`f/` lands on the first `/`; `D` wipes everything from there."]
+    },
+    {
+      "id": "operators-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Remove both `old` lines: move down with `j`, then delete each line with `dd`.",
+      "initialCode": "keep();\nold1();\nold2();\nkeep2();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "keep();\nkeep2();" },
+      "parKeystrokes": 5,
+      "hints": ["After the first `dd`, the next `old` line moves up under the cursor — just `dd` again."]
+    },
+    {
+      "id": "operators-practice-3",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Rename `temp` to `user`: move onto it with `w`, change it with `ciw`, type `user`, then press `Esc`.",
+      "initialCode": "let temp = getUser();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "let user = getUser();", "mode": "normal" },
+      "parKeystrokes": 9,
+      "hints": ["Motion first (`w`), then operator + text object (`ciw`)."]
     }
   ]
 }

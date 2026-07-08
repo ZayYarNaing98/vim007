@@ -48,6 +48,39 @@
       "allowedKeys": ["d", "G", "g"],
       "parKeystrokes": 2,
       "hints": ["`G` is the \"last line\" motion; `dG` deletes from the cursor line to the end."]
+    },
+    {
+      "id": "optarget-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the junk: jump onto the first `j` with `fj`, then `D`.",
+      "initialCode": "const x = 1; junk junk junk",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const x = 1;" },
+      "parKeystrokes": 3,
+      "hints": ["`fj` `D` — or `fj` `d$`, same thing."]
+    },
+    {
+      "id": "optarget-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the key but keep the colon: `dt:`.",
+      "initialCode": "key: value",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": ": value" },
+      "parKeystrokes": 3,
+      "hints": ["`t:` stops just before the colon, so `dt:` leaves it in place."]
+    },
+    {
+      "id": "optarget-practice-3",
+      "type": "edit",
+      "practice": true,
+      "instruction": "The cursor is on the first `cut` line. Delete everything from here to the end of the file with `dG`.",
+      "initialCode": "keep\nkeep2\ncut\ncut2\ncut3",
+      "initialCursor": { "line": 2, "ch": 0 },
+      "goal": { "buffer": "keep\nkeep2" },
+      "parKeystrokes": 2,
+      "hints": ["`dG` is line-wise: it removes the cursor line through the last line."]
     }
   ]
 }

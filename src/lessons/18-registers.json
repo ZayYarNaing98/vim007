@@ -37,6 +37,28 @@
       "allowedKeys": ["y", "d", "p", "\"", "0", "j", "k"],
       "parKeystrokes": 8,
       "hints": ["`yy` fills register 0; the later `dd` fills the default register but not 0, so `\"0p` still pastes `keep`."]
+    },
+    {
+      "id": "reg-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Keep a yank safe across a delete: yank the first line with `\"ayy`, delete the `old` line with `j` `dd`, then paste register a below with `\"ap`.",
+      "initialCode": "MARKER\nold\nrest",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "MARKER\nrest\nMARKER" },
+      "parKeystrokes": 10,
+      "hints": ["`dd` only touches the default register — register a still holds `MARKER`."]
+    },
+    {
+      "id": "reg-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Stamp the header twice: `\"ayy` the first line, then `j` `\"ap`, then `j` `\"ap` again.",
+      "initialCode": "sig\nbody\nend",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "sig\nbody\nsig\nend\nsig" },
+      "parKeystrokes": 12,
+      "hints": ["A named register keeps its contents — you can `\"ap` as many times as you like."]
     }
   ]
 }

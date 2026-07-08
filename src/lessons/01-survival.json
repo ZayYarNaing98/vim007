@@ -59,6 +59,42 @@
       "allowedKeys": ["i", "o"],
       "parKeystrokes": 3,
       "hints": ["`i` inserts text before the cursor. Don't forget `Esc` to leave Insert mode."]
+    },
+    {
+      "id": "survival-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Navigate to the `t` of `three` on line 3 using `j` and `l`.",
+      "initialCode": "let one = 1;\nlet two = 2;\nlet three = 3;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 2, "ch": 4 } },
+      "allowedKeys": ["h", "j", "k", "l"],
+      "parKeystrokes": 6,
+      "hints": ["Two presses of `j` to reach line 3, then four presses of `l`."]
+    },
+    {
+      "id": "survival-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "The word `codde` has an extra `d`. Move onto it with `l` and delete it with `x`.",
+      "initialCode": "codde",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "code" },
+      "allowedKeys": ["h", "l", "x"],
+      "parKeystrokes": 4,
+      "hints": ["Move right three times with `l`, then press `x`."]
+    },
+    {
+      "id": "survival-practice-3",
+      "type": "combined",
+      "practice": true,
+      "instruction": "`wrld` is missing an `o`. Move onto the `r` with `l`, press `i`, type `o`, then press `Esc`.",
+      "initialCode": "hello wrld",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "hello world", "mode": "normal" },
+      "allowedKeys": ["h", "l", "i", "o"],
+      "parKeystrokes": 10,
+      "hints": ["Seven presses of `l` puts the cursor on the `r`; `i` inserts before it."]
     }
   ]
 }

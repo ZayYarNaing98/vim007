@@ -48,6 +48,39 @@
       "allowedKeys": ["y", "w", "P"],
       "parKeystrokes": 3,
       "hints": ["`yw` yanks the word plus its trailing space; `P` pastes it at the cursor."]
+    },
+    {
+      "id": "yank-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Put these calls in order: delete the `second()` line with `dd`, then paste it below with `p`.",
+      "initialCode": "second();\nfirst();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "first();\nsecond();" },
+      "parKeystrokes": 3,
+      "hints": ["`dd` yanks what it deletes — `p` drops it below the current line."]
+    },
+    {
+      "id": "yank-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Make three copies of this line: yank it with `yy`, then press `p` twice.",
+      "initialCode": "const row = [0, 0, 0];",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const row = [0, 0, 0];\nconst row = [0, 0, 0];\nconst row = [0, 0, 0];" },
+      "parKeystrokes": 4,
+      "hints": ["The yanked line stays in the register — every `p` pastes another copy."]
+    },
+    {
+      "id": "yank-practice-3",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Fix the typo `adn` with `xp` — the cursor is already on the `d`.",
+      "initialCode": "adn",
+      "initialCursor": { "line": 0, "ch": 1 },
+      "goal": { "buffer": "and" },
+      "parKeystrokes": 2,
+      "hints": ["`x` deletes the `d`, `p` pastes it after the `n`."]
     }
   ]
 }

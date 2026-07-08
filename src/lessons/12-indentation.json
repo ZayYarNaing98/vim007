@@ -37,6 +37,28 @@
       "allowedKeys": ["V", "j", ">"],
       "parKeystrokes": 3,
       "hints": ["In Visual mode a single `>` indents the whole selection."]
+    },
+    {
+      "id": "indent-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "The function body is not indented. Fix it with `>>`.",
+      "initialCode": "if (ok) {\nrun();\n}",
+      "initialCursor": { "line": 1, "ch": 0 },
+      "goal": { "buffer": "if (ok) {\n  run();\n}" },
+      "parKeystrokes": 2,
+      "hints": ["`>>` indents only the current line — the braces stay put."]
+    },
+    {
+      "id": "indent-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "All three lines are over-indented. Select them with `V` `j` `j` and dedent with `<`.",
+      "initialCode": "  a();\n  b();\n  c();",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "a();\nb();\nc();" },
+      "parKeystrokes": 4,
+      "hints": ["One `<` in Visual mode shifts the whole selection left."]
     }
   ]
 }

@@ -45,6 +45,39 @@
       "goal": { "buffer": "dog dog dog" },
       "parKeystrokes": 14,
       "hints": ["`%` means the whole file, `g` means every match on each line."]
+    },
+    {
+      "id": "search-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Search for `beta` with `/beta` + `Enter`, then press `n` to reach the match on the last line.",
+      "initialCode": "alpha beta\ngamma delta\nbeta again",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 2, "ch": 0 } },
+      "parKeystrokes": 7,
+      "hints": ["The first match is on line 1 — `n` jumps to the next one."]
+    },
+    {
+      "id": "search-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "The cursor is on `total`. Jump to its next occurrence with `*`.",
+      "initialCode": "total += total * rate;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 9 } },
+      "parKeystrokes": 1,
+      "hints": ["`*` searches forward for the exact word under the cursor."]
+    },
+    {
+      "id": "search-practice-3",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Rename every `foo` to `bar` in one command: `:%s/foo/bar/g` + `Enter`.",
+      "initialCode": "foo = foo + foo;",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "bar = bar + bar;" },
+      "parKeystrokes": 14,
+      "hints": ["Without the trailing `g`, only the first match on each line is replaced."]
     }
   ]
 }

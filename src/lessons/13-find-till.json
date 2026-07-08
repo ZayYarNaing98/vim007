@@ -48,6 +48,39 @@
       "allowedKeys": ["F", "="],
       "parKeystrokes": 2,
       "hints": ["`F` (Shift+f) is `f` in reverse — it searches toward the start of the line."]
+    },
+    {
+      "id": "find-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Land on the THIRD comma: `f,` finds the first, then `;` `;` repeats the jump.",
+      "initialCode": "a, b, c, d, e",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 7 } },
+      "parKeystrokes": 4,
+      "hints": ["`;` repeats the last `f` in the same direction."]
+    },
+    {
+      "id": "find-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Land just BEFORE the closing `)` using `t)`.",
+      "initialCode": "return callback(value);",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "cursor": { "line": 0, "ch": 20 } },
+      "parKeystrokes": 2,
+      "hints": ["`t` stops one character short of the target."]
+    },
+    {
+      "id": "find-practice-3",
+      "type": "motion",
+      "practice": true,
+      "instruction": "The cursor is at the end. Jump backward to the FIRST `.`: `F.` reaches the second dot, then `;` repeats backward.",
+      "initialCode": "one.two.three",
+      "initialCursor": { "line": 0, "ch": 12 },
+      "goal": { "cursor": { "line": 0, "ch": 3 } },
+      "parKeystrokes": 3,
+      "hints": ["After `F.`, `;` keeps searching backward; `,` would reverse direction."]
     }
   ]
 }

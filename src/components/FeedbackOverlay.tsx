@@ -4,6 +4,8 @@ type Props = {
   keystrokes: number;
   par: number;
   isLastExercise: boolean;
+  /** The next exercise starts the end-of-lesson practice session. */
+  nextIsPractice?: boolean;
   onRetry: () => void;
   onNext: () => void;
 };
@@ -15,7 +17,14 @@ const RANK_LABEL: Record<string, string> = {
   C: "Solved, but there is a much shorter way.",
 };
 
-export function FeedbackOverlay({ keystrokes, par, isLastExercise, onRetry, onNext }: Props) {
+export function FeedbackOverlay({
+  keystrokes,
+  par,
+  isLastExercise,
+  nextIsPractice,
+  onRetry,
+  onNext,
+}: Props) {
   const rank = rankFor(par, keystrokes);
 
   return (
@@ -32,7 +41,11 @@ export function FeedbackOverlay({ keystrokes, par, isLastExercise, onRetry, onNe
             Retry
           </button>
           <button className="btn btn-primary" onClick={onNext} autoFocus>
-            {isLastExercise ? "Finish lesson" : "Next exercise →"}
+            {isLastExercise
+              ? "Finish lesson"
+              : nextIsPractice
+                ? "Start practice →"
+                : "Next exercise →"}
           </button>
         </div>
       </div>

@@ -48,6 +48,28 @@
       "allowedKeys": ["V", "j", "d"],
       "parKeystrokes": 3,
       "hints": ["In line-wise Visual mode, `j` extends the selection down."]
+    },
+    {
+      "id": "visual-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the comment visually: jump onto the `/` with `f/`, select to the end of the line with `v$`, then delete with `d`.",
+      "initialCode": "const a = 1; // old note",
+      "initialCursor": { "line": 0, "ch": 0 },
+      "goal": { "buffer": "const a = 1;" },
+      "parKeystrokes": 5,
+      "hints": ["`f/` `v` `$` `d` — motion, select, extend, operate."]
+    },
+    {
+      "id": "visual-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Select all three middle lines with `V` `j` `j`, then delete them with `d`.",
+      "initialCode": "top();\nmid1();\nmid2();\nmid3();\nbottom();",
+      "initialCursor": { "line": 1, "ch": 0 },
+      "goal": { "buffer": "top();\nbottom();" },
+      "parKeystrokes": 4,
+      "hints": ["`V` starts line-wise Visual mode; each `j` pulls one more line into the selection."]
     }
   ]
 }
