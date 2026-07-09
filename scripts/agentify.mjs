@@ -166,7 +166,9 @@ writeFileSync(join(dist, "openapi.json"), JSON.stringify(openapi, null, 2));
 /* ---------- auth.md (honest: everything is public) ---------- */
 writeFileSync(
   join(dist, "auth.md"),
-  `# Vim TypeTutor — Agent Access
+  `# Auth.md
+
+## Vim TypeTutor — Agent Access
 
 No authentication or registration is required. Every endpoint on this site is
 public and read-only:
