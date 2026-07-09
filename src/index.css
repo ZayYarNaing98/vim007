@@ -53,6 +53,12 @@
   box-sizing: border-box;
 }
 
+/* Build-time crawler snapshot (scripts/agentify.mjs): visible to no-JS
+   agents, hidden before first paint whenever JS is running. */
+:root[data-js="1"] .static-snapshot {
+  display: none;
+}
+
 body {
   margin: 0;
   background: var(--bg);

@@ -80,7 +80,7 @@ const jsonLd = {
   })),
 };
 
-const staticHome = `<div class="page">
+const staticHome = `<div class="page static-snapshot">
       <div class="hero">
         <p class="hero-eyebrow">Learn by doing</p>
         <h1>Master Vim, one motion at a time</h1>

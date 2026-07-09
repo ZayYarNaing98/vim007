@@ -38,6 +38,9 @@
             ? "light"
             : "dark";
       document.documentElement.dataset.theme = theme;
+      // Mark JS as available before first paint so the static crawler
+      // snapshot inside #root (injected at build time) never flashes.
+      document.documentElement.dataset.js = "1";
     </script>
   </head>
   <body>
