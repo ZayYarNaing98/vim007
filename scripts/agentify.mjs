@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -53,6 +54,13 @@ ${lessons
 - [Home](${SITE}/): lesson list with completion status
 - [Progress](${SITE}/progress): per-skill proficiency, practice suggestions, HTML report export
 
+## Agent interface (all public, read-only, no auth)
+
+- JSON API: [/api/lessons](${SITE}/api/lessons) and /api/lessons/{slug} — spec at [/openapi.json](${SITE}/openapi.json)
+- MCP server (streamable HTTP): ${SITE}/mcp — tools \`list_lessons\`, \`get_lesson\`; card at [/.well-known/mcp/server-card.json](${SITE}/.well-known/mcp/server-card.json)
+- Markdown negotiation: request any page with \`Accept: text/markdown\`
+- Agent skill: [/.well-known/agent-skills/index.json](${SITE}/.well-known/agent-skills/index.json)
+
 ## Source
 
 - [GitHub repository](https://github.com/ZayYarNaing98/vim007)
@@ -89,6 +97,188 @@ ${practice.map((e, i) => `${i + 1}. ${e.instruction} (par: ${e.parKeystrokes} ke
 `;
   writeFileSync(join(dist, "md/lesson", `${l.slug}.md`), md);
 }
+
+/* ---------- read-only JSON API (served via worker at /api/...) ---------- */
+mkdirSync(join(dist, "api/lessons"), { recursive: true });
+const lessonIndex = lessons.map((l) => ({
+  slug: l.slug,
+  title: l.title,
+  order: l.order,
+  category: l.category,
+  summary: l.summary,
+  keys: l.keys,
+  coreExercises: l.exercises.filter((e) => !e.practice).length,
+  practiceExercises: l.exercises.filter((e) => e.practice).length,
+  url: `${SITE}/lesson/${l.slug}`,
+  api: `${SITE}/api/lessons/${l.slug}`,
+}));
+writeFileSync(
+  join(dist, "api/lessons.json"),
+  JSON.stringify({ total: lessons.length, totalExercises, lessons: lessonIndex }, null, 2)
+);
+for (const l of lessons) {
+  writeFileSync(
+    join(dist, "api/lessons", `${l.slug}.json`),
+    JSON.stringify({ ...l, url: `${SITE}/lesson/${l.slug}` }, null, 2)
+  );
+}
+
+/* ---------- openapi.json ---------- */
+const openapi = {
+  openapi: "3.1.0",
+  info: {
+    title: "Vim TypeTutor API",
+    version: "1.0.0",
+    description:
+      "Read-only access to the Vim TypeTutor curriculum. No authentication required.",
+  },
+  servers: [{ url: SITE }],
+  paths: {
+    "/api/lessons": {
+      get: {
+        operationId: "listLessons",
+        summary: "List all lessons",
+        responses: {
+          200: {
+            description: "Lesson index with slugs, titles, categories, and exercise counts",
+            content: { "application/json": {} },
+          },
+        },
+      },
+    },
+    "/api/lessons/{slug}": {
+      get: {
+        operationId: "getLesson",
+        summary: "Get one lesson including all exercises",
+        parameters: [
+          { name: "slug", in: "path", required: true, schema: { type: "string" } },
+        ],
+        responses: {
+          200: { description: "Full lesson", content: { "application/json": {} } },
+          404: { description: "Unknown slug" },
+        },
+      },
+    },
+  },
+};
+writeFileSync(join(dist, "openapi.json"), JSON.stringify(openapi, null, 2));
+
+/* ---------- auth.md (honest: everything is public) ---------- */
+writeFileSync(
+  join(dist, "auth.md"),
+  `# Vim TypeTutor — Agent Access
+
+No authentication or registration is required. Every endpoint on this site is
+public and read-only:
+
+- \`GET /api/lessons\` and \`GET /api/lessons/{slug}\` — JSON curriculum API (see [/openapi.json](${SITE}/openapi.json))
+- \`POST /mcp\` — MCP server (streamable HTTP, tools: \`list_lessons\`, \`get_lesson\`)
+- Any page with \`Accept: text/markdown\` — Markdown rendition
+
+There are no protected resources, no tokens, and no rate keys. User progress
+lives only in the visitor's own browser (localStorage) and is not accessible
+server-side.
+`
+);
+
+/* ---------- .well-known: api-catalog, MCP server card, agent skills ---------- */
+mkdirSync(join(dist, ".well-known/mcp"), { recursive: true });
+mkdirSync(join(dist, ".well-known/agent-skills/vim-typetutor"), { recursive: true });
+
+writeFileSync(
+  join(dist, ".well-known/api-catalog.json"),
+  JSON.stringify(
+    {
+      linkset: [
+        {
+          anchor: `${SITE}/api/lessons`,
+          "service-desc": [{ href: `${SITE}/openapi.json`, type: "application/json" }],
+          "service-doc": [{ href: `${SITE}/llms.txt`, type: "text/markdown" }],
+          status: [{ href: `${SITE}/api/lessons` }],
+        },
+      ],
+    },
+    null,
+    2
+  )
+);
+
+writeFileSync(
+  join(dist, ".well-known/mcp/server-card.json"),
+  JSON.stringify(
+    {
+      serverInfo: {
+        name: "vim007",
+        title: "Vim TypeTutor",
+        version: "1.0.0",
+        description:
+          "Read-only MCP server exposing the Vim TypeTutor curriculum: list lessons and fetch full exercise details.",
+      },
+      protocolVersion: "2025-06-18",
+      transport: { type: "streamable-http", url: `${SITE}/mcp` },
+      capabilities: { tools: { listChanged: false } },
+      authentication: { required: false },
+    },
+    null,
+    2
+  )
+);
+
+const skillMd = `---
+name: vim-typetutor
+description: Query the Vim TypeTutor curriculum (24 Vim lessons, 157 exercises) via its JSON API, MCP server, or Markdown content negotiation.
+---
+
+# Using Vim TypeTutor as an agent
+
+Vim TypeTutor (${SITE}) is a free browser-based Vim trainer. All access is
+public and read-only; no authentication.
+
+## JSON API
+
+- \`GET ${SITE}/api/lessons\` — lesson index (slug, title, category, summary, keys, exercise counts)
+- \`GET ${SITE}/api/lessons/{slug}\` — full lesson: intro plus every exercise's instruction, initial code, goal state, and par keystroke count
+- Spec: \`${SITE}/openapi.json\`
+
+## MCP server
+
+Streamable-HTTP MCP endpoint at \`${SITE}/mcp\` with tools \`list_lessons\` and
+\`get_lesson\`. Server card: \`${SITE}/.well-known/mcp/server-card.json\`.
+
+## Markdown content negotiation
+
+Request any page (\`/\`, \`/progress\`, \`/lesson/{slug}\`) with
+\`Accept: text/markdown\` to receive a Markdown rendition instead of the HTML
+SPA. A site overview also lives at \`${SITE}/llms.txt\`.
+
+## Notes
+
+- Exercise goals describe outcomes (buffer/cursor/mode), not keystroke sequences.
+- User progress is stored only in the visitor's browser; there is no server-side state to query.
+`;
+writeFileSync(join(dist, ".well-known/agent-skills/vim-typetutor/SKILL.md"), skillMd);
+
+writeFileSync(
+  join(dist, ".well-known/agent-skills/index.json"),
+  JSON.stringify(
+    {
+      $schema: "https://agentskills.io/schemas/index/v0.2.0.json",
+      version: "0.2.0",
+      skills: [
+        {
+          name: "vim-typetutor",
+          type: "skill",
+          description:
+            "Query the Vim TypeTutor curriculum (24 Vim lessons, 157 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
+          url: `${SITE}/.well-known/agent-skills/vim-typetutor/SKILL.md`,
+          sha256: createHash("sha256").update(skillMd).digest("hex"),
+        },
+      ],
+    },
+    null,
+    2
+  )
+);
 
 /* ---------- index.html: JSON-LD + static snapshot ---------- */
 const esc = (s) =>

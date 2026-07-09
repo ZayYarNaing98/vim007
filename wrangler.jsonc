@@ -11,7 +11,9 @@
     "not_found_handling": "single-page-application",
     "binding": "ASSETS",
     // Page routes go through the worker for Markdown content negotiation;
-    // real asset paths (/assets/*, /llms.txt, ...) are served directly.
-    "run_worker_first": ["/", "/progress", "/lesson/*"]
+    // /api/* and /mcp are handled by the worker; /.well-known/api-catalog
+    // needs its linkset+json content type set by the worker. All other
+    // asset paths (/assets/*, /llms.txt, ...) are served directly.
+    "run_worker_first": ["/", "/progress", "/lesson/*", "/api/*", "/mcp", "/.well-known/api-catalog"]
   }
 }

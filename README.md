@@ -1,7 +1,5 @@
 # Vim TypeTutor (vim007)
 
-An interactive Vim learning app inspired by [vim-hero.com](https://www.vim-hero.com/) — a real editor in the browser with Vim keybindings, bite-sized exercises, instant feedback, and progress tracking. React-only: no backend, progress lives in `localStorage`.
-
 **Live:** [vim007.zayarnaing-pp.workers.dev](https://vim007.zayarnaing-pp.workers.dev) · 24 lessons / 157 exercises, each ending in a practice session.
 
 Built from the implementation guide in `../documents/vim-typetutor-implementation.md`.
