@@ -1,0 +1,160 @@
+{
+  "slug": "marks",
+  "title": "Marks",
+  "category": "motions",
+  "order": 21,
+  "intro": "Drop a bookmark with `m{letter}` and jump back any time: `` `a `` (backtick) returns to the exact spot, `'a` (apostrophe) to the start of that line. Marks make round-trips across a file painless.",
+  "summary": "Bookmark spots and jump back.",
+  "keys": [
+    "ma",
+    "`a",
+    "'a"
+  ],
+  "exercises": [
+    {
+      "id": "marks-1",
+      "type": "motion",
+      "instruction": "Drop mark `a` with `ma`, jump to the bottom with `G`, then snap back exactly with `` `a ``.",
+      "initialCode": "function setup() {\n  const config = load();\n  start(config);\n}\n\nsetup();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 8
+      },
+      "goal": {
+        "cursor": {
+          "line": 1,
+          "ch": 8
+        }
+      },
+      "allowedKeys": [
+        "m",
+        "a",
+        "G",
+        "`"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "`` ` `` (backtick) returns to the exact line AND column of the mark."
+      ]
+    },
+    {
+      "id": "marks-2",
+      "type": "motion",
+      "instruction": "Mark this spot (`ma`), jump away with `G`, then return to the START of the marked line with `'a`.",
+      "initialCode": "const items = [];\nitems.push(read());\nrender(items);\n\ndone();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 6
+      },
+      "goal": {
+        "cursor": {
+          "line": 1,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "m",
+        "a",
+        "G",
+        "'"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "`'a` (apostrophe) lands on the line start; `` `a `` on the exact column."
+      ]
+    },
+    {
+      "id": "marks-3",
+      "type": "motion",
+      "instruction": "From the bottom: mark with `ma`, jump to the top with `gg`, come back with `` `a ``.",
+      "initialCode": "init();\n\nrun(tasks);\n\ncleanup();",
+      "initialCursor": {
+        "line": 4,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 4,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "m",
+        "a",
+        "g",
+        "`"
+      ],
+      "parKeystrokes": 6,
+      "hints": [
+        "Marks survive any amount of moving around."
+      ]
+    },
+    {
+      "id": "marks-4",
+      "type": "edit",
+      "instruction": "Delete back to a mark: `ma` here, jump to the line end with `$`, then `` d`a `` deletes everything in between.",
+      "initialCode": "keep DELETE ALL OF THIS;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "keep ;"
+      },
+      "allowedKeys": [
+        "m",
+        "a",
+        "$",
+        "d",
+        "`"
+      ],
+      "parKeystrokes": 6,
+      "hints": [
+        "Deleting to a mark is exclusive — the character under the cursor survives."
+      ]
+    },
+    {
+      "id": "marks-practice-1",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Round trip with an edit: mark line 2 (`ma`), jump to the bottom with `G`, delete that line with `dd`, then return with `'a`.",
+      "initialCode": "header();\nbody(one);\nbody(two);\nbody(three);\nfooter();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "header();\nbody(one);\nbody(two);\nbody(three);",
+        "cursor": {
+          "line": 1,
+          "ch": 0
+        }
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "`'a` still works after edits elsewhere in the file."
+      ]
+    },
+    {
+      "id": "marks-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Mark the accumulator line, inspect the top with `gg`, then jump back exactly with `` `a ``.",
+      "initialCode": "let total = 0;\nfor (const n of list) {\n  total += n;\n}\n\nreport(total);",
+      "initialCursor": {
+        "line": 2,
+        "ch": 2
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 2
+        }
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`ma`, `gg`, `` `a ``."
+      ]
+    }
+  ]
+}

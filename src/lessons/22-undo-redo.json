@@ -1,0 +1,133 @@
+{
+  "slug": "undo-redo",
+  "title": "Undo & Redo",
+  "category": "editing",
+  "order": 22,
+  "intro": "`u` undoes the last change and `Ctrl-r` redoes it. Undo works in change-sized steps: a single `u` reverts an entire `dd` or a whole Insert-mode session.",
+  "summary": "Rewind mistakes, replay fixes.",
+  "keys": [
+    "u",
+    "Ctrl-r"
+  ],
+  "exercises": [
+    {
+      "id": "undo-redo-1",
+      "type": "edit",
+      "instruction": "You meant to delete the LAST line. Delete line 1 with `dd` — mistake! — undo with `u`, then delete the last line with `G` `dd`.",
+      "initialCode": "const keep = 1;\nconst alsoKeep = 2;\nconst remove = 3;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const keep = 1;\nconst alsoKeep = 2;"
+      },
+      "allowedKeys": [
+        "d",
+        "u",
+        "G"
+      ],
+      "parKeystrokes": 6,
+      "hints": [
+        "One `u` restores the whole deleted line."
+      ]
+    },
+    {
+      "id": "undo-redo-2",
+      "type": "edit",
+      "instruction": "Delete the comment with `dd`, undo with `u`, then redo the delete with `Ctrl-r`.",
+      "initialCode": "// stale comment\ncode();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "code();"
+      },
+      "allowedKeys": [
+        "d",
+        "u",
+        "r"
+      ],
+      "parKeystrokes": 4,
+      "hints": [
+        "`Ctrl-r` re-applies the change you just undid."
+      ]
+    },
+    {
+      "id": "undo-redo-3",
+      "type": "combined",
+      "instruction": "Insert `hi` before the `;` (`i`, type, `Esc`) — wrong value! Undo it with `u`, then insert `hello` instead.",
+      "initialCode": "const greeting = ;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 17
+      },
+      "goal": {
+        "buffer": "const greeting = hello;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 12,
+      "hints": [
+        "`u` reverts the whole Insert session in one step."
+      ]
+    },
+    {
+      "id": "undo-redo-4",
+      "type": "edit",
+      "instruction": "Delete the top line three times in a row (`dd` ×3), then bring the LAST deletion back with a single `u`.",
+      "initialCode": "one();\ntwo();\nthree();\nfour();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "three();\nfour();"
+      },
+      "allowedKeys": [
+        "d",
+        "u"
+      ],
+      "parKeystrokes": 7,
+      "hints": [
+        "Each `dd` is its own undo step — `u` only rewinds the most recent one."
+      ]
+    },
+    {
+      "id": "undo-redo-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete `alpha ` with `dw` — wrong word! Undo, then delete `beta ` instead (`w` `dw`).",
+      "initialCode": "alpha beta gamma",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "alpha gamma"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "After `u` the cursor is back where the change happened."
+      ]
+    },
+    {
+      "id": "undo-redo-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "`dd` the debug line, second-guess yourself with `u`, then commit with `Ctrl-r`.",
+      "initialCode": "debug(true);\nship();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "ship();"
+      },
+      "parKeystrokes": 4,
+      "hints": [
+        "Undo and redo are a pair — flip back and forth freely."
+      ]
+    }
+  ]
+}

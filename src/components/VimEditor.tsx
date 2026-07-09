@@ -46,8 +46,8 @@ export function VimEditor({
           keydown: (event) => {
             const { onKeystroke, onBlockedKey, allowedKeys, disabled } = callbacksRef.current;
 
-            // Ctrl-w is a Vim window command but closes the browser tab.
-            if (event.ctrlKey && event.key.toLowerCase() === "w") {
+            // Ctrl-w closes the browser tab; Ctrl-r (Vim redo) reloads the page.
+            if (event.ctrlKey && ["w", "r"].includes(event.key.toLowerCase())) {
               event.preventDefault();
             }
             if (MODIFIER_KEYS.has(event.key)) return false;

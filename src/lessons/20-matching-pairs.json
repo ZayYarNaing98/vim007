@@ -1,0 +1,143 @@
+{
+  "slug": "matching-pairs",
+  "title": "Matching Pairs",
+  "category": "motions",
+  "order": 20,
+  "intro": "`%` jumps between matching brackets — `(` ↔ `)`, `[` ↔ `]`, `{` ↔ `}` — and understands nesting. It is a motion like any other, so `d%` deletes from a bracket through its partner.",
+  "summary": "Bounce between matching brackets.",
+  "keys": [
+    "%",
+    "d%"
+  ],
+  "exercises": [
+    {
+      "id": "matching-pairs-1",
+      "type": "motion",
+      "instruction": "The cursor is on the outer `(`. Jump to its matching `)` with `%`.",
+      "initialCode": "if (a && (b || c)) {",
+      "initialCursor": {
+        "line": 0,
+        "ch": 3
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 17
+        }
+      },
+      "allowedKeys": [
+        "%"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`%` skips the nested pair automatically — it always finds the true partner."
+      ]
+    },
+    {
+      "id": "matching-pairs-2",
+      "type": "motion",
+      "instruction": "Jump from the opening `{` to the closing `}` of the function with `%`.",
+      "initialCode": "function add(a, b) {\n  return a + b;\n}",
+      "initialCursor": {
+        "line": 0,
+        "ch": 19
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "%"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`%` works across lines."
+      ]
+    },
+    {
+      "id": "matching-pairs-3",
+      "type": "edit",
+      "instruction": "Delete the whole argument list: with the cursor on the `(`, press `d%`.",
+      "initialCode": "const v = fn(unused, extra);",
+      "initialCursor": {
+        "line": 0,
+        "ch": 12
+      },
+      "goal": {
+        "buffer": "const v = fn;"
+      },
+      "allowedKeys": [
+        "d",
+        "%"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`d%` deletes from the bracket under the cursor through its match, inclusive."
+      ]
+    },
+    {
+      "id": "matching-pairs-4",
+      "type": "motion",
+      "instruction": "It works backward too: from the closing `]`, jump to the opening `[` with `%`.",
+      "initialCode": "items[selectedIndex]",
+      "initialCursor": {
+        "line": 0,
+        "ch": 19
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 5
+        }
+      },
+      "allowedKeys": [
+        "%"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`%` jumps in whichever direction the partner is."
+      ]
+    },
+    {
+      "id": "matching-pairs-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "From the first `(`, jump to the very last `)` with a single `%`.",
+      "initialCode": "((a + b) * (c - d))",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 18
+        }
+      },
+      "parKeystrokes": 1,
+      "hints": [
+        "Nested pairs don't fool `%`."
+      ]
+    },
+    {
+      "id": "matching-pairs-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the options object: from the `{`, press `d%` — everything through the `}` goes.",
+      "initialCode": "call({\n  legacy: true\n});",
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "call();"
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "`d%` spans lines just like the motion does."
+      ]
+    }
+  ]
+}

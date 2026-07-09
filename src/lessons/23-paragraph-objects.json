@@ -1,0 +1,140 @@
+{
+  "slug": "paragraph-objects",
+  "title": "Paragraph Objects",
+  "category": "text-objects",
+  "order": 23,
+  "intro": "`ip` selects the paragraph under the cursor and `ap` includes the blank line after it. Combine them with operators — `dip`, `dap`, `yip`, `vip` — to move whole blocks at once.",
+  "summary": "Grab whole blocks at once.",
+  "keys": [
+    "ip",
+    "ap",
+    "dap"
+  ],
+  "exercises": [
+    {
+      "id": "paragraph-objects-1",
+      "type": "edit",
+      "instruction": "Delete the first block with `dip` — the blank line stays.",
+      "initialCode": "old line one\nold line two\n\nkeep this line",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "\nkeep this line"
+      },
+      "allowedKeys": [
+        "d",
+        "i",
+        "p"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`ip` covers every line of the paragraph, but not the blank line after it."
+      ]
+    },
+    {
+      "id": "paragraph-objects-2",
+      "type": "edit",
+      "instruction": "Delete the first block AND the gap with `dap` — the next block slides up.",
+      "initialCode": "remove me\nremove me too\n\nstay();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 3
+      },
+      "goal": {
+        "buffer": "stay();"
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "p"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`ap` includes the trailing blank line."
+      ]
+    },
+    {
+      "id": "paragraph-objects-3",
+      "type": "edit",
+      "instruction": "Duplicate the block: `yip` copies it, `p` pastes it below the current line.",
+      "initialCode": "setup();\n\nstep one\nstep two",
+      "initialCursor": {
+        "line": 3,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "setup();\n\nstep one\nstep two\nstep one\nstep two"
+      },
+      "allowedKeys": [
+        "y",
+        "i",
+        "p"
+      ],
+      "parKeystrokes": 4,
+      "hints": [
+        "`yip` yanks linewise, so `p` pastes whole lines below the cursor."
+      ]
+    },
+    {
+      "id": "paragraph-objects-4",
+      "type": "edit",
+      "instruction": "Select the function block with `vip`, then indent the whole selection with `>`.",
+      "initialCode": "function f() {\n  inner();\n}\n\nouter();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 2
+      },
+      "goal": {
+        "buffer": "  function f() {\n    inner();\n  }\n\nouter();"
+      },
+      "allowedKeys": [
+        "v",
+        "i",
+        "p",
+        ">"
+      ],
+      "parKeystrokes": 4,
+      "hints": [
+        "Visual mode + text object: `vip` grabs the block, `>` shifts it."
+      ]
+    },
+    {
+      "id": "paragraph-objects-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Remove the middle block and its trailing gap with `dap`.",
+      "initialCode": "keep top\n\nmiddle block a\nmiddle block b\n\nkeep bottom",
+      "initialCursor": {
+        "line": 3,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "keep top\n\nkeep bottom"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "`dap` from anywhere inside the block."
+      ]
+    },
+    {
+      "id": "paragraph-objects-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the scratch block at the end with `dap` — with no blank line after it, `ap` takes the one before.",
+      "initialCode": "main();\n\n// scratch a\n// scratch b",
+      "initialCursor": {
+        "line": 2,
+        "ch": 3
+      },
+      "goal": {
+        "buffer": "main();"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "At the end of the file, `ap` reaches backward for the blank line."
+      ]
+    }
+  ]
+}

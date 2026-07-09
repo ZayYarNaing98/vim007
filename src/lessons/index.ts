@@ -17,6 +17,12 @@ import macros from "./15-macros.json";
 import wordMotions from "./16-word-motions.json";
 import changingCase from "./17-changing-case.json";
 import registers from "./18-registers.json";
+import quickEdits from "./19-quick-edits.json";
+import matchingPairs from "./20-matching-pairs.json";
+import marks from "./21-marks.json";
+import undoRedo from "./22-undo-redo.json";
+import paragraphObjects from "./23-paragraph-objects.json";
+import tagObjects from "./24-tag-objects.json";
 
 export const lessons: Lesson[] = (
   [
@@ -38,6 +44,12 @@ export const lessons: Lesson[] = (
     wordMotions,
     changingCase,
     registers,
+    quickEdits,
+    matchingPairs,
+    marks,
+    undoRedo,
+    paragraphObjects,
+    tagObjects,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 

@@ -1,0 +1,132 @@
+{
+  "slug": "tag-objects",
+  "title": "Tag Objects",
+  "category": "text-objects",
+  "order": 24,
+  "intro": "In HTML-like text, `it` selects everything inside a tag pair and `at` includes the tags themselves. `cit` rewrites the contents, `dat` removes the whole element — from anywhere inside it.",
+  "summary": "Edit inside HTML tags.",
+  "keys": [
+    "it",
+    "at",
+    "cit"
+  ],
+  "exercises": [
+    {
+      "id": "tag-objects-1",
+      "type": "edit",
+      "instruction": "Empty the list item: `dit` deletes everything inside the tags.",
+      "initialCode": "<li>remove this text</li>",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "buffer": "<li></li>"
+      },
+      "allowedKeys": [
+        "d",
+        "i",
+        "t"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`it` works from anywhere inside the element."
+      ]
+    },
+    {
+      "id": "tag-objects-2",
+      "type": "combined",
+      "instruction": "Retitle the heading: `cit`, type `new title`, then `Esc`.",
+      "initialCode": "<h1>old title</h1>",
+      "initialCursor": {
+        "line": 0,
+        "ch": 4
+      },
+      "goal": {
+        "buffer": "<h1>new title</h1>",
+        "mode": "normal"
+      },
+      "parKeystrokes": 13,
+      "hints": [
+        "`cit` deletes the contents and drops you into Insert mode between the tags."
+      ]
+    },
+    {
+      "id": "tag-objects-3",
+      "type": "edit",
+      "instruction": "Remove the whole `<li>` element — tags included — with `dat`.",
+      "initialCode": "<ul>\n  <li>stale item</li>\n</ul>",
+      "initialCursor": {
+        "line": 1,
+        "ch": 6
+      },
+      "goal": {
+        "buffer": "<ul>\n\n</ul>"
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "t"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`at` takes the tags too; the emptied line doesn't count against you."
+      ]
+    },
+    {
+      "id": "tag-objects-4",
+      "type": "combined",
+      "instruction": "Replace the whole `<em>` element with plain text: `cat`, type `quite`, then `Esc`.",
+      "initialCode": "It was <em>very</em> important.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "buffer": "It was quite important.",
+        "mode": "normal"
+      },
+      "parKeystrokes": 9,
+      "hints": [
+        "`cat` removes tags and contents, then lets you type the replacement."
+      ]
+    },
+    {
+      "id": "tag-objects-practice-1",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Update the cell value: `cit`, type `9.99`, then `Esc`.",
+      "initialCode": "<td>0.00</td>",
+      "initialCursor": {
+        "line": 0,
+        "ch": 4
+      },
+      "goal": {
+        "buffer": "<td>9.99</td>",
+        "mode": "normal"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`cit` from anywhere inside the cell."
+      ]
+    },
+    {
+      "id": "tag-objects-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the obsolete `<span>` element entirely with `dat`.",
+      "initialCode": "<div>\n  <span>obsolete</span>\n</div>",
+      "initialCursor": {
+        "line": 1,
+        "ch": 8
+      },
+      "goal": {
+        "buffer": "<div>\n\n</div>"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "`dat` = delete around tag."
+      ]
+    }
+  ]
+}

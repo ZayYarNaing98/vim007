@@ -1,0 +1,128 @@
+{
+  "slug": "quick-edits",
+  "title": "Shortcut Edits",
+  "category": "operators",
+  "order": 19,
+  "intro": "Capital-letter shortcuts pack an operator and a motion into one key: `D` deletes to the end of the line, `C` does the same and enters Insert mode, `s` replaces the character under the cursor, and `S` rewrites the whole line.",
+  "summary": "One-key delete, change, and substitute.",
+  "keys": [
+    "D",
+    "C",
+    "s",
+    "S"
+  ],
+  "exercises": [
+    {
+      "id": "quick-edits-1",
+      "type": "edit",
+      "instruction": "Delete the comment: with the cursor on the `//`, press `D`.",
+      "initialCode": "const debug = true; // remove this note",
+      "initialCursor": {
+        "line": 0,
+        "ch": 20
+      },
+      "goal": {
+        "buffer": "const debug = true;"
+      },
+      "allowedKeys": [
+        "D"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`D` is shorthand for `d$` — it deletes from the cursor to the end of the line."
+      ]
+    },
+    {
+      "id": "quick-edits-2",
+      "type": "combined",
+      "instruction": "Rewrite the value: `C` on `oldValue`, then type `newValue;` and press `Esc`.",
+      "initialCode": "let name = oldValue;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "buffer": "let name = newValue;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 11,
+      "hints": [
+        "`C` deletes to the end of the line and drops you straight into Insert mode."
+      ]
+    },
+    {
+      "id": "quick-edits-3",
+      "type": "combined",
+      "instruction": "Turn `cat` into `bat`: with the cursor on the `c`, press `s`, type `b`, then `Esc`.",
+      "initialCode": "const animal = \"cat\";",
+      "initialCursor": {
+        "line": 0,
+        "ch": 16
+      },
+      "goal": {
+        "buffer": "const animal = \"bat\";",
+        "mode": "normal"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "`s` deletes the character under the cursor and enters Insert mode."
+      ]
+    },
+    {
+      "id": "quick-edits-4",
+      "type": "combined",
+      "instruction": "Rewrite the whole line: press `S`, type `done();`, then `Esc`.",
+      "initialCode": "TODO rewrite this line",
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "done();",
+        "mode": "normal"
+      },
+      "parKeystrokes": 9,
+      "hints": [
+        "`S` clears the entire line and enters Insert mode, no matter where the cursor is."
+      ]
+    },
+    {
+      "id": "quick-edits-practice-1",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Rewrite from the cursor: `C` on `oldResult`, type `newResult;`, then `Esc`.",
+      "initialCode": "return oldResult;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 7
+      },
+      "goal": {
+        "buffer": "return newResult;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 12,
+      "hints": [
+        "`C` = delete to end of line + Insert mode."
+      ]
+    },
+    {
+      "id": "quick-edits-practice-2",
+      "type": "combined",
+      "practice": true,
+      "instruction": "Fix the typo `trie` → `true`: put `s` to work on the wrong character.",
+      "initialCode": "let flag = trie;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "let flag = true;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "The cursor starts on the bad character — `s`, type the right one, `Esc`."
+      ]
+    }
+  ]
+}
