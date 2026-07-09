@@ -4,39 +4,74 @@
   "category": "editing",
   "order": 12,
   "intro": "`>>` indents the current line, `<<` dedents it. In Visual mode, `>` and `<` shift the whole selection. Prefix with a count to affect several lines: `3>>`.",
+  "summary": "Shift lines and blocks into place.",
+  "keys": [
+    ">>",
+    "<<",
+    ">"
+  ],
   "exercises": [
     {
       "id": "indent-1",
       "type": "edit",
       "instruction": "Indent this line one level with `>>` (adds two spaces).",
       "initialCode": "return true;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "  return true;" },
-      "allowedKeys": [">"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "  return true;"
+      },
+      "allowedKeys": [
+        ">"
+      ],
       "parKeystrokes": 2,
-      "hints": ["Press `>` twice to indent the current line."]
+      "hints": [
+        "Press `>` twice to indent the current line."
+      ]
     },
     {
       "id": "indent-2",
       "type": "edit",
       "instruction": "This line is over-indented. Remove one level with `<<`.",
       "initialCode": "    let x = 1;",
-      "initialCursor": { "line": 0, "ch": 6 },
-      "goal": { "buffer": "  let x = 1;" },
-      "allowedKeys": ["<"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 6
+      },
+      "goal": {
+        "buffer": "  let x = 1;"
+      },
+      "allowedKeys": [
+        "<"
+      ],
       "parKeystrokes": 2,
-      "hints": ["Press `<` twice to dedent the current line one level."]
+      "hints": [
+        "Press `<` twice to dedent the current line one level."
+      ]
     },
     {
       "id": "indent-3",
       "type": "edit",
       "instruction": "Indent both lines at once: select them with `V` then `j`, and press `>`.",
       "initialCode": "a();\nb();",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "  a();\n  b();" },
-      "allowedKeys": ["V", "j", ">"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "  a();\n  b();"
+      },
+      "allowedKeys": [
+        "V",
+        "j",
+        ">"
+      ],
       "parKeystrokes": 3,
-      "hints": ["In Visual mode a single `>` indents the whole selection."]
+      "hints": [
+        "In Visual mode a single `>` indents the whole selection."
+      ]
     },
     {
       "id": "indent-practice-1",
@@ -44,10 +79,17 @@
       "practice": true,
       "instruction": "The function body is not indented. Fix it with `>>`.",
       "initialCode": "if (ok) {\nrun();\n}",
-      "initialCursor": { "line": 1, "ch": 0 },
-      "goal": { "buffer": "if (ok) {\n  run();\n}" },
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "if (ok) {\n  run();\n}"
+      },
       "parKeystrokes": 2,
-      "hints": ["`>>` indents only the current line — the braces stay put."]
+      "hints": [
+        "`>>` indents only the current line — the braces stay put."
+      ]
     },
     {
       "id": "indent-practice-2",
@@ -55,10 +97,17 @@
       "practice": true,
       "instruction": "All three lines are over-indented. Select them with `V` `j` `j` and dedent with `<`.",
       "initialCode": "  a();\n  b();\n  c();",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "a();\nb();\nc();" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "a();\nb();\nc();"
+      },
       "parKeystrokes": 4,
-      "hints": ["One `<` in Visual mode shifts the whole selection left."]
+      "hints": [
+        "One `<` in Visual mode shifts the whole selection left."
+      ]
     }
   ]
 }

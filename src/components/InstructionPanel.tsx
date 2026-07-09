@@ -62,7 +62,10 @@ export function InstructionPanel({ exercise, index, total, blockedKey }: Props) 
           {showHint ? (
             <p className="hint-text">💡 {renderInstruction(exercise.hints[0])}</p>
           ) : (
-            <button className="btn btn-ghost" onClick={() => setShowHint(true)}>
+            <button className="btn btn-ghost btn-hint" onClick={() => setShowHint(true)}>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.9.7 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .6-1.9 1.5-2.6A6 6 0 0 0 12 3Z" />
+              </svg>
               Show hint
             </button>
           )}

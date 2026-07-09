@@ -29,5 +29,9 @@ export type Lesson = {
   category: string;
   order: number;
   intro: string;
+  /** One-line description shown on the lesson card. */
+  summary: string;
+  /** Representative keys/commands shown as chips on the lesson card. */
+  keys: string[];
   exercises: Exercise[];
 };

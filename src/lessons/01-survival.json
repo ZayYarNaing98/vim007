@@ -4,61 +4,130 @@
   "category": "basics",
   "order": 1,
   "intro": "Vim is modal. In Normal mode the keys `h j k l` move the cursor left, down, up, and right. Press `i` to enter Insert mode and type text, then press `Esc` to return to Normal mode. Delete the character under the cursor with `x`.",
+  "summary": "Modal editing, hjkl movement, insert and delete.",
+  "keys": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "i"
+  ],
   "exercises": [
     {
       "id": "survival-1",
       "type": "motion",
       "instruction": "Move down to the TODO comment on line 3 using `j`.",
       "initialCode": "function greet(name) {\n  console.log(\"Hello \" + name);\n  // TODO: move here\n}",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 2, "ch": 0 } },
-      "allowedKeys": ["j", "k"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "j",
+        "k"
+      ],
       "parKeystrokes": 2,
-      "hints": ["Each press of `j` moves the cursor down one line."]
+      "hints": [
+        "Each press of `j` moves the cursor down one line."
+      ]
     },
     {
       "id": "survival-2",
       "type": "motion",
       "instruction": "Move right until the cursor sits on the `v` of `value` using `l`.",
       "initialCode": "const value = 42;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 6 } },
-      "allowedKeys": ["h", "l"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 6
+        }
+      },
+      "allowedKeys": [
+        "h",
+        "l"
+      ],
       "parKeystrokes": 6,
-      "hints": ["`l` moves one character to the right, `h` moves back left."]
+      "hints": [
+        "`l` moves one character to the right, `h` moves back left."
+      ]
     },
     {
       "id": "survival-3",
       "type": "motion",
       "instruction": "Move up to the first line using `k`.",
       "initialCode": "let a = 1;\nlet b = 2;\nlet c = 3;\nlet target = 4;",
-      "initialCursor": { "line": 3, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 0 } },
-      "allowedKeys": ["j", "k"],
+      "initialCursor": {
+        "line": 3,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "j",
+        "k"
+      ],
       "parKeystrokes": 3,
-      "hints": ["Each press of `k` moves the cursor up one line."]
+      "hints": [
+        "Each press of `k` moves the cursor up one line."
+      ]
     },
     {
       "id": "survival-4",
       "type": "edit",
       "instruction": "There is a stray `X` in the middle of `hello`. The cursor is already on it — delete it with `x`.",
       "initialCode": "helXlo",
-      "initialCursor": { "line": 0, "ch": 3 },
-      "goal": { "buffer": "hello" },
-      "allowedKeys": ["x", "h", "l"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 3
+      },
+      "goal": {
+        "buffer": "hello"
+      },
+      "allowedKeys": [
+        "x",
+        "h",
+        "l"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`x` deletes the character under the cursor."]
+      "hints": [
+        "`x` deletes the character under the cursor."
+      ]
     },
     {
       "id": "survival-5",
       "type": "edit",
       "instruction": "The keyword should be `const`, not `cnst`. The cursor is on the `n` — press `i` to insert, type the missing `o`, then press `Esc`.",
       "initialCode": "cnst x = 1;",
-      "initialCursor": { "line": 0, "ch": 1 },
-      "goal": { "buffer": "const x = 1;", "mode": "normal" },
-      "allowedKeys": ["i", "o"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 1
+      },
+      "goal": {
+        "buffer": "const x = 1;",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "i",
+        "o"
+      ],
       "parKeystrokes": 3,
-      "hints": ["`i` inserts text before the cursor. Don't forget `Esc` to leave Insert mode."]
+      "hints": [
+        "`i` inserts text before the cursor. Don't forget `Esc` to leave Insert mode."
+      ]
     },
     {
       "id": "survival-practice-1",
@@ -66,11 +135,26 @@
       "practice": true,
       "instruction": "Navigate to the `t` of `three` on line 3 using `j` and `l`.",
       "initialCode": "let one = 1;\nlet two = 2;\nlet three = 3;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 2, "ch": 4 } },
-      "allowedKeys": ["h", "j", "k", "l"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 4
+        }
+      },
+      "allowedKeys": [
+        "h",
+        "j",
+        "k",
+        "l"
+      ],
       "parKeystrokes": 6,
-      "hints": ["Two presses of `j` to reach line 3, then four presses of `l`."]
+      "hints": [
+        "Two presses of `j` to reach line 3, then four presses of `l`."
+      ]
     },
     {
       "id": "survival-practice-2",
@@ -78,11 +162,22 @@
       "practice": true,
       "instruction": "The word `codde` has an extra `d`. Move onto it with `l` and delete it with `x`.",
       "initialCode": "codde",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "code" },
-      "allowedKeys": ["h", "l", "x"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "code"
+      },
+      "allowedKeys": [
+        "h",
+        "l",
+        "x"
+      ],
       "parKeystrokes": 4,
-      "hints": ["Move right three times with `l`, then press `x`."]
+      "hints": [
+        "Move right three times with `l`, then press `x`."
+      ]
     },
     {
       "id": "survival-practice-3",
@@ -90,11 +185,24 @@
       "practice": true,
       "instruction": "`wrld` is missing an `o`. Move onto the `r` with `l`, press `i`, type `o`, then press `Esc`.",
       "initialCode": "hello wrld",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "hello world", "mode": "normal" },
-      "allowedKeys": ["h", "l", "i", "o"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "hello world",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "h",
+        "l",
+        "i",
+        "o"
+      ],
       "parKeystrokes": 10,
-      "hints": ["Seven presses of `l` puts the cursor on the `r`; `i` inserts before it."]
+      "hints": [
+        "Seven presses of `l` puts the cursor on the `r`; `i` inserts before it."
+      ]
     }
   ]
 }

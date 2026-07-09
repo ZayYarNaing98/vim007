@@ -109,6 +109,15 @@ export function LessonPage() {
     resetExercise();
   }, [lesson, exIndex, resetExercise]);
 
+  // Free navigation between exercises (does not record attempts or finish the lesson).
+  const goTo = useCallback(
+    (index: number) => {
+      setExIndex(index);
+      resetExercise();
+    },
+    [resetExercise]
+  );
+
   // Core exercises come first in the array; practice exercises are appended after them.
   const coreTotal = lesson ? lesson.exercises.filter((e) => !e.practice).length : 0;
   const practiceTotal = lesson ? lesson.exercises.length - coreTotal : 0;
@@ -199,6 +208,23 @@ export function LessonPage() {
             onNext={handleNext}
           />
         )}
+      </div>
+
+      <div className="lesson-nav">
+        <button
+          className="btn btn-ghost"
+          disabled={exIndex === 0}
+          onClick={() => goTo(exIndex - 1)}
+        >
+          ‹ Previous
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={exIndex + 1 >= lesson.exercises.length}
+          onClick={() => goTo(exIndex + 1)}
+        >
+          Next exercise ›
+        </button>
       </div>
     </div>
   );

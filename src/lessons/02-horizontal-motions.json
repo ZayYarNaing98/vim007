@@ -4,61 +4,130 @@
   "category": "motions",
   "order": 2,
   "intro": "Moving one character at a time is slow. `w` jumps forward one word, `b` jumps back, `e` jumps to a word's end. `0` jumps to the start of the line, `$` to the end. `f{char}` jumps forward onto the next occurrence of a character.",
+  "summary": "Word jumps, line starts, and line ends.",
+  "keys": [
+    "w",
+    "b",
+    "e",
+    "0",
+    "$"
+  ],
   "exercises": [
     {
       "id": "hmotions-1",
       "type": "motion",
       "instruction": "Jump to the start of the word `error` using `w`.",
       "initialCode": "const result = parse(input); // error here",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 32 } },
-      "allowedKeys": ["w"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 32
+        }
+      },
+      "allowedKeys": [
+        "w"
+      ],
       "parKeystrokes": 8,
-      "hints": ["`w` also stops on punctuation groups like `(` and `//`."]
+      "hints": [
+        "`w` also stops on punctuation groups like `(` and `//`."
+      ]
     },
     {
       "id": "hmotions-2",
       "type": "motion",
       "instruction": "Jump to the end of the line with `$`.",
       "initialCode": "let total = price * quantity;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 28 } },
-      "allowedKeys": ["$"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 28
+        }
+      },
+      "allowedKeys": [
+        "$"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`$` jumps straight to the last character of the line."]
+      "hints": [
+        "`$` jumps straight to the last character of the line."
+      ]
     },
     {
       "id": "hmotions-3",
       "type": "motion",
       "instruction": "Now jump back to the start of the line with `0`.",
       "initialCode": "let total = price * quantity;",
-      "initialCursor": { "line": 0, "ch": 28 },
-      "goal": { "cursor": { "line": 0, "ch": 0 } },
-      "allowedKeys": ["0"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 28
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "0"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`0` jumps to column zero, no matter where you are."]
+      "hints": [
+        "`0` jumps to column zero, no matter where you are."
+      ]
     },
     {
       "id": "hmotions-4",
       "type": "motion",
       "instruction": "Jump onto the opening parenthesis using `f(`.",
       "initialCode": "function add(a, b) {",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 12 } },
-      "allowedKeys": ["f", "("],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 12
+        }
+      },
+      "allowedKeys": [
+        "f",
+        "("
+      ],
       "parKeystrokes": 2,
-      "hints": ["`f` waits for a character, then jumps onto its next occurrence."]
+      "hints": [
+        "`f` waits for a character, then jumps onto its next occurrence."
+      ]
     },
     {
       "id": "hmotions-5",
       "type": "motion",
       "instruction": "Jump backwards to the start of the word `three` using `b`.",
       "initialCode": "one two three four",
-      "initialCursor": { "line": 0, "ch": 17 },
-      "goal": { "cursor": { "line": 0, "ch": 8 } },
-      "allowedKeys": ["b"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 17
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 8
+        }
+      },
+      "allowedKeys": [
+        "b"
+      ],
       "parKeystrokes": 2,
-      "hints": ["Each press of `b` jumps back one word."]
+      "hints": [
+        "Each press of `b` jumps back one word."
+      ]
     },
     {
       "id": "hmotions-practice-1",
@@ -66,10 +135,20 @@
       "practice": true,
       "instruction": "Land on the `f` of `four` — any keys allowed. Try `$` then `b`, or three presses of `w`.",
       "initialCode": "one two three four",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 14 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 14
+        }
+      },
       "parKeystrokes": 2,
-      "hints": ["`$` jumps to the end of the line, `b` backs up to the start of the word."]
+      "hints": [
+        "`$` jumps to the end of the line, `b` backs up to the start of the word."
+      ]
     },
     {
       "id": "hmotions-practice-2",
@@ -77,10 +156,20 @@
       "practice": true,
       "instruction": "The cursor is at the end of the line. Press `0` to return to the start, then `f*` to land on the `*`.",
       "initialCode": "let total = price * quantity;",
-      "initialCursor": { "line": 0, "ch": 28 },
-      "goal": { "cursor": { "line": 0, "ch": 18 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 28
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 18
+        }
+      },
       "parKeystrokes": 3,
-      "hints": ["`0` first, then `f` followed by `*`."]
+      "hints": [
+        "`0` first, then `f` followed by `*`."
+      ]
     },
     {
       "id": "hmotions-practice-3",
@@ -88,10 +177,20 @@
       "practice": true,
       "instruction": "Land on the `t` of `it`: `w` to reach the word, then `e` to jump to its end.",
       "initialCode": "make it count",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 6 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 6
+        }
+      },
       "parKeystrokes": 2,
-      "hints": ["`e` jumps to the last character of the current or next word."]
+      "hints": [
+        "`e` jumps to the last character of the current or next word."
+      ]
     }
   ]
 }

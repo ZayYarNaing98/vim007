@@ -4,50 +4,100 @@
   "category": "visual",
   "order": 6,
   "intro": "`v` starts Visual mode: motions extend the selection, then an operator acts on it. `V` selects whole lines. Text objects work here too: `vaw` selects a word.",
+  "summary": "Select first, then operate.",
+  "keys": [
+    "v",
+    "V",
+    "vaw"
+  ],
   "exercises": [
     {
       "id": "visual-1",
       "type": "edit",
       "instruction": "The cursor is on `remove`. Select the word with `vaw`, then delete the selection with `d`.",
       "initialCode": "keep remove keep",
-      "initialCursor": { "line": 0, "ch": 5 },
-      "goal": { "buffer": "keep keep" },
-      "allowedKeys": ["v", "a", "w", "d"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "keep keep"
+      },
+      "allowedKeys": [
+        "v",
+        "a",
+        "w",
+        "d"
+      ],
       "parKeystrokes": 4,
-      "hints": ["`v` `a` `w` selects a word plus its trailing space; `d` deletes the selection."]
+      "hints": [
+        "`v` `a` `w` selects a word plus its trailing space; `d` deletes the selection."
+      ]
     },
     {
       "id": "visual-2",
       "type": "edit",
       "instruction": "Select the whole middle line with `V` and delete it with `d`.",
       "initialCode": "first();\nmiddle();\nlast();",
-      "initialCursor": { "line": 1, "ch": 0 },
-      "goal": { "buffer": "first();\nlast();" },
-      "allowedKeys": ["V", "d"],
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "first();\nlast();"
+      },
+      "allowedKeys": [
+        "V",
+        "d"
+      ],
       "parKeystrokes": 2,
-      "hints": ["`V` (Shift+v) selects whole lines."]
+      "hints": [
+        "`V` (Shift+v) selects whole lines."
+      ]
     },
     {
       "id": "visual-3",
       "type": "edit",
       "instruction": "The cursor is on the comment. Select to the end of the line with `v$` and delete it.",
       "initialCode": "let x = 1; // remove this",
-      "initialCursor": { "line": 0, "ch": 11 },
-      "goal": { "buffer": "let x = 1;" },
-      "allowedKeys": ["v", "$", "d"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "buffer": "let x = 1;"
+      },
+      "allowedKeys": [
+        "v",
+        "$",
+        "d"
+      ],
       "parKeystrokes": 3,
-      "hints": ["Start Visual with `v`, extend with `$`, then `d`."]
+      "hints": [
+        "Start Visual with `v`, extend with `$`, then `d`."
+      ]
     },
     {
       "id": "visual-4",
       "type": "edit",
       "instruction": "Select both middle lines with `V` then `j`, and delete them with `d`.",
       "initialCode": "keep1();\ndel1();\ndel2();\nkeep2();",
-      "initialCursor": { "line": 1, "ch": 0 },
-      "goal": { "buffer": "keep1();\nkeep2();" },
-      "allowedKeys": ["V", "j", "d"],
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "keep1();\nkeep2();"
+      },
+      "allowedKeys": [
+        "V",
+        "j",
+        "d"
+      ],
       "parKeystrokes": 3,
-      "hints": ["In line-wise Visual mode, `j` extends the selection down."]
+      "hints": [
+        "In line-wise Visual mode, `j` extends the selection down."
+      ]
     },
     {
       "id": "visual-practice-1",
@@ -55,10 +105,17 @@
       "practice": true,
       "instruction": "Delete the comment visually: jump onto the `/` with `f/`, select to the end of the line with `v$`, then delete with `d`.",
       "initialCode": "const a = 1; // old note",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "const a = 1;" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const a = 1;"
+      },
       "parKeystrokes": 5,
-      "hints": ["`f/` `v` `$` `d` — motion, select, extend, operate."]
+      "hints": [
+        "`f/` `v` `$` `d` — motion, select, extend, operate."
+      ]
     },
     {
       "id": "visual-practice-2",
@@ -66,10 +123,17 @@
       "practice": true,
       "instruction": "Select all three middle lines with `V` `j` `j`, then delete them with `d`.",
       "initialCode": "top();\nmid1();\nmid2();\nmid3();\nbottom();",
-      "initialCursor": { "line": 1, "ch": 0 },
-      "goal": { "buffer": "top();\nbottom();" },
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "top();\nbottom();"
+      },
       "parKeystrokes": 4,
-      "hints": ["`V` starts line-wise Visual mode; each `j` pulls one more line into the selection."]
+      "hints": [
+        "`V` starts line-wise Visual mode; each `j` pulls one more line into the selection."
+      ]
     }
   ]
 }

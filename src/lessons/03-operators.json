@@ -4,61 +4,127 @@
   "category": "operators",
   "order": 3,
   "intro": "Operators combine with motions: `d` deletes, `c` changes (deletes and enters Insert mode). `dw` deletes a word, `dd` deletes a whole line, `D` deletes to the end of the line. Text objects like `aw` (a word) work from anywhere inside the word: `daw`, `ciw`.",
+  "summary": "Delete and change with the operator grammar.",
+  "keys": [
+    "d",
+    "c",
+    "dw",
+    "dd"
+  ],
   "exercises": [
     {
       "id": "operators-1",
       "type": "edit",
       "instruction": "The cursor is on the word `bug`. Delete it (and the space after it) with `dw`.",
       "initialCode": "fix the bug in production",
-      "initialCursor": { "line": 0, "ch": 8 },
-      "goal": { "buffer": "fix the in production" },
-      "allowedKeys": ["d", "w"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 8
+      },
+      "goal": {
+        "buffer": "fix the in production"
+      },
+      "allowedKeys": [
+        "d",
+        "w"
+      ],
       "parKeystrokes": 2,
-      "hints": ["`d` + `w` deletes from the cursor to the start of the next word."]
+      "hints": [
+        "`d` + `w` deletes from the cursor to the start of the next word."
+      ]
     },
     {
       "id": "operators-2",
       "type": "edit",
       "instruction": "Delete the entire middle line with `dd`.",
       "initialCode": "const a = 1;\nconst REMOVE_ME = true;\nconst b = 2;",
-      "initialCursor": { "line": 1, "ch": 0 },
-      "goal": { "buffer": "const a = 1;\nconst b = 2;" },
-      "allowedKeys": ["d", "j", "k"],
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const a = 1;\nconst b = 2;"
+      },
+      "allowedKeys": [
+        "d",
+        "j",
+        "k"
+      ],
       "parKeystrokes": 2,
-      "hints": ["Press `d` twice to delete the whole current line."]
+      "hints": [
+        "Press `d` twice to delete the whole current line."
+      ]
     },
     {
       "id": "operators-3",
       "type": "edit",
       "instruction": "The cursor is on the comment. Delete from here to the end of the line with `D`.",
       "initialCode": "let debug = true; // delete this comment",
-      "initialCursor": { "line": 0, "ch": 18 },
-      "goal": { "buffer": "let debug = true;" },
-      "allowedKeys": ["D", "d", "$"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 18
+      },
+      "goal": {
+        "buffer": "let debug = true;"
+      },
+      "allowedKeys": [
+        "D",
+        "d",
+        "$"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`D` (Shift+d) is a shortcut for `d$`."]
+      "hints": [
+        "`D` (Shift+d) is a shortcut for `d$`."
+      ]
     },
     {
       "id": "operators-4",
       "type": "edit",
       "instruction": "The cursor is in the middle of `brown`. Delete the whole word with `daw` — no need to move to its start.",
       "initialCode": "the quick brown fox",
-      "initialCursor": { "line": 0, "ch": 12 },
-      "goal": { "buffer": "the quick fox" },
-      "allowedKeys": ["d", "a", "w"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 12
+      },
+      "goal": {
+        "buffer": "the quick fox"
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "w"
+      ],
       "parKeystrokes": 3,
-      "hints": ["`aw` is the text object \"a word\" — it works from anywhere inside the word."]
+      "hints": [
+        "`aw` is the text object \"a word\" — it works from anywhere inside the word."
+      ]
     },
     {
       "id": "operators-5",
       "type": "combined",
       "instruction": "Rename the variable: change the word `foo` to `count` using `ciw`, type the new name, then press `Esc`.",
       "initialCode": "let foo = 0;",
-      "initialCursor": { "line": 0, "ch": 4 },
-      "goal": { "buffer": "let count = 0;", "mode": "normal" },
-      "allowedKeys": ["c", "i", "w", "o", "u", "n", "t"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 4
+      },
+      "goal": {
+        "buffer": "let count = 0;",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "c",
+        "i",
+        "w",
+        "o",
+        "u",
+        "n",
+        "t"
+      ],
       "parKeystrokes": 9,
-      "hints": ["`ciw` deletes the inner word and drops you into Insert mode."]
+      "hints": [
+        "`ciw` deletes the inner word and drops you into Insert mode."
+      ]
     },
     {
       "id": "operators-practice-1",
@@ -66,10 +132,17 @@
       "practice": true,
       "instruction": "Delete the whole comment: jump onto the `/` with `f/`, then delete to the end of the line with `D`.",
       "initialCode": "const value = 42; // obsolete comment",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "const value = 42;" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const value = 42;"
+      },
       "parKeystrokes": 3,
-      "hints": ["`f/` lands on the first `/`; `D` wipes everything from there."]
+      "hints": [
+        "`f/` lands on the first `/`; `D` wipes everything from there."
+      ]
     },
     {
       "id": "operators-practice-2",
@@ -77,10 +150,17 @@
       "practice": true,
       "instruction": "Remove both `old` lines: move down with `j`, then delete each line with `dd`.",
       "initialCode": "keep();\nold1();\nold2();\nkeep2();",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "keep();\nkeep2();" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "keep();\nkeep2();"
+      },
       "parKeystrokes": 5,
-      "hints": ["After the first `dd`, the next `old` line moves up under the cursor — just `dd` again."]
+      "hints": [
+        "After the first `dd`, the next `old` line moves up under the cursor — just `dd` again."
+      ]
     },
     {
       "id": "operators-practice-3",
@@ -88,10 +168,18 @@
       "practice": true,
       "instruction": "Rename `temp` to `user`: move onto it with `w`, change it with `ciw`, type `user`, then press `Esc`.",
       "initialCode": "let temp = getUser();",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "let user = getUser();", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let user = getUser();",
+        "mode": "normal"
+      },
       "parKeystrokes": 9,
-      "hints": ["Motion first (`w`), then operator + text object (`ciw`)."]
+      "hints": [
+        "Motion first (`w`), then operator + text object (`ciw`)."
+      ]
     }
   ]
 }

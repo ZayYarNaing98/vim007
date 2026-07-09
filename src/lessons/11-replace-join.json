@@ -4,49 +4,91 @@
   "category": "editing",
   "order": 11,
   "intro": "Quick edits without entering Insert mode: `r` replaces a single character, `~` toggles the case of the character under the cursor, `J` joins the next line onto the current one. `cc` changes an entire line.",
+  "summary": "Quick edits without leaving Normal mode.",
+  "keys": [
+    "r",
+    "~",
+    "J"
+  ],
   "exercises": [
     {
       "id": "replace-1",
       "type": "edit",
       "instruction": "There's a typo: `hxllo` should be `hello`. The cursor is on the `x` — replace it with `re`.",
       "initialCode": "hxllo world",
-      "initialCursor": { "line": 0, "ch": 1 },
-      "goal": { "buffer": "hello world" },
-      "allowedKeys": ["r", "e"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 1
+      },
+      "goal": {
+        "buffer": "hello world"
+      },
+      "allowedKeys": [
+        "r",
+        "e"
+      ],
       "parKeystrokes": 2,
-      "hints": ["`r` replaces the single character under the cursor with the next key you press."]
+      "hints": [
+        "`r` replaces the single character under the cursor with the next key you press."
+      ]
     },
     {
       "id": "replace-2",
       "type": "edit",
       "instruction": "Capitalize the first letter: the cursor is on `h` — toggle its case with `~`.",
       "initialCode": "hello",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "Hello" },
-      "allowedKeys": ["~"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "Hello"
+      },
+      "allowedKeys": [
+        "~"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`~` flips the case of the character under the cursor and moves right."]
+      "hints": [
+        "`~` flips the case of the character under the cursor and moves right."
+      ]
     },
     {
       "id": "replace-3",
       "type": "edit",
       "instruction": "Join these two lines into one with `J` (a space is added automatically).",
       "initialCode": "const sum = a\n+ b;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "const sum = a + b;" },
-      "allowedKeys": ["J"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const sum = a + b;"
+      },
+      "allowedKeys": [
+        "J"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`J` (Shift+j) joins the line below onto the current line."]
+      "hints": [
+        "`J` (Shift+j) joins the line below onto the current line."
+      ]
     },
     {
       "id": "replace-4",
       "type": "combined",
       "instruction": "Rewrite the whole line: press `cc`, type `const y = 2;`, then `Esc`.",
       "initialCode": "var x=1",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "const y = 2;", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const y = 2;",
+        "mode": "normal"
+      },
       "parKeystrokes": 14,
-      "hints": ["`cc` clears the entire line and drops you into Insert mode at the right indent."]
+      "hints": [
+        "`cc` clears the entire line and drops you into Insert mode at the right indent."
+      ]
     },
     {
       "id": "replace-practice-1",
@@ -54,10 +96,17 @@
       "practice": true,
       "instruction": "Fix both typos: reach each `x` with `fx` and replace it — `re` for the first, `ro` for the second.",
       "initialCode": "hxllo wxrld",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "hello world" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "hello world"
+      },
       "parKeystrokes": 8,
-      "hints": ["`fx` `re` fixes `hello`; then `fx` `ro` fixes `world`."]
+      "hints": [
+        "`fx` `re` fixes `hello`; then `fx` `ro` fixes `world`."
+      ]
     },
     {
       "id": "replace-practice-2",
@@ -65,10 +114,17 @@
       "practice": true,
       "instruction": "Join all three lines into one: press `J` twice.",
       "initialCode": "const arr = [\n1, 2,\n3];",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "const arr = [ 1, 2, 3];" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const arr = [ 1, 2, 3];"
+      },
       "parKeystrokes": 2,
-      "hints": ["Each `J` pulls the next line up with a single joining space."]
+      "hints": [
+        "Each `J` pulls the next line up with a single joining space."
+      ]
     },
     {
       "id": "replace-practice-3",
@@ -76,10 +132,17 @@
       "practice": true,
       "instruction": "Capitalize the whole word: `~` toggles case and moves right — press it five times.",
       "initialCode": "hello",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "HELLO" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "HELLO"
+      },
       "parKeystrokes": 5,
-      "hints": ["`~` advances automatically, so you never need to move the cursor."]
+      "hints": [
+        "`~` advances automatically, so you never need to move the cursor."
+      ]
     }
   ]
 }

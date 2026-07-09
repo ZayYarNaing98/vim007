@@ -4,47 +4,93 @@
   "category": "search",
   "order": 9,
   "intro": "`/pattern` + `Enter` jumps to the next match, `n` repeats the search, `*` searches for the word under the cursor. `:%s/old/new/g` replaces every occurrence in the file.",
+  "summary": "Find anything, replace everything.",
+  "keys": [
+    "/",
+    "n",
+    "*",
+    ":%s"
+  ],
   "exercises": [
     {
       "id": "search-1",
       "type": "motion",
       "instruction": "Find the word `bug`: type `/bug` and press `Enter`.",
       "initialCode": "line one here\nnothing special\nthe bug is here",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 2, "ch": 4 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 4
+        }
+      },
       "parKeystrokes": 5,
-      "hints": ["`/` opens the search prompt; `Enter` jumps to the first match."]
+      "hints": [
+        "`/` opens the search prompt; `Enter` jumps to the first match."
+      ]
     },
     {
       "id": "search-2",
       "type": "motion",
       "instruction": "Search for `item` with `/item` + `Enter`, then press `n` to jump to the next match on the last line.",
       "initialCode": "item = 1\nitem = 2\nitem = 3",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 2, "ch": 0 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 0
+        }
+      },
       "parKeystrokes": 7,
-      "hints": ["`n` repeats the last search in the same direction."]
+      "hints": [
+        "`n` repeats the last search in the same direction."
+      ]
     },
     {
       "id": "search-3",
       "type": "motion",
       "instruction": "The cursor is on `count`. Jump to its next occurrence with `*`.",
       "initialCode": "count = count + step;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 8 } },
-      "allowedKeys": ["*"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 8
+        }
+      },
+      "allowedKeys": [
+        "*"
+      ],
       "parKeystrokes": 1,
-      "hints": ["`*` searches forward for the exact word under the cursor."]
+      "hints": [
+        "`*` searches forward for the exact word under the cursor."
+      ]
     },
     {
       "id": "search-4",
       "type": "edit",
       "instruction": "Replace every `cat` with `dog` in one command: type `:%s/cat/dog/g` and press `Enter`.",
       "initialCode": "cat cat cat",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "dog dog dog" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "dog dog dog"
+      },
       "parKeystrokes": 14,
-      "hints": ["`%` means the whole file, `g` means every match on each line."]
+      "hints": [
+        "`%` means the whole file, `g` means every match on each line."
+      ]
     },
     {
       "id": "search-practice-1",
@@ -52,10 +98,20 @@
       "practice": true,
       "instruction": "Search for `beta` with `/beta` + `Enter`, then press `n` to reach the match on the last line.",
       "initialCode": "alpha beta\ngamma delta\nbeta again",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 2, "ch": 0 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 0
+        }
+      },
       "parKeystrokes": 7,
-      "hints": ["The first match is on line 1 — `n` jumps to the next one."]
+      "hints": [
+        "The first match is on line 1 — `n` jumps to the next one."
+      ]
     },
     {
       "id": "search-practice-2",
@@ -63,10 +119,20 @@
       "practice": true,
       "instruction": "The cursor is on `total`. Jump to its next occurrence with `*`.",
       "initialCode": "total += total * rate;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "cursor": { "line": 0, "ch": 9 } },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 9
+        }
+      },
       "parKeystrokes": 1,
-      "hints": ["`*` searches forward for the exact word under the cursor."]
+      "hints": [
+        "`*` searches forward for the exact word under the cursor."
+      ]
     },
     {
       "id": "search-practice-3",
@@ -74,10 +140,17 @@
       "practice": true,
       "instruction": "Rename every `foo` to `bar` in one command: `:%s/foo/bar/g` + `Enter`.",
       "initialCode": "foo = foo + foo;",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "bar = bar + bar;" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "bar = bar + bar;"
+      },
       "parKeystrokes": 14,
-      "hints": ["Without the trailing `g`, only the first match on each line is replaced."]
+      "hints": [
+        "Without the trailing `g`, only the first match on each line is replaced."
+      ]
     }
   ]
 }

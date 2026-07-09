@@ -4,36 +4,66 @@
   "category": "macros",
   "order": 15,
   "intro": "Macros record keystrokes and replay them. Press `q` + a letter to start recording (e.g. `qa`), do your edits, then press `q` again to stop. Replay with `@a`, and prefix a count to repeat: `2@a` runs it twice. Record once, apply everywhere.",
+  "summary": "Record once, replay everywhere.",
+  "keys": [
+    "q",
+    "@",
+    "@@"
+  ],
   "exercises": [
     {
       "id": "macros-1",
       "type": "edit",
       "instruction": "Record a fix for one line, then apply it to the rest. Press `qa`, then `A;` `Esc` `j` (append a semicolon, leave insert, go down), then `q` to stop — that fixes line 1. Now replay it on the other two lines with `2@a`.",
       "initialCode": "let a = 1\nlet b = 2\nlet c = 3",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "let a = 1;\nlet b = 2;\nlet c = 3;", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let a = 1;\nlet b = 2;\nlet c = 3;",
+        "mode": "normal"
+      },
       "parKeystrokes": 10,
-      "hints": ["`qa` ... `q` records into register a; `2@a` replays it twice for the remaining lines."]
+      "hints": [
+        "`qa` ... `q` records into register a; `2@a` replays it twice for the remaining lines."
+      ]
     },
     {
       "id": "macros-2",
       "type": "edit",
       "instruction": "Comment out every line. Record `qa` `I// ` `Esc` `j` `q` (insert `// ` at the line start, then go down), then apply it to the last two lines with `2@a`.",
       "initialCode": "alert(1);\nalert(2);\nalert(3);",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "// alert(1);\n// alert(2);\n// alert(3);", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// alert(1);\n// alert(2);\n// alert(3);",
+        "mode": "normal"
+      },
       "parKeystrokes": 11,
-      "hints": ["`I` inserts at the first non-blank; type `// ` (with a trailing space) before `Esc`."]
+      "hints": [
+        "`I` inserts at the first non-blank; type `// ` (with a trailing space) before `Esc`."
+      ]
     },
     {
       "id": "macros-3",
       "type": "edit",
       "instruction": "Record `qa` `A;` `Esc` `j` `q` to fix the first line, then apply it to the remaining three at once with `3@a`.",
       "initialCode": "a()\nb()\nc()\nd()",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "a();\nb();\nc();\nd();", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "a();\nb();\nc();\nd();",
+        "mode": "normal"
+      },
       "parKeystrokes": 11,
-      "hints": ["A count before `@a` replays the macro that many times — `3@a` handles all three remaining lines."]
+      "hints": [
+        "A count before `@a` replays the macro that many times — `3@a` handles all three remaining lines."
+      ]
     },
     {
       "id": "macros-practice-1",
@@ -41,10 +71,18 @@
       "practice": true,
       "instruction": "Turn every line into a list item: record `qa` `I- ` `Esc` `j` `q` on the first line, then replay with `2@a`.",
       "initialCode": "item1\nitem2\nitem3",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "- item1\n- item2\n- item3", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "- item1\n- item2\n- item3",
+        "mode": "normal"
+      },
       "parKeystrokes": 11,
-      "hints": ["Type `- ` (dash + space) after `I`, and end the recording with `q` before replaying."]
+      "hints": [
+        "Type `- ` (dash + space) after `I`, and end the recording with `q` before replaying."
+      ]
     },
     {
       "id": "macros-practice-2",
@@ -52,10 +90,18 @@
       "practice": true,
       "instruction": "Quote every line: record `qa` `I\"` `Esc` `A\"` `Esc` `j` `q`, then replay with `2@a`.",
       "initialCode": "red\ngreen\nblue",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "\"red\"\n\"green\"\n\"blue\"", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "\"red\"\n\"green\"\n\"blue\"",
+        "mode": "normal"
+      },
       "parKeystrokes": 13,
-      "hints": ["A macro can enter and leave Insert mode as often as it likes — `I\"` for the front, `A\"` for the back."]
+      "hints": [
+        "A macro can enter and leave Insert mode as often as it likes — `I\"` for the front, `A\"` for the back."
+      ]
     }
   ]
 }

@@ -4,47 +4,90 @@
   "category": "editing",
   "order": 10,
   "intro": "There are many ways into Insert mode: `i` before the cursor, `a` after it, `A` at the end of the line, `I` at the first non-blank. `o` opens a new line below, `O` above. Pick the one that saves motions.",
+  "summary": "Enter Insert mode exactly where you need it.",
+  "keys": [
+    "i",
+    "a",
+    "I",
+    "A",
+    "o"
+  ],
   "exercises": [
     {
       "id": "insert-1",
       "type": "combined",
       "instruction": "Add a semicolon at the end of the line: press `A`, type `;`, then `Esc`.",
       "initialCode": "let x = 1",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "let x = 1;", "mode": "normal" },
-      "allowedKeys": ["A", ";"],
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let x = 1;",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "A",
+        ";"
+      ],
       "parKeystrokes": 3,
-      "hints": ["`A` jumps to the end of the line and enters Insert mode — no need to move first."]
+      "hints": [
+        "`A` jumps to the end of the line and enters Insert mode — no need to move first."
+      ]
     },
     {
       "id": "insert-2",
       "type": "combined",
       "instruction": "Add `const ` at the very start of the line: press `I`, type `const ` (with a trailing space), then `Esc`.",
       "initialCode": "x = 1;",
-      "initialCursor": { "line": 0, "ch": 4 },
-      "goal": { "buffer": "const x = 1;", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 4
+      },
+      "goal": {
+        "buffer": "const x = 1;",
+        "mode": "normal"
+      },
       "parKeystrokes": 8,
-      "hints": ["`I` jumps to the first non-blank character and enters Insert mode."]
+      "hints": [
+        "`I` jumps to the first non-blank character and enters Insert mode."
+      ]
     },
     {
       "id": "insert-3",
       "type": "combined",
       "instruction": "Open a new line below and add `return;`: press `o`, type `return;`, then `Esc`.",
       "initialCode": "function f() {",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "function f() {\nreturn;", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "function f() {\nreturn;",
+        "mode": "normal"
+      },
       "parKeystrokes": 9,
-      "hints": ["`o` opens a fresh line below the cursor and enters Insert mode."]
+      "hints": [
+        "`o` opens a fresh line below the cursor and enters Insert mode."
+      ]
     },
     {
       "id": "insert-4",
       "type": "combined",
       "instruction": "Open a line ABOVE and add a comment: press `O`, type `// header`, then `Esc`.",
       "initialCode": "const config = {};",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "// header\nconst config = {};", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// header\nconst config = {};",
+        "mode": "normal"
+      },
       "parKeystrokes": 11,
-      "hints": ["`O` (Shift+o) opens a line above the cursor."]
+      "hints": [
+        "`O` (Shift+o) opens a line above the cursor."
+      ]
     },
     {
       "id": "insert-practice-1",
@@ -52,10 +95,18 @@
       "practice": true,
       "instruction": "Add a semicolon to BOTH lines: `A;` `Esc` on the first, `j`, then `A;` `Esc` again.",
       "initialCode": "let x = 1\nlet y = 2",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "let x = 1;\nlet y = 2;", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let x = 1;\nlet y = 2;",
+        "mode": "normal"
+      },
       "parKeystrokes": 7,
-      "hints": ["`A` jumps to the end of the line and enters Insert mode in one keystroke."]
+      "hints": [
+        "`A` jumps to the end of the line and enters Insert mode in one keystroke."
+      ]
     },
     {
       "id": "insert-practice-2",
@@ -63,10 +114,18 @@
       "practice": true,
       "instruction": "Add a comment above with `O`, type `// start`, press `Esc` — then `j` down and append a `;` with `A;` `Esc`.",
       "initialCode": "doWork()",
-      "initialCursor": { "line": 0, "ch": 0 },
-      "goal": { "buffer": "// start\ndoWork();", "mode": "normal" },
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// start\ndoWork();",
+        "mode": "normal"
+      },
       "parKeystrokes": 14,
-      "hints": ["`O` opens a line above; after `Esc`, `j` returns to the code line."]
+      "hints": [
+        "`O` opens a line above; after `Esc`, `j` returns to the code line."
+      ]
     }
   ]
 }

@@ -1,37 +1,52 @@
-/* Dark theme: Ubuntu terminal — aubergine background with Tango palette. */
+/* Dark theme (default): near-black with sage green + warm orange accents. */
 :root {
-  --bg: #300a24;
-  --bg-raised: #260820;
-  --bg-card: #3d1230;
-  --border: #582b49;
-  --text: #eeeeec;
-  --text-muted: #ad7fa8;
-  --accent: #34e2e2;
-  --green: #8ae234;
-  --yellow: #fce94f;
-  --red: #ef2929;
-  --purple: #d38ac7;
-  --on-accent: #300a24;
-  --overlay: rgba(48, 10, 36, 0.85);
-  --practice-tint: rgba(211, 138, 199, 0.12);
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg: #0f1412;
+  --bg-header: #0b100e;
+  --bg-card: #161d1a;
+  --bg-inset: #0b100e;
+  --border: #262f2b;
+  --text: #e7ece9;
+  --text-muted: #93a09a;
+  --accent: #93c6a4;
+  --on-accent: #10201a;
+  --accent-soft: #1d2b24;
+  --orange: #e39a72;
+  --orange-soft: rgba(227, 154, 114, 0.13);
+  --orange-border: rgba(227, 154, 114, 0.35);
+  --yellow: #e6d38a;
+  --red: #e08b8b;
+  --purple: #c7a3dc;
+  --overlay: rgba(10, 14, 12, 0.82);
+  --practice-tint: rgba(199, 163, 220, 0.1);
+  --shadow: none;
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f6f8;
-  --bg-raised: #ffffff;
+  --bg: #e9eef3;
+  --bg-header: #ffffff;
   --bg-card: #ffffff;
-  --border: #d8dce5;
-  --text: #1f2330;
-  --text-muted: #5c6270;
-  --accent: #3b62c4;
-  --green: #4d7a1f;
+  --bg-inset: #f0f4f7;
+  --border: #dde4ea;
+  --text: #182428;
+  --text-muted: #5d6b71;
+  --accent: #1e5b45;
+  --on-accent: #ffffff;
+  --accent-soft: #ddeae2;
+  --orange: #d2622e;
+  --orange-soft: #faeadf;
+  --orange-border: #f0d3bd;
   --yellow: #8f5e15;
   --red: #c0344b;
   --purple: #7847bd;
-  --on-accent: #ffffff;
-  --overlay: rgba(245, 246, 248, 0.85);
-  --practice-tint: rgba(120, 71, 189, 0.08);
+  --overlay: rgba(233, 238, 243, 0.85);
+  --practice-tint: rgba(120, 71, 189, 0.07);
+  --shadow: 0 1px 2px rgba(23, 42, 58, 0.05), 0 8px 24px rgba(23, 42, 58, 0.06);
+  --shadow-hover: 0 2px 4px rgba(23, 42, 58, 0.06), 0 12px 32px rgba(23, 42, 58, 0.1);
 }
 
 * {
@@ -46,30 +61,49 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
+h1,
+h2.serif {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
 code,
 kbd {
-  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-family: var(--font-mono);
 }
 
 code {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1em 0.35em;
-  color: var(--purple);
-  font-size: 0.9em;
+  background: var(--orange-soft);
+  border: 1px solid var(--orange-border);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  color: var(--orange);
+  font-size: 0.88em;
 }
 
 kbd {
   display: inline-block;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-bottom-width: 2px;
-  border-radius: 4px;
+  background: var(--orange-soft);
+  border: 1px solid var(--orange-border);
+  border-radius: 6px;
   padding: 0.1em 0.45em;
   margin: 0 0.15em;
-  color: var(--accent);
-  font-size: 0.85em;
+  color: var(--orange);
+  font-size: 0.82em;
+}
+
+/* Small uppercase monospace labels used across cards. */
+.mono-label,
+.exercise-counter,
+.lesson-number,
+.lesson-status,
+.overview-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
 
 /* ---------- layout ---------- */
@@ -78,8 +112,8 @@ kbd {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
-  background: var(--bg-raised);
+  padding: 0.7rem 1.5rem;
+  background: var(--bg-header);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -89,9 +123,9 @@ kbd {
 .app-header .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text);
   text-decoration: none;
 }
@@ -100,35 +134,20 @@ kbd {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 7px;
-  background: linear-gradient(135deg, var(--accent), var(--purple));
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  background: var(--accent);
   color: var(--on-accent);
-  font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
 }
 
 .app-header nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
+  gap: 1.4rem;
 }
 
 .app-header nav a {
@@ -138,11 +157,30 @@ kbd {
 }
 
 .app-header nav a.active {
-  color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
 }
 
 main {
-  max-width: 860px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 1.5rem;
 }
@@ -159,12 +197,20 @@ main {
 
 .btn {
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.5rem 1.1rem;
+  border-radius: 10px;
+  padding: 0.55rem 1.2rem;
   font-size: 0.95rem;
+  font-family: inherit;
   cursor: pointer;
   background: var(--bg-card);
   color: var(--text);
+  transition: border-color 0.15s, filter 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
 
 .btn-primary {
@@ -174,9 +220,12 @@ main {
   font-weight: 600;
 }
 
-.btn-ghost:hover,
+.btn-ghost:hover {
+  border-color: var(--accent);
+}
+
 .btn-primary:hover {
-  filter: brightness(1.15);
+  filter: brightness(1.08);
 }
 
 .btn-danger {
@@ -184,90 +233,232 @@ main {
   border-color: var(--red);
 }
 
-/* ---------- home ---------- */
+.btn-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- home: hero ---------- */
 
 .hero {
-  text-align: center;
-  margin: 1.5rem 0 2rem;
+  margin: 2.2rem 0 2rem;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
 }
 
 .hero h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  margin: 0 0 0.9rem;
 }
 
-.hero p {
+.hero-sub {
   color: var(--text-muted);
-  max-width: 32rem;
-  margin: 0 auto;
+  max-width: 34rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.lesson-list {
+/* ---------- home: overview card ---------- */
+
+.overview-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.overview-stats {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.overview-percent {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  padding-right: 2.4rem;
+  border-right: 1px solid var(--border);
+}
+
+.overview-percent-value {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.overview-percent-value small {
+  font-size: 0.5em;
+}
+
+.overview-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.overview-value {
+  font-size: 1.55rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.overview-value.in-progress {
+  color: var(--orange);
+}
+
+/* ---------- progress bars ---------- */
+
+.progress-track {
+  height: 7px;
+  border-radius: 999px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.progress-track.small {
+  height: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.4s ease-out;
+}
+
+.progress-fill.started {
+  background: var(--orange);
+}
+
+/* ---------- home: lesson cards ---------- */
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
 }
 
 .lesson-card {
   display: block;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.4rem 1.5rem;
   text-decoration: none;
   color: var(--text);
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .lesson-card:hover {
   border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
-.lesson-card-header {
+.lesson-card-top {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
 }
 
-.lesson-card-header h2 {
-  margin: 0;
-  font-size: 1.15rem;
-  flex: 1;
-}
-
-.lesson-order {
-  background: var(--bg-raised);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  width: 1.8rem;
-  height: 1.8rem;
-  display: flex;
+.lesson-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 12px;
+  background: var(--accent-soft);
   color: var(--accent);
   flex-shrink: 0;
 }
 
-.lesson-progress {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+.lesson-icon.complete {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
-.lesson-progress.complete {
-  color: var(--green);
+.lesson-number {
+  flex: 1;
 }
 
-.lesson-card-intro {
+.lesson-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.lesson-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.lesson-summary {
   color: var(--text-muted);
   font-size: 0.92rem;
-  margin: 0.6rem 0 0;
+  line-height: 1.5;
+  margin: 0 0 0.9rem;
+}
+
+.lesson-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-keys kbd {
+  margin: 0;
+}
+
+.lesson-status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-status.complete span:first-child {
+  color: var(--accent);
+}
+
+.lesson-status.started span:first-child {
+  color: var(--orange);
 }
 
 /* ---------- lesson page ---------- */
 
+.lesson-header {
+  margin-top: 0.5rem;
+}
+
 .lesson-header h1 {
-  margin: 0.5rem 0 0.25rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 0.6rem 0 0.4rem;
 }
 
 .back-link {
@@ -283,15 +474,18 @@ main {
 .lesson-intro {
   color: var(--text-muted);
   font-size: 0.95rem;
+  line-height: 1.7;
   margin-top: 0.25rem;
+  max-width: 46rem;
 }
 
 .instruction-panel {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem 1.5rem;
+  margin: 1.4rem 0;
 }
 
 .instruction-header {
@@ -300,13 +494,6 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.exercise-counter {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .allowed-keys {
@@ -326,7 +513,7 @@ main {
   border-radius: 999px;
   padding: 0.1rem 0.6rem;
   margin-right: 0.6rem;
-  font-size: 0.75rem;
+  letter-spacing: 0.1em;
 }
 
 .practice-note {
@@ -336,8 +523,9 @@ main {
 }
 
 .instruction-text {
-  font-size: 1.1rem;
-  margin: 0.75rem 0 0;
+  font-size: 1.12rem;
+  line-height: 1.6;
+  margin: 0.8rem 0 0;
 }
 
 .blocked-key-warning {
@@ -347,7 +535,7 @@ main {
 }
 
 .hint-area {
-  margin-top: 0.75rem;
+  margin-top: 0.9rem;
 }
 
 .hint-text {
@@ -356,12 +544,19 @@ main {
   margin: 0;
 }
 
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+}
+
 /* ---------- editor ---------- */
 
 .editor-wrap {
   position: relative;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -369,10 +564,10 @@ main {
   font-size: 15px;
 }
 
-/* Match the Ubuntu-terminal aubergine in dark mode (the stock dark theme is gray). */
+/* Match the page's near-black surface in dark mode (the stock dark theme is gray). */
 :root:not([data-theme="light"]) .editor-wrap .cm-editor,
 :root:not([data-theme="light"]) .editor-wrap .cm-gutters {
-  background: var(--bg-raised);
+  background: var(--bg-inset);
 }
 
 :root:not([data-theme="light"]) .editor-wrap .cm-activeLine {
@@ -385,10 +580,10 @@ main {
 
 /* Vim search/ex prompt (`/`, `:`) panel */
 .editor-wrap .cm-panels {
-  background: var(--bg-raised);
+  background: var(--bg-inset);
   color: var(--text);
   border-top: 1px solid var(--border);
-  font-family: "JetBrains Mono", Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   padding: 0.25rem 0.6rem;
 }
@@ -406,10 +601,10 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-raised);
+  background: var(--bg-inset);
   border-top: 1px solid var(--border);
-  padding: 0.4rem 0.9rem;
-  font-family: "JetBrains Mono", Consolas, monospace;
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
 }
 
@@ -422,7 +617,7 @@ main {
 }
 
 .vim-mode-insert {
-  color: var(--green);
+  color: var(--orange);
 }
 
 .vim-mode-visual {
@@ -458,19 +653,20 @@ main {
   text-align: center;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-hover);
   padding: 1.5rem 2.5rem;
 }
 
 .feedback-card h2 {
   margin: 0.5rem 0 0.25rem;
-  color: var(--green);
+  color: var(--accent);
 }
 
 .feedback-rank {
   font-size: 2.4rem;
   font-weight: 800;
-  font-family: "JetBrains Mono", Consolas, monospace;
+  font-family: var(--font-mono);
 }
 
 .rank-S {
@@ -478,11 +674,11 @@ main {
 }
 
 .rank-A {
-  color: var(--green);
+  color: var(--accent);
 }
 
 .rank-B {
-  color: var(--accent);
+  color: var(--orange);
 }
 
 .rank-C {
@@ -523,15 +719,17 @@ main {
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
   padding: 1rem 1.5rem;
   text-align: center;
   flex: 1;
 }
 
 .stat-value {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 600;
   color: var(--accent);
 }
 
@@ -561,17 +759,17 @@ main {
 
 .skill-bar {
   flex: 1;
-  height: 10px;
-  background: var(--bg-card);
+  height: 9px;
+  background: var(--bg-inset);
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: 999px;
   overflow: hidden;
 }
 
 .skill-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--purple));
-  border-radius: 5px;
+  background: var(--accent);
+  border-radius: 999px;
   transition: width 0.4s ease-out;
 }
 
@@ -579,15 +777,21 @@ main {
   width: 2.5rem;
   text-align: right;
   color: var(--text-muted);
-  font-family: "JetBrains Mono", Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
 }
 
 .practice-suggestion {
-  color: var(--yellow);
+  color: var(--orange);
 }
 
 /* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 640px) {
   main {
@@ -599,15 +803,27 @@ main {
   }
 
   .app-header nav {
-    gap: 0.85rem;
+    gap: 0.9rem;
   }
 
-  .hero h1 {
-    font-size: 1.8rem;
+  .hero {
+    margin: 1.4rem 0 1.5rem;
+  }
+
+  .overview-card {
+    padding: 1.2rem 1.3rem;
+  }
+
+  .overview-stats {
+    gap: 1.4rem;
+  }
+
+  .overview-percent {
+    padding-right: 1.4rem;
   }
 
   .instruction-panel {
-    padding: 0.85rem 1rem;
+    padding: 0.95rem 1.1rem;
   }
 
   .instruction-text {
@@ -639,19 +855,15 @@ main {
 
 @media (max-width: 420px) {
   .app-header .brand {
-    font-size: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 1.5rem;
+    font-size: 0.95rem;
   }
 
   .lesson-card {
-    padding: 0.85rem 1rem;
+    padding: 1.1rem 1.2rem;
   }
 
-  .lesson-card-header h2 {
-    font-size: 1rem;
+  .lesson-card h2 {
+    font-size: 1.05rem;
   }
 
   .vim-status-bar {
