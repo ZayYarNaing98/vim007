@@ -2,7 +2,7 @@
 // Generates dist/llms.txt and dist/sitemap.xml from the lesson data, and
 // injects JSON-LD plus a static, crawlable snapshot of the Home page into
 // dist/index.html (React's createRoot replaces it on mount).
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -59,6 +59,37 @@ ${lessons
 `;
 writeFileSync(join(dist, "llms.txt"), llms);
 
+/* ---------- markdown for content negotiation (Accept: text/markdown) ---------- */
+mkdirSync(join(dist, "md/lesson"), { recursive: true });
+writeFileSync(join(dist, "md/index.md"), llms);
+writeFileSync(
+  join(dist, "md/progress.md"),
+  `# Vim TypeTutor — Progress\n\nProgress is stored locally in the visitor's browser (localStorage); there is no server-side account. The Progress page shows per-skill proficiency with daily decay, suggests what to practice next, and exports a self-contained HTML report.\n\n[Open the app](${SITE}/progress)\n`
+);
+for (const l of lessons) {
+  const core = l.exercises.filter((e) => !e.practice);
+  const practice = l.exercises.filter((e) => e.practice);
+  const md = `# Lesson ${l.order}: ${l.title}
+
+> ${l.summary}
+
+${l.intro}
+
+Teaches: ${l.keys.map((k) => `\`${k}\``).join(", ")} · Category: ${l.category}
+
+## Exercises (${core.length})
+
+${core.map((e, i) => `${i + 1}. ${e.instruction} (par: ${e.parKeystrokes} keystrokes)`).join("\n")}
+
+## Practice session (${practice.length})
+
+${practice.map((e, i) => `${i + 1}. ${e.instruction} (par: ${e.parKeystrokes} keystrokes)`).join("\n")}
+
+[Do this lesson interactively](${SITE}/lesson/${l.slug})
+`;
+  writeFileSync(join(dist, "md/lesson", `${l.slug}.md`), md);
+}
+
 /* ---------- index.html: JSON-LD + static snapshot ---------- */
 const esc = (s) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -109,5 +140,5 @@ html = html.replace(marker, `<div id="root">${staticHome}</div>`);
 writeFileSync(indexPath, html);
 
 console.log(
-  `agentify: sitemap.xml (${urls.length} urls), llms.txt, JSON-LD + static home injected`
+  `agentify: sitemap.xml (${urls.length} urls), llms.txt, ${lessons.length + 2} markdown pages, JSON-LD + static home injected`
 );
