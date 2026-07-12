@@ -23,6 +23,12 @@ import marks from "./21-marks.json";
 import undoRedo from "./22-undo-redo.json";
 import paragraphObjects from "./23-paragraph-objects.json";
 import tagObjects from "./24-tag-objects.json";
+import replaceMode from "./25-replace-mode.json";
+import incrementNumbers from "./26-increment-numbers.json";
+import lineStarts from "./27-line-starts.json";
+import backwardWordEnds from "./28-backward-word-ends.json";
+import bracketObjects from "./29-bracket-objects.json";
+import swapDuplicate from "./30-swap-duplicate.json";
 
 export const lessons: Lesson[] = (
   [
@@ -50,6 +56,12 @@ export const lessons: Lesson[] = (
     undoRedo,
     paragraphObjects,
     tagObjects,
+    replaceMode,
+    incrementNumbers,
+    lineStarts,
+    backwardWordEnds,
+    bracketObjects,
+    swapDuplicate,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 

@@ -1,0 +1,145 @@
+{
+  "slug": "bracket-objects",
+  "title": "Brackets & Blocks",
+  "category": "text-objects",
+  "order": 29,
+  "intro": "The pair text objects work with every bracket: `i(`, `i{`, `i[`, `i<` select inside the pair; `a(`, `a{`, `a[`, `a<` include the brackets themselves. The cursor only needs to be somewhere between them.",
+  "summary": "Inner and around objects for every bracket pair.",
+  "keys": [
+    "i{",
+    "a[",
+    "i<"
+  ],
+  "exercises": [
+    {
+      "id": "bracket-objects-1",
+      "type": "edit",
+      "instruction": "Empty the object: `di{` deletes everything inside the braces.",
+      "initialCode": "config = { a: 1, b: 2 };",
+      "initialCursor": {
+        "line": 0,
+        "ch": 17
+      },
+      "goal": {
+        "buffer": "config = {};"
+      },
+      "allowedKeys": [
+        "d",
+        "i",
+        "{"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "The spaces inside the braces are part of `i{` too."
+      ]
+    },
+    {
+      "id": "bracket-objects-2",
+      "type": "edit",
+      "instruction": "Change the index: `ci[` clears inside the brackets and drops you in Insert mode. Type `0`, then `Esc`.",
+      "initialCode": "item = data[old_key];",
+      "initialCursor": {
+        "line": 0,
+        "ch": 12
+      },
+      "goal": {
+        "buffer": "item = data[0];",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "c",
+        "i",
+        "[",
+        "0"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "`ci[` = change inside square brackets."
+      ]
+    },
+    {
+      "id": "bracket-objects-3",
+      "type": "edit",
+      "instruction": "Retype the type parameter: `ci<`, type `i32`, `Esc`.",
+      "initialCode": "let v: Vec<String> = make();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "buffer": "let v: Vec<i32> = make();",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "c",
+        "i",
+        "<",
+        "3",
+        "2"
+      ],
+      "parKeystrokes": 7,
+      "hints": [
+        "Angle brackets are a pair like any other."
+      ]
+    },
+    {
+      "id": "bracket-objects-4",
+      "type": "edit",
+      "instruction": "Drop the subscript entirely: `da[` deletes the brackets too.",
+      "initialCode": "total = base[idx];",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "total = base;"
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "["
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`a` = around: contents plus the pair itself."
+      ]
+    },
+    {
+      "id": "bracket-objects-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Clear out the JSX: `di<` leaves an empty tag.",
+      "initialCode": "render(<OldWidget />);",
+      "initialCursor": {
+        "line": 0,
+        "ch": 8
+      },
+      "goal": {
+        "buffer": "render(<>);"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "`i<` covers everything between `<` and `>`."
+      ]
+    },
+    {
+      "id": "bracket-objects-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Swap the style: `ci{`, type `ok`, `Esc`.",
+      "initialCode": "style = { old };",
+      "initialCursor": {
+        "line": 0,
+        "ch": 10
+      },
+      "goal": {
+        "buffer": "style = {ok};",
+        "mode": "normal"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`ci{` also removes the padding spaces — you retype exactly what you want."
+      ]
+    }
+  ]
+}

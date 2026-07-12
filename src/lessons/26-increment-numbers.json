@@ -1,0 +1,152 @@
+{
+  "slug": "increment-numbers",
+  "title": "Increment & Decrement",
+  "category": "editing",
+  "order": 26,
+  "intro": "`Ctrl-a` adds 1 to the next number on the line and `Ctrl-x` subtracts 1 — the cursor doesn't even have to be on the number. Give them a count to jump in steps: `5` then `Ctrl-a` adds 5.",
+  "summary": "Do math on numbers without retyping them.",
+  "keys": [
+    "Ctrl-a",
+    "Ctrl-x"
+  ],
+  "exercises": [
+    {
+      "id": "increment-numbers-1",
+      "type": "edit",
+      "instruction": "Bump the retry count: press `Ctrl-a` to turn 2 into 3.",
+      "initialCode": "retries = 2;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "retries = 3;"
+      },
+      "allowedKeys": [
+        "a"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`Ctrl-a` finds the next number on the line by itself."
+      ]
+    },
+    {
+      "id": "increment-numbers-2",
+      "type": "edit",
+      "instruction": "Add 5 in one keypress-pair: type `5`, then `Ctrl-a`.",
+      "initialCode": "timeout = 500;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "timeout = 505;"
+      },
+      "allowedKeys": [
+        "5",
+        "a"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "Counts work on `Ctrl-a` like on any other command."
+      ]
+    },
+    {
+      "id": "increment-numbers-3",
+      "type": "edit",
+      "instruction": "Count down to zero: `3` then `Ctrl-x` subtracts 3.",
+      "initialCode": "lives = 3;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "lives = 0;"
+      },
+      "allowedKeys": [
+        "3",
+        "x"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`Ctrl-x` is the mirror of `Ctrl-a`."
+      ]
+    },
+    {
+      "id": "increment-numbers-4",
+      "type": "edit",
+      "instruction": "`Ctrl-a` handles the rollover: 999 becomes 1000.",
+      "initialCode": "z-index: 999;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "z-index: 1000;"
+      },
+      "allowedKeys": [
+        "a"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "Vim renumbers, it doesn't overtype — extra digits are fine."
+      ]
+    },
+    {
+      "id": "increment-numbers-5",
+      "type": "edit",
+      "instruction": "Numbers can go negative: press `Ctrl-x` twice.",
+      "initialCode": "offset = 1;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "offset = -1;"
+      },
+      "allowedKeys": [
+        "x"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "1 → 0 → -1."
+      ]
+    },
+    {
+      "id": "increment-numbers-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "One more before launch: bump the port to 8080.",
+      "initialCode": "port = 8079;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "port = 8080;"
+      },
+      "parKeystrokes": 1,
+      "hints": [
+        "A single `Ctrl-a` from anywhere on the line."
+      ]
+    },
+    {
+      "id": "increment-numbers-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Drop the count from 10 to 7 using a count and `Ctrl-x`.",
+      "initialCode": "count = 10;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "count = 7;"
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "`3` then `Ctrl-x`."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "slug": "swap-duplicate",
+  "title": "Swap & Duplicate",
+  "category": "editing",
+  "order": 30,
+  "intro": "No new commands — just famous combos. `xp` swaps two characters (delete one, paste it after the next), `ddp` swaps two lines, and `yyp` duplicates a line. They fall straight out of how delete, yank, and paste already work.",
+  "summary": "xp, ddp, yyp — three tiny idioms you'll use forever.",
+  "keys": [
+    "xp",
+    "ddp",
+    "yyp"
+  ],
+  "exercises": [
+    {
+      "id": "swap-duplicate-1",
+      "type": "edit",
+      "instruction": "Fix the classic typo: with the cursor on the `i`, `xp` turns `recieve` into `receive`.",
+      "initialCode": "recieve(data);",
+      "initialCursor": {
+        "line": 0,
+        "ch": 3
+      },
+      "goal": {
+        "buffer": "receive(data);"
+      },
+      "allowedKeys": [
+        "x",
+        "p"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`x` deletes the `i`, `p` pastes it back one spot later."
+      ]
+    },
+    {
+      "id": "swap-duplicate-2",
+      "type": "edit",
+      "instruction": "The steps are in the wrong order: on the first line, `dd` then `p` swaps the two lines.",
+      "initialCode": "step two\nstep one",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "step one\nstep two"
+      },
+      "allowedKeys": [
+        "d",
+        "p"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`dd` cuts the line; `p` pastes it below the cursor."
+      ]
+    },
+    {
+      "id": "swap-duplicate-3",
+      "type": "edit",
+      "instruction": "Duplicate the line with `yyp`, ready to edit the copy.",
+      "initialCode": "const a = 1;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const a = 1;\nconst a = 1;"
+      },
+      "allowedKeys": [
+        "y",
+        "p"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`yy` yanks linewise, so `p` pastes a whole new line."
+      ]
+    },
+    {
+      "id": "swap-duplicate-4",
+      "type": "edit",
+      "instruction": "Swap the middle and last lines: `ddp` from line 2.",
+      "initialCode": "first();\nthird();\nsecond();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "first();\nsecond();\nthird();"
+      },
+      "allowedKeys": [
+        "d",
+        "p"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`ddp` works anywhere, not just at the top."
+      ]
+    },
+    {
+      "id": "swap-duplicate-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "`teh` → `the`: put the cursor on the `e`, then `xp`.",
+      "initialCode": "return teh_value;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 8
+      },
+      "goal": {
+        "buffer": "return the_value;"
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "Swap the `e` and the `h`."
+      ]
+    },
+    {
+      "id": "swap-duplicate-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Duplicate the push line with `yyp`.",
+      "initialCode": "items.push(x);\ndone();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "items.push(x);\nitems.push(x);\ndone();"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "The cursor can be anywhere on the line for `yy`."
+      ]
+    }
+  ]
+}

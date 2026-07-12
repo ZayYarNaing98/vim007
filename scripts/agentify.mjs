@@ -228,7 +228,7 @@ writeFileSync(
 
 const skillMd = `---
 name: vim-typetutor
-description: Query the Vim TypeTutor curriculum (24 Vim lessons, 157 exercises) via its JSON API, MCP server, or Markdown content negotiation.
+description: Query the Vim TypeTutor curriculum (30 Vim lessons, 194 exercises) via its JSON API, MCP server, or Markdown content negotiation.
 ---
 
 # Using Vim TypeTutor as an agent
@@ -271,7 +271,7 @@ writeFileSync(
           name: "vim-typetutor",
           type: "skill",
           description:
-            "Query the Vim TypeTutor curriculum (24 Vim lessons, 157 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
+            "Query the Vim TypeTutor curriculum (30 Vim lessons, 194 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
           url: `${SITE}/.well-known/agent-skills/vim-typetutor/SKILL.md`,
           sha256: createHash("sha256").update(skillMd).digest("hex"),
         },

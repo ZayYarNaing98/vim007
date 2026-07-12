@@ -1,0 +1,149 @@
+{
+  "slug": "backward-word-ends",
+  "title": "Backward Word Ends",
+  "category": "motions",
+  "order": 28,
+  "intro": "`e` goes forward to a word end; `ge` goes backward to the previous word end. `gE` does the same over whitespace-separated WORDS, skipping punctuation. Handy when the thing you need to fix is just behind you.",
+  "summary": "Jump back to the end of the previous word.",
+  "keys": [
+    "ge",
+    "gE"
+  ],
+  "exercises": [
+    {
+      "id": "backward-word-ends-1",
+      "type": "motion",
+      "instruction": "Jump back: from `gamma`, `ge` lands on the last letter of `beta`.",
+      "initialCode": "alpha beta gamma",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 9
+        }
+      },
+      "allowedKeys": [
+        "g",
+        "e"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`ge` is `e` in reverse."
+      ]
+    },
+    {
+      "id": "backward-word-ends-2",
+      "type": "motion",
+      "instruction": "Press `ge` twice to reach the end of `alpha`.",
+      "initialCode": "alpha beta gamma",
+      "initialCursor": {
+        "line": 0,
+        "ch": 11
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 4
+        }
+      },
+      "allowedKeys": [
+        "g",
+        "e"
+      ],
+      "parKeystrokes": 4,
+      "hints": [
+        "Or use a count: `2ge`."
+      ]
+    },
+    {
+      "id": "backward-word-ends-3",
+      "type": "motion",
+      "instruction": "From `bar`, `ge` stops on the `.` — punctuation counts as a word.",
+      "initialCode": "init foo.bar",
+      "initialCursor": {
+        "line": 0,
+        "ch": 9
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 8
+        }
+      },
+      "allowedKeys": [
+        "g",
+        "e"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "Small words: `ge` sees `foo`, `.`, and `bar` separately."
+      ]
+    },
+    {
+      "id": "backward-word-ends-4",
+      "type": "motion",
+      "instruction": "Same start, but `gE` skips the punctuation and lands on the end of the WORD `init`.",
+      "initialCode": "init foo.bar",
+      "initialCursor": {
+        "line": 0,
+        "ch": 9
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 3
+        }
+      },
+      "allowedKeys": [
+        "g",
+        "E"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "WORDS are separated by whitespace only."
+      ]
+    },
+    {
+      "id": "backward-word-ends-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Two `gE` hops from `delta` land on the end of `alpha`.",
+      "initialCode": "alpha beta.gamma delta",
+      "initialCursor": {
+        "line": 0,
+        "ch": 17
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 4
+        }
+      },
+      "parKeystrokes": 4,
+      "hints": [
+        "`beta.gamma` is one WORD, so one `gE` clears it."
+      ]
+    },
+    {
+      "id": "backward-word-ends-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Fix the doubled `t`: `ge` puts you on it, `x` deletes it.",
+      "initialCode": "return resultt;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 14
+      },
+      "goal": {
+        "buffer": "return result;"
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "From the `;`, the previous word end is the extra `t`."
+      ]
+    }
+  ]
+}

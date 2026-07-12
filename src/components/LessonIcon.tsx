@@ -150,6 +150,39 @@ const paths: Record<string, ReactNode> = {
     // code </>
     <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
   ),
+  "replace-mode": (
+    // R in a box
+    <>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+      <path d="M9.5 16v-8h3.5a2.25 2.25 0 0 1 0 4.5H9.5m3 0 2.5 3.5" />
+    </>
+  ),
+  "increment-numbers": (
+    // plus-minus
+    <path d="M12 3.5v9M7.5 8h9M7.5 19h9" />
+  ),
+  "line-starts": (
+    // indented lines with arrow to first non-blank
+    <>
+      <path d="M10 6h10M10 12h10M10 18h10" />
+      <path d="M3 12h4M5.5 9.5 8 12l-2.5 2.5" />
+    </>
+  ),
+  "backward-word-ends": (
+    // arrow jumping back to a point
+    <>
+      <path d="M20 12H8M11.5 8.5 8 12l3.5 3.5" />
+      <circle cx="4.5" cy="12" r="1.5" />
+    </>
+  ),
+  "bracket-objects": (
+    // curly braces
+    <path d="M9 4c-2 0-3 1-3 3v2c0 1.5-1 2-2.5 2 1.5 0 2.5.5 2.5 2v2c0 2 1 3 3 3M15 4c2 0 3 1 3 3v2c0 1.5 1 2 2.5 2-1.5 0-2.5.5-2.5 2v2c0 2-1 3-3 3" />
+  ),
+  "swap-duplicate": (
+    // up/down swap arrows
+    <path d="M8 20V5M8 5 5 8m3-3 3 3M16 4v15m0 0-3-3m3 3 3-3" />
+  ),
 };
 
 export function LessonIcon({ slug }: { slug: string }) {

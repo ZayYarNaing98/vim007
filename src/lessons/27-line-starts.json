@@ -1,0 +1,144 @@
+{
+  "slug": "line-starts",
+  "title": "First Non-Blank",
+  "category": "motions",
+  "order": 27,
+  "intro": "`0` goes to column 0, but in indented code you usually want `^` — the first non-blank character. `+` and `-` do the same while moving: straight to where the next or previous line's code begins.",
+  "summary": "Land where the code starts, not column 0.",
+  "keys": [
+    "^",
+    "+",
+    "-"
+  ],
+  "exercises": [
+    {
+      "id": "line-starts-1",
+      "type": "motion",
+      "instruction": "From the end of the line, `^` jumps to the first character of code, skipping the indent.",
+      "initialCode": "    return result;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 17
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 4
+        }
+      },
+      "allowedKeys": [
+        "^"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`0` would land on the margin; `^` lands on the `r`."
+      ]
+    },
+    {
+      "id": "line-starts-2",
+      "type": "motion",
+      "instruction": "`+` moves down to the first non-blank of the next line.",
+      "initialCode": "start();\n    finish();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 1,
+          "ch": 4
+        }
+      },
+      "allowedKeys": [
+        "+"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "One key: down a line AND onto the code."
+      ]
+    },
+    {
+      "id": "line-starts-3",
+      "type": "motion",
+      "instruction": "`-` moves up, landing on the code, not the margin.",
+      "initialCode": "        setup();\nrun();",
+      "initialCursor": {
+        "line": 1,
+        "ch": 3
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 8
+        }
+      },
+      "allowedKeys": [
+        "-"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`-` is `k` plus `^` in one keystroke."
+      ]
+    },
+    {
+      "id": "line-starts-4",
+      "type": "edit",
+      "instruction": "Delete from the cursor back to the start of the code with `d^` — the indent survives.",
+      "initialCode": "    result = total;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "    total;"
+      },
+      "allowedKeys": [
+        "d",
+        "^"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`d^` deletes back to the first non-blank, not to column 0."
+      ]
+    },
+    {
+      "id": "line-starts-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Walk down the stairs: press `+` twice to land on `three`.",
+      "initialCode": "one();\n  two();\n      three();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 2,
+          "ch": 6
+        }
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "Each `+` follows the indentation for you."
+      ]
+    },
+    {
+      "id": "line-starts-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Clean up: from `value`, `d^` removes the junk but keeps the indent.",
+      "initialCode": "    old junk value = 42;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "    value = 42;"
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "The deletion stops at the first non-blank character."
+      ]
+    }
+  ]
+}

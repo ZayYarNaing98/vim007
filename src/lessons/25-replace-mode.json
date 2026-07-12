@@ -1,0 +1,149 @@
+{
+  "slug": "replace-mode",
+  "title": "Replace Mode",
+  "category": "editing",
+  "order": 25,
+  "intro": "`r` replaces a single character, but `R` enters Replace mode: everything you type overwrites what's under the cursor until you press `Esc`. Perfect for same-length edits — dates, ports, aligned columns — because nothing shifts sideways.",
+  "summary": "Overwrite text in place.",
+  "keys": [
+    "R"
+  ],
+  "exercises": [
+    {
+      "id": "replace-mode-1",
+      "type": "edit",
+      "instruction": "Overwrite `cat` with `dog`: press `R`, type `dog`, then `Esc`.",
+      "initialCode": "let animal = \"cat\";",
+      "initialCursor": {
+        "line": 0,
+        "ch": 14
+      },
+      "goal": {
+        "buffer": "let animal = \"dog\";",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "R",
+        "d",
+        "o",
+        "g"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "`R` starts overwriting at the cursor — the quotes stay put."
+      ]
+    },
+    {
+      "id": "replace-mode-2",
+      "type": "edit",
+      "instruction": "Fix the date in place: overwrite `24-01-15` with `26-07-10`, then `Esc`.",
+      "initialCode": "released: 2024-01-15",
+      "initialCursor": {
+        "line": 0,
+        "ch": 12
+      },
+      "goal": {
+        "buffer": "released: 2026-07-10",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "R",
+        "2",
+        "6",
+        "0",
+        "7",
+        "1",
+        "-"
+      ],
+      "parKeystrokes": 10,
+      "hints": [
+        "Replace mode shines on fixed-width text like dates."
+      ]
+    },
+    {
+      "id": "replace-mode-3",
+      "type": "edit",
+      "instruction": "Change the port: overwrite `3000` with `8080`, then `Esc`.",
+      "initialCode": "const port = 3000;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "const port = 8080;",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "R",
+        "8",
+        "0"
+      ],
+      "parKeystrokes": 6,
+      "hints": [
+        "Four digits over four digits: `R` `8080` `Esc`."
+      ]
+    },
+    {
+      "id": "replace-mode-4",
+      "type": "edit",
+      "instruction": "Swap the HTTP verb: overwrite `GET` with `PUT`, then `Esc`.",
+      "initialCode": "request(\"GET\", url);",
+      "initialCursor": {
+        "line": 0,
+        "ch": 9
+      },
+      "goal": {
+        "buffer": "request(\"PUT\", url);",
+        "mode": "normal"
+      },
+      "allowedKeys": [
+        "R",
+        "P",
+        "U",
+        "T"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "Uppercase letters need Shift, but each is still one overwrite."
+      ]
+    },
+    {
+      "id": "replace-mode-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "The test result is wrong — overwrite `FAIL` with `PASS`.",
+      "initialCode": "status = \"FAIL\";",
+      "initialCursor": {
+        "line": 0,
+        "ch": 10
+      },
+      "goal": {
+        "buffer": "status = \"PASS\";",
+        "mode": "normal"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`R` `PASS` `Esc` — same length, nothing moves."
+      ]
+    },
+    {
+      "id": "replace-mode-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Calm the logs down: overwrite `WARN` with `INFO`.",
+      "initialCode": "log_level = WARN",
+      "initialCursor": {
+        "line": 0,
+        "ch": 12
+      },
+      "goal": {
+        "buffer": "log_level = INFO",
+        "mode": "normal"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "Start with the cursor on the `W`."
+      ]
+    }
+  ]
+}

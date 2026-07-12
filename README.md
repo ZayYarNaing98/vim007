@@ -1,6 +1,6 @@
 # Vim TypeTutor (vim007)
 
-**Live:** [vim007.zayarnaing-pp.workers.dev](https://vim007.zayarnaing-pp.workers.dev) · 24 lessons / 157 exercises, each ending in a practice session.
+**Live:** [vim007.zayarnaing-pp.workers.dev](https://vim007.zayarnaing-pp.workers.dev) · 30 lessons / 194 exercises, each ending in a practice session.
 
 Built from the implementation guide in `../documents/vim-typetutor-implementation.md`.
 
