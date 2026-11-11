@@ -234,11 +234,6 @@ main {
   filter: brightness(1.08);
 }
 
-.btn-danger {
-  color: var(--red);
-  border-color: var(--red);
-}
-
 .btn-hint {
   display: inline-flex;
   align-items: center;

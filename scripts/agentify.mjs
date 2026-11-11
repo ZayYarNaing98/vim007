@@ -52,7 +52,7 @@ ${lessons
 ## Pages
 
 - [Home](${SITE}/): lesson list with completion status
-- [Progress](${SITE}/progress): per-skill proficiency, practice suggestions, HTML report export
+- [Progress](${SITE}/progress): per-skill proficiency and practice suggestions
 
 ## Agent interface (all public, read-only, no auth)
 
@@ -72,7 +72,7 @@ mkdirSync(join(dist, "md/lesson"), { recursive: true });
 writeFileSync(join(dist, "md/index.md"), llms);
 writeFileSync(
   join(dist, "md/progress.md"),
-  `# Vim TypeTutor — Progress\n\nProgress is stored locally in the visitor's browser (localStorage); there is no server-side account. The Progress page shows per-skill proficiency with daily decay, suggests what to practice next, and exports a self-contained HTML report.\n\n[Open the app](${SITE}/progress)\n`
+  `# Vim TypeTutor — Progress\n\nProgress is stored locally in the visitor's browser (localStorage); there is no server-side account. The Progress page shows per-skill proficiency with daily decay, and suggests what to practice next.\n\n[Open the app](${SITE}/progress)\n`
 );
 for (const l of lessons) {
   const core = l.exercises.filter((e) => !e.practice);
@@ -228,7 +228,7 @@ writeFileSync(
 
 const skillMd = `---
 name: vim-typetutor
-description: Query the Vim TypeTutor curriculum (30 Vim lessons, 194 exercises) via its JSON API, MCP server, or Markdown content negotiation.
+description: Query the Vim TypeTutor curriculum (38 Vim lessons, 246 exercises) via its JSON API, MCP server, or Markdown content negotiation.
 ---
 
 # Using Vim TypeTutor as an agent
@@ -271,7 +271,7 @@ writeFileSync(
           name: "vim-typetutor",
           type: "skill",
           description:
-            "Query the Vim TypeTutor curriculum (30 Vim lessons, 194 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
+            "Query the Vim TypeTutor curriculum (38 Vim lessons, 246 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
           url: `${SITE}/.well-known/agent-skills/vim-typetutor/SKILL.md`,
           sha256: createHash("sha256").update(skillMd).digest("hex"),
         },

@@ -1,6 +1,6 @@
 # Vim TypeTutor (vim007)
 
-**Live:** [vim.zayarnaing.com](https://vim.zayarnaing.com) · 30 lessons / 194 exercises, each ending in a practice session.
+**Live:** [vim.zayarnaing.com](https://vim.zayarnaing.com) · 38 lessons / 246 exercises, each ending in a practice session.
 
 Built from the implementation guide in `../documents/vim-typetutor-implementation.md`.
 
@@ -25,7 +25,7 @@ npm run build    # production build in dist/
 2. The `VimEditor` component intercepts every keystroke, blocks keys not allowed in the exercise, and reports buffer/cursor changes.
 3. `checkGoal()` (`src/engine/goalChecker.ts`) runs on every editor update — outcomes are validated, not keystroke sequences, so any valid Vim solution counts.
 4. On success you get a rank (S/A/B/C) based on keystrokes vs par, and the attempt is saved.
-5. The Progress page shows per-skill proficiency (with daily decay), suggests what to practice next, and exports a shareable HTML progress report.
+5. The Progress page shows per-skill proficiency (with daily decay), and suggests what to practice next.
 
 ## Project structure
 

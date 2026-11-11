@@ -183,6 +183,50 @@ const paths: Record<string, ReactNode> = {
     // up/down swap arrows
     <path d="M8 20V5M8 5 5 8m3-3 3 3M16 4v15m0 0-3-3m3 3 3-3" />
   ),
+  "quote-objects": (
+    // quotation marks
+    <path d="M10 7H6a1 1 0 0 0-1 1v4h4v1a3 3 0 0 1-3 3M19 7h-4a1 1 0 0 0-1 1v4h4v1a3 3 0 0 1-3 3" />
+  ),
+  "sentence-motions": (
+    // lines of text ending in a period
+    <>
+      <path d="M4 7h16M4 12h16M4 17h9" />
+      <circle cx="16.5" cy="17" r="0.8" fill="currentColor" />
+    </>
+  ),
+  "ex-line-commands": (
+    // numbered lines
+    <path d="M5 5v4M4 9h2M9 7h11M9 12h11M9 17h11M4 15.5a1 1 0 0 1 2 0c0 .8-2 1.5-2 2.5h2" />
+  ),
+  "global-commands": (
+    // globe
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.5 12h17M12 3.5c2.5 2.5 3.5 5.5 3.5 8.5s-1 6-3.5 8.5c-2.5-2.5-3.5-5.5-3.5-8.5s1-6 3.5-8.5Z" />
+    </>
+  ),
+  "sort-lines": (
+    // descending bars with arrow
+    <path d="M4 6h9M4 11h6M4 16h3M18 5v14m0 0-3-3m3 3 3-3" />
+  ),
+  "visual-block": (
+    // column selection
+    <>
+      <rect x="9" y="4" width="6" height="16" rx="1" />
+      <path d="M4 7h3M4 12h3M4 17h3M17 7h3M17 12h3M17 17h3" />
+    </>
+  ),
+  "join-delete-variants": (
+    // backspace-left arrow
+    <path d="M20 12H6m0 0 4-4m-4 4 4 4M4 6v12" />
+  ),
+  "backward-search": (
+    // magnifier with left arrow
+    <>
+      <circle cx="14" cy="10" r="5.5" />
+      <path d="M10 14l-6 6M17 10h-6m0 0 2-2m-2 2 2 2" />
+    </>
+  ),
 };
 
 export function LessonIcon({ slug }: { slug: string }) {

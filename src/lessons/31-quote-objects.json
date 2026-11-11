@@ -1,0 +1,157 @@
+{
+  "slug": "quote-objects",
+  "title": "Quote Objects",
+  "category": "text-objects",
+  "order": 31,
+  "intro": "`i\"` was just the start: every kind of quote is a text object. `i'` and `a'` work on single-quoted strings, `` i` `` on template literals. If the cursor is before the string on that line, Vim jumps forward to it, so you rarely need to move first. `a` includes the quotes, `i` only what's inside.",
+  "summary": "Change any string in one move — single, double, or backtick.",
+  "keys": [
+    "i'",
+    "a\"",
+    "i`"
+  ],
+  "exercises": [
+    {
+      "id": "quote-objects-1",
+      "type": "edit",
+      "instruction": "Switch the theme: with the cursor inside the string, `ci'` then type `light` and press `Esc`.",
+      "initialCode": "const mode = 'dark';",
+      "initialCursor": {
+        "line": 0,
+        "ch": 16
+      },
+      "goal": {
+        "buffer": "const mode = 'light';",
+        "mode": "normal"
+      },
+      "parKeystrokes": 9,
+      "hints": [
+        "`ci'` deletes everything between the single quotes and drops you into Insert mode."
+      ]
+    },
+    {
+      "id": "quote-objects-2",
+      "type": "edit",
+      "instruction": "The cursor is at the start of the line, before the string. `di'` still finds it and empties it.",
+      "initialCode": "print('hello');",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "print('');"
+      },
+      "allowedKeys": [
+        "d",
+        "i",
+        "'"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "Quote objects search forward on the current line."
+      ]
+    },
+    {
+      "id": "quote-objects-3",
+      "type": "edit",
+      "instruction": "Remove the argument completely, quotes included: `da\"`.",
+      "initialCode": "alert(\"hi there\");",
+      "initialCursor": {
+        "line": 0,
+        "ch": 10
+      },
+      "goal": {
+        "buffer": "alert();"
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "\""
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`i\"` would leave the empty quotes behind; `a\"` takes them too."
+      ]
+    },
+    {
+      "id": "quote-objects-4",
+      "type": "edit",
+      "instruction": "Rewrite the template literal: `` ci` `` then type `Bye` and press `Esc`.",
+      "initialCode": "const msg = `Hi there`;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 16
+      },
+      "goal": {
+        "buffer": "const msg = `Bye`;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "The backtick is a quote character too."
+      ]
+    },
+    {
+      "id": "quote-objects-5",
+      "type": "edit",
+      "instruction": "Copy the URL with `yi\"`, then move to the end of the line with `$` and paste it before the semicolon with `P`.",
+      "initialCode": "const a = \"/api\";",
+      "initialCursor": {
+        "line": 0,
+        "ch": 13
+      },
+      "goal": {
+        "buffer": "const a = \"/api\"/api;"
+      },
+      "allowedKeys": [
+        "y",
+        "i",
+        "\"",
+        "$",
+        "P"
+      ],
+      "parKeystrokes": 5,
+      "hints": [
+        "`P` pastes before the cursor; `$` puts the cursor on the `;`."
+      ]
+    },
+    {
+      "id": "quote-objects-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Point the request at `/api`: from the start of the line, change the string's contents in one go.",
+      "initialCode": "fetch(\"/old\");",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "fetch(\"/api\");",
+        "mode": "normal"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`ci\"` jumps forward to the string — no need to move first."
+      ]
+    },
+    {
+      "id": "quote-objects-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Mark the task as `done`, replacing the whole single-quoted string's contents.",
+      "initialCode": "text = 'TODO: rename';",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "text = 'done';",
+        "mode": "normal"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`ci'`, type, `Esc`."
+      ]
+    }
+  ]
+}

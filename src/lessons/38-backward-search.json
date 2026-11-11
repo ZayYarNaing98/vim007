@@ -1,0 +1,140 @@
+{
+  "slug": "backward-search",
+  "title": "Search Backward",
+  "category": "search",
+  "order": 38,
+  "intro": "`?pattern` + `Enter` searches backward, up the file. `n` repeats a search in the same direction it went and `N` repeats it the other way. `#` is the backward version of `*`: it finds the previous occurrence of the word under the cursor.",
+  "summary": "Search up the file with ?, N and #.",
+  "keys": [
+    "?",
+    "N",
+    "#"
+  ],
+  "exercises": [
+    {
+      "id": "backward-search-1",
+      "type": "motion",
+      "instruction": "Find the `init` call above you: type `?init` and press `Enter`.",
+      "initialCode": "init();\nload();\nrun();\nstop();",
+      "initialCursor": {
+        "line": 3,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 0
+        }
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`?` is `/` in reverse."
+      ]
+    },
+    {
+      "id": "backward-search-2",
+      "type": "motion",
+      "instruction": "The cursor is on the last `total`. Jump to the previous one with `#`.",
+      "initialCode": "total = 0;\ntotal += x;\nreturn total;",
+      "initialCursor": {
+        "line": 2,
+        "ch": 7
+      },
+      "goal": {
+        "cursor": {
+          "line": 1,
+          "ch": 0
+        }
+      },
+      "allowedKeys": [
+        "#"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`#` searches backward for the whole word under the cursor."
+      ]
+    },
+    {
+      "id": "backward-search-3",
+      "type": "motion",
+      "instruction": "Search forward with `/item` + `Enter`, then press `N` to go back to the match before it.",
+      "initialCode": "item = 1;\nitem = 2;\nitem = 3;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 0
+        }
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "`/item` lands on line 2; `N` reverses direction."
+      ]
+    },
+    {
+      "id": "backward-search-4",
+      "type": "motion",
+      "instruction": "Search backward with `?log` + `Enter`, then `n` to keep going up to the first one.",
+      "initialCode": "log(1);\nlog(2);\nlog(3);",
+      "initialCursor": {
+        "line": 2,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 0
+        }
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "After `?`, `n` keeps searching backward."
+      ]
+    },
+    {
+      "id": "backward-search-practice-1",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Jump back to where `config` was defined.",
+      "initialCode": "const config = {};\nsetup();\nuse(config);",
+      "initialCursor": {
+        "line": 2,
+        "ch": 4
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 6
+        }
+      },
+      "parKeystrokes": 1,
+      "hints": [
+        "The word is already under the cursor."
+      ]
+    },
+    {
+      "id": "backward-search-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Go back up to the `TODO` comment.",
+      "initialCode": "// TODO: fix\na();\nb();\nc();",
+      "initialCursor": {
+        "line": 3,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 3
+        }
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "Search backward for it."
+      ]
+    }
+  ]
+}

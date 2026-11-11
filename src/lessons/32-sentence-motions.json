@@ -1,0 +1,165 @@
+{
+  "slug": "sentence-motions",
+  "title": "Sentences",
+  "category": "motions",
+  "order": 32,
+  "intro": "Prose has its own units. A sentence ends at `.`, `!` or `?` followed by a space or line end. `)` jumps to the start of the next sentence and `(` back to the start of the current or previous one. As text objects, `is` is the sentence itself and `as` includes the space after it, so `das` deletes a sentence cleanly.",
+  "summary": "Move and edit by sentence in comments, docs and commit messages.",
+  "keys": [
+    "(",
+    ")",
+    "das",
+    "cis"
+  ],
+  "exercises": [
+    {
+      "id": "sentence-motions-1",
+      "type": "motion",
+      "instruction": "Jump to the start of the next sentence with `)`.",
+      "initialCode": "Vim is fast. It is also fun. Try it today.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 13
+        }
+      },
+      "allowedKeys": [
+        ")"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`)` lands on the `I` of the second sentence."
+      ]
+    },
+    {
+      "id": "sentence-motions-2",
+      "type": "motion",
+      "instruction": "Go two sentences forward in one move: `2)`.",
+      "initialCode": "Read it. Test it. Ship it.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 18
+        }
+      },
+      "allowedKeys": [
+        "2",
+        ")"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "Counts work with sentence motions too."
+      ]
+    },
+    {
+      "id": "sentence-motions-3",
+      "type": "motion",
+      "instruction": "From the middle of the last sentence, `(` goes back to where it starts.",
+      "initialCode": "Vim is fast. It is also fun. Try it today.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 38
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 29
+        }
+      },
+      "allowedKeys": [
+        "("
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`(` first goes to the start of the sentence you're in."
+      ]
+    },
+    {
+      "id": "sentence-motions-4",
+      "type": "edit",
+      "instruction": "Delete the middle sentence and the space after it with `das`.",
+      "initialCode": "Vim is fast. It is also fun. Try it today.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 21
+      },
+      "goal": {
+        "buffer": "Vim is fast. Try it today."
+      },
+      "allowedKeys": [
+        "d",
+        "a",
+        "s"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "`as` = a sentence plus its trailing space."
+      ]
+    },
+    {
+      "id": "sentence-motions-5",
+      "type": "edit",
+      "instruction": "Rewrite the first sentence: `cis`, type `Vim rocks.` and press `Esc`.",
+      "initialCode": "Vim is fast. It is also fun.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "Vim rocks. It is also fun.",
+        "mode": "normal"
+      },
+      "parKeystrokes": 14,
+      "hints": [
+        "`is` leaves the trailing space alone, so the next sentence stays separated."
+      ]
+    },
+    {
+      "id": "sentence-motions-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Drop the middle sentence from the commit message.",
+      "initialCode": "Fix login. Remove debug logs. Bump version.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 14
+      },
+      "goal": {
+        "buffer": "Fix login. Bump version."
+      },
+      "parKeystrokes": 3,
+      "hints": [
+        "`das` from anywhere inside the sentence."
+      ]
+    },
+    {
+      "id": "sentence-motions-practice-2",
+      "type": "motion",
+      "practice": true,
+      "instruction": "Jump to the start of the third sentence.",
+      "initialCode": "One. Two. Three. Four.",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "cursor": {
+          "line": 0,
+          "ch": 10
+        }
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "Count + `)`."
+      ]
+    }
+  ]
+}

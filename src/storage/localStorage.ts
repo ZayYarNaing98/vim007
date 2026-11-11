@@ -39,20 +39,4 @@ export const localProgressStorage: ProgressStorage = {
     }
     return [...done];
   },
-
-  async exportAll() {
-    return JSON.stringify(load(), null, 2);
-  },
-
-  async importAll(json: string) {
-    const parsed = JSON.parse(json);
-    if (!Array.isArray(parsed.attempts)) {
-      throw new Error("Invalid progress file: missing attempts array");
-    }
-    save(parsed);
-  },
-
-  async clearAll() {
-    localStorage.removeItem(KEY);
-  },
 };

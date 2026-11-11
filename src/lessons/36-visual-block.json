@@ -1,0 +1,130 @@
+{
+  "slug": "visual-block",
+  "title": "Visual Block",
+  "category": "visual",
+  "order": 36,
+  "intro": "`Ctrl-v` selects a rectangle, a column of text across several lines. `d` deletes the column and `c` replaces it on every line. `I` inserts text before the block on every line and `A` appends after it; use `$` first to append at each line's end, even when the lines are different lengths. The change shows on all lines when you press `Esc`.",
+  "summary": "Edit a column of lines at once with Ctrl-v.",
+  "keys": [
+    "Ctrl-v",
+    "I",
+    "A",
+    "$A"
+  ],
+  "exercises": [
+    {
+      "id": "visual-block-1",
+      "type": "edit",
+      "instruction": "Comment out all three lines: `Ctrl-v`, `j` `j` to extend down, then `I`, type `// ` and press `Esc`.",
+      "initialCode": "a();\nb();\nc();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// a();\n// b();\n// c();",
+        "mode": "normal"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`I` in a block inserts at the left edge of every selected line."
+      ]
+    },
+    {
+      "id": "visual-block-2",
+      "type": "edit",
+      "instruction": "Remove the numbering: `Ctrl-v`, `j` `j`, `l` `l` to cover `1. `, then `d`.",
+      "initialCode": "1. one\n2. two\n3. three",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "one\ntwo\nthree"
+      },
+      "allowedKeys": [
+        "v",
+        "j",
+        "l",
+        "d"
+      ],
+      "parKeystrokes": 6,
+      "hints": [
+        "The block is three columns wide and three lines tall."
+      ]
+    },
+    {
+      "id": "visual-block-3",
+      "type": "edit",
+      "instruction": "Add a semicolon to the end of each line: `Ctrl-v`, `j` `j`, `$`, then `A;` and `Esc`.",
+      "initialCode": "a = 1\nbb = 22\nc = 3",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "a = 1;\nbb = 22;\nc = 3;",
+        "mode": "normal"
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "`$` stretches the block to each line's own end, so ragged lines work."
+      ]
+    },
+    {
+      "id": "visual-block-4",
+      "type": "edit",
+      "instruction": "Turn every `var` into `let`: `Ctrl-v`, `j` `j`, `l` `l` to select `var`, then `c`, type `let` and `Esc`.",
+      "initialCode": "var a\nvar b\nvar c",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let a\nlet b\nlet c",
+        "mode": "normal"
+      },
+      "parKeystrokes": 10,
+      "hints": [
+        "`c` deletes the block and types your text on each line."
+      ]
+    },
+    {
+      "id": "visual-block-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Turn the three lines into a Markdown list by putting `- ` in front of each.",
+      "initialCode": "milk\neggs\nbread",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "- milk\n- eggs\n- bread",
+        "mode": "normal"
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "Block select down, then `I`."
+      ]
+    },
+    {
+      "id": "visual-block-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete the `x` column from all three lines.",
+      "initialCode": "ax1\nbx2\ncx3",
+      "initialCursor": {
+        "line": 0,
+        "ch": 1
+      },
+      "goal": {
+        "buffer": "a1\nb2\nc3"
+      },
+      "parKeystrokes": 4,
+      "hints": [
+        "A one-column block: `Ctrl-v`, down twice, `d`."
+      ]
+    }
+  ]
+}

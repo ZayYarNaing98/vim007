@@ -1,0 +1,137 @@
+{
+  "slug": "sort-lines",
+  "title": "Sorting Lines",
+  "category": "ex-commands",
+  "order": 35,
+  "intro": "`:sort` sorts lines alphabetically, the whole file by default or just a range like `:2,4sort`. `:sort!` reverses the order, `:sort n` sorts by the first number on each line (so 9 comes before 10), and `:sort u` also removes duplicate lines.",
+  "summary": "Sort imports, lists and numbers without leaving Vim.",
+  "keys": [
+    ":sort",
+    ":sort!",
+    ":sort n",
+    ":sort u"
+  ],
+  "exercises": [
+    {
+      "id": "sort-lines-1",
+      "type": "edit",
+      "instruction": "Alphabetise the list: `:sort` + `Enter`.",
+      "initialCode": "pear\napple\nmango",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "apple\nmango\npear"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "With no range, `:sort` sorts every line."
+      ]
+    },
+    {
+      "id": "sort-lines-2",
+      "type": "edit",
+      "instruction": "Sort in reverse order: `:sort!` + `Enter`.",
+      "initialCode": "b\nc\na",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "c\nb\na"
+      },
+      "parKeystrokes": 7,
+      "hints": [
+        "`!` flips the order."
+      ]
+    },
+    {
+      "id": "sort-lines-3",
+      "type": "edit",
+      "instruction": "A plain sort would put 100 before 9. Sort by number instead: `:sort n` + `Enter`.",
+      "initialCode": "10 apples\n9 pears\n100 figs",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "9 pears\n10 apples\n100 figs"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`n` compares the first number on each line."
+      ]
+    },
+    {
+      "id": "sort-lines-4",
+      "type": "edit",
+      "instruction": "Sort and drop the duplicates: `:sort u` + `Enter`.",
+      "initialCode": "red\nblue\nred\ngreen\nblue",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "blue\ngreen\nred"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`u` keeps one copy of each line."
+      ]
+    },
+    {
+      "id": "sort-lines-5",
+      "type": "edit",
+      "instruction": "Sort only the imports on lines 2 to 4, leaving the comment on top: `:2,4sort` + `Enter`.",
+      "initialCode": "// imports\nimport c\nimport a\nimport b",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// imports\nimport a\nimport b\nimport c"
+      },
+      "parKeystrokes": 9,
+      "hints": [
+        "Put the range before `sort`."
+      ]
+    },
+    {
+      "id": "sort-lines-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Order the scores from lowest to highest.",
+      "initialCode": "42 bob\n7 ann\n315 cat",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "7 ann\n42 bob\n315 cat"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "A numeric sort."
+      ]
+    },
+    {
+      "id": "sort-lines-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Sort the tags and remove the repeats.",
+      "initialCode": "vim\ncss\nvim\napi",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "api\ncss\nvim"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "One flag does both."
+      ]
+    }
+  ]
+}

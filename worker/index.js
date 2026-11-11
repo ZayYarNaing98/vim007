@@ -123,7 +123,7 @@ async function handleMcp(request, env) {
         capabilities: { tools: { listChanged: false } },
         serverInfo: { name: "vim007", title: "Vim TypeTutor", version: "1.0.0" },
         instructions:
-          "Read-only access to the Vim TypeTutor curriculum (30 lessons, 194 exercises). No auth required.",
+          "Read-only access to the Vim TypeTutor curriculum (38 lessons, 246 exercises). No auth required.",
       },
     });
   }

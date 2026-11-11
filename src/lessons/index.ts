@@ -29,6 +29,14 @@ import lineStarts from "./27-line-starts.json";
 import backwardWordEnds from "./28-backward-word-ends.json";
 import bracketObjects from "./29-bracket-objects.json";
 import swapDuplicate from "./30-swap-duplicate.json";
+import quoteObjects from "./31-quote-objects.json";
+import sentenceMotions from "./32-sentence-motions.json";
+import exLineCommands from "./33-ex-line-commands.json";
+import globalCommands from "./34-global-commands.json";
+import sortLines from "./35-sort-lines.json";
+import visualBlock from "./36-visual-block.json";
+import joinDeleteVariants from "./37-join-delete-variants.json";
+import backwardSearch from "./38-backward-search.json";
 
 export const lessons: Lesson[] = (
   [
@@ -62,6 +70,14 @@ export const lessons: Lesson[] = (
     backwardWordEnds,
     bracketObjects,
     swapDuplicate,
+    quoteObjects,
+    sentenceMotions,
+    exLineCommands,
+    globalCommands,
+    sortLines,
+    visualBlock,
+    joinDeleteVariants,
+    backwardSearch,
   ] as Lesson[]
 ).sort((a, b) => a.order - b.order);
 

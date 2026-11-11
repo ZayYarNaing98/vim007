@@ -1,0 +1,135 @@
+{
+  "slug": "join-delete-variants",
+  "title": "X & gJ",
+  "category": "editing",
+  "order": 37,
+  "intro": "Two small variations. `X` deletes the character before the cursor, like Backspace (`x` deletes the one under it), and takes a count: `3X`. `gJ` joins lines like `J` but adds no space and keeps the next line's leading whitespace, which is what you want when gluing a broken word or URL back together.",
+  "summary": "Backspace in Normal mode, and joins without the extra space.",
+  "keys": [
+    "X",
+    "3X",
+    "gJ"
+  ],
+  "exercises": [
+    {
+      "id": "join-delete-variants-1",
+      "type": "edit",
+      "instruction": "There's one `l` too many. With the cursor on the `o`, `X` deletes the character before it.",
+      "initialCode": "helllo",
+      "initialCursor": {
+        "line": 0,
+        "ch": 5
+      },
+      "goal": {
+        "buffer": "hello"
+      },
+      "allowedKeys": [
+        "X"
+      ],
+      "parKeystrokes": 1,
+      "hints": [
+        "`X` deletes to the left; `x` deletes under the cursor."
+      ]
+    },
+    {
+      "id": "join-delete-variants-2",
+      "type": "edit",
+      "instruction": "Delete the three `!` before the cursor: `3X`.",
+      "initialCode": "value!!!;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 8
+      },
+      "goal": {
+        "buffer": "value;"
+      },
+      "allowedKeys": [
+        "3",
+        "X"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "Count + `X` deletes that many characters to the left."
+      ]
+    },
+    {
+      "id": "join-delete-variants-3",
+      "type": "edit",
+      "instruction": "The URL was split across two lines. Glue it back without a space: `gJ`.",
+      "initialCode": "const url = 'https://\nexample.com';",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const url = 'https://example.com';"
+      },
+      "allowedKeys": [
+        "g",
+        "J"
+      ],
+      "parKeystrokes": 2,
+      "hints": [
+        "`J` would insert a space; `gJ` doesn't."
+      ]
+    },
+    {
+      "id": "join-delete-variants-4",
+      "type": "edit",
+      "instruction": "Join three lines into one hex value: `3gJ`.",
+      "initialCode": "0xFF\nAA\nBB",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "0xFFAABB"
+      },
+      "allowedKeys": [
+        "3",
+        "g",
+        "J"
+      ],
+      "parKeystrokes": 3,
+      "hints": [
+        "The count is the number of lines to join."
+      ]
+    },
+    {
+      "id": "join-delete-variants-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Remove the stray `s` before the cursor.",
+      "initialCode": "returns;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 7
+      },
+      "goal": {
+        "buffer": "return;"
+      },
+      "parKeystrokes": 1,
+      "hints": [
+        "One key, deleting to the left."
+      ]
+    },
+    {
+      "id": "join-delete-variants-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Join the split word back together with no space.",
+      "initialCode": "const name = 'Zay\nYar';",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "const name = 'ZayYar';"
+      },
+      "parKeystrokes": 2,
+      "hints": [
+        "Join without the space."
+      ]
+    }
+  ]
+}

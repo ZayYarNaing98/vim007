@@ -1,0 +1,137 @@
+{
+  "slug": "ex-line-commands",
+  "title": "Ex Line Ranges",
+  "category": "ex-commands",
+  "order": 33,
+  "intro": "Ex commands work on line numbers, so you don't have to move the cursor first. `:3d` deletes line 3 and `:2,4d` deletes lines 2 through 4. `.` means the current line and `$` the last one, so `:.,$d` deletes from here to the end. The same ranges work in front of `:s`, so a substitution only touches those lines.",
+  "summary": "Delete and replace by line number without moving.",
+  "keys": [
+    ":3d",
+    ":2,4d",
+    ":.,$d",
+    ":2,3s"
+  ],
+  "exercises": [
+    {
+      "id": "ex-line-commands-1",
+      "type": "edit",
+      "instruction": "Delete line 3 without moving: type `:3d` and press `Enter`.",
+      "initialCode": "one\ntwo\nDELETE ME\nfour",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "one\ntwo\nfour"
+      },
+      "parKeystrokes": 4,
+      "hints": [
+        "`:` opens the command line; the number is the line to act on."
+      ]
+    },
+    {
+      "id": "ex-line-commands-2",
+      "type": "edit",
+      "instruction": "Delete lines 2 to 4 in one command: `:2,4d` + `Enter`.",
+      "initialCode": "keep\nx\nx\nx\nkeep",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "keep\nkeep"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`start,end` is an inclusive range."
+      ]
+    },
+    {
+      "id": "ex-line-commands-3",
+      "type": "edit",
+      "instruction": "Everything from the cursor line to the end is junk: `:.,$d` + `Enter`.",
+      "initialCode": "header\nbody\njunk\njunk\njunk",
+      "initialCursor": {
+        "line": 2,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "header\nbody"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`.` is the current line and `$` is the last line."
+      ]
+    },
+    {
+      "id": "ex-line-commands-4",
+      "type": "edit",
+      "instruction": "Delete every line from 2 to the end of the file: `:2,$d` + `Enter`.",
+      "initialCode": "keep();\nold();\nold();\nold();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "keep();"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`$` works as the end of a range from any line number."
+      ]
+    },
+    {
+      "id": "ex-line-commands-5",
+      "type": "edit",
+      "instruction": "Replace `var` with `let`, but only on lines 2 and 3: `:2,3s/var/let/` + `Enter`.",
+      "initialCode": "var keep = 0;\nvar a = 1;\nvar b = 2;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "var keep = 0;\nlet a = 1;\nlet b = 2;"
+      },
+      "parKeystrokes": 15,
+      "hints": [
+        "A range in front of `:s` limits which lines it touches."
+      ]
+    },
+    {
+      "id": "ex-line-commands-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete lines 3 and 4 without moving the cursor.",
+      "initialCode": "a();\nb();\nold();\nold();\nc();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "a();\nb();\nc();"
+      },
+      "parKeystrokes": 6,
+      "hints": [
+        "`:3,4d` + `Enter`."
+      ]
+    },
+    {
+      "id": "ex-line-commands-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Rename `foo` to `bar` on lines 3 and 4 only, every occurrence on each line.",
+      "initialCode": "foo();\nfoo();\nfoo(foo);\nfoo();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "foo();\nfoo();\nbar(bar);\nbar();"
+      },
+      "parKeystrokes": 16,
+      "hints": [
+        "A range plus the `g` flag: `:3,4s/foo/bar/g`."
+      ]
+    }
+  ]
+}

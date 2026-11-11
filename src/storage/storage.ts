@@ -21,7 +21,4 @@ export interface ProgressStorage {
   saveAttempt(attempt: Attempt): Promise<void>;
   getAttempts(exerciseId?: string): Promise<Attempt[]>;
   getCompletedExercises(): Promise<string[]>;
-  exportAll(): Promise<string>;
-  importAll(json: string): Promise<void>;
-  clearAll(): Promise<void>;
 }

@@ -1,0 +1,119 @@
+{
+  "slug": "global-commands",
+  "title": "Global Commands",
+  "category": "ex-commands",
+  "order": 34,
+  "intro": "`:g/pattern/command` runs a command on every line that matches the pattern; `:v/pattern/command` runs it on every line that doesn't. The classic is `:g/pattern/d` to delete matching lines, but any Ex command works, including `:normal`, which replays Normal-mode keys on each line.",
+  "summary": "Run a command on every matching line at once.",
+  "keys": [
+    ":g",
+    ":v",
+    ":g/…/normal"
+  ],
+  "exercises": [
+    {
+      "id": "global-commands-1",
+      "type": "edit",
+      "instruction": "Strip every debug line: `:g/console/d` + `Enter`.",
+      "initialCode": "a();\nconsole.log(1);\nb();\nconsole.log(2);",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "a();\nb();"
+      },
+      "parKeystrokes": 13,
+      "hints": [
+        "`:g` finds every line containing `console` and runs `d` on it."
+      ]
+    },
+    {
+      "id": "global-commands-2",
+      "type": "edit",
+      "instruction": "Keep only the TODO lines: `:v/TODO/d` + `Enter` deletes every line that does NOT match.",
+      "initialCode": "// TODO: tests\nx = 1;\n// TODO: docs\ny = 2;",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "// TODO: tests\n// TODO: docs"
+      },
+      "parKeystrokes": 10,
+      "hints": [
+        "`:v` is the inverse of `:g`."
+      ]
+    },
+    {
+      "id": "global-commands-3",
+      "type": "edit",
+      "instruction": "Remove the blank lines: `:g/^$/d` + `Enter`.",
+      "initialCode": "one\n\ntwo\n\nthree",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "one\ntwo\nthree"
+      },
+      "parKeystrokes": 8,
+      "hints": [
+        "`^$` matches a line with nothing between start and end."
+      ]
+    },
+    {
+      "id": "global-commands-4",
+      "type": "edit",
+      "instruction": "Add a semicolon to every `let` line: `:g/let/normal A;` + `Enter`.",
+      "initialCode": "let a = 1\nlet b = 2\nlog(a)\nlet c = 3",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "let a = 1;\nlet b = 2;\nlog(a)\nlet c = 3;"
+      },
+      "parKeystrokes": 17,
+      "hints": [
+        "`:normal` types the keys after it on each matching line: `A;` appends a semicolon."
+      ]
+    },
+    {
+      "id": "global-commands-practice-1",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Delete every commented-out line.",
+      "initialCode": "run();\n// old();\nstop();\n// older();",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "run();\nstop();"
+      },
+      "parKeystrokes": 10,
+      "hints": [
+        "Escape the slashes: `:g/\\/\\//d`, or match on another word such as `:g/old/d`."
+      ]
+    },
+    {
+      "id": "global-commands-practice-2",
+      "type": "edit",
+      "practice": true,
+      "instruction": "Keep only the lines that contain `error`.",
+      "initialCode": "info: start\nerror: disk\ninfo: retry\nerror: net",
+      "initialCursor": {
+        "line": 0,
+        "ch": 0
+      },
+      "goal": {
+        "buffer": "error: disk\nerror: net"
+      },
+      "parKeystrokes": 11,
+      "hints": [
+        "Delete the lines that don't match."
+      ]
+    }
+  ]
+}
