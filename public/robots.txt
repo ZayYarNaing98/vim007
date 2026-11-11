@@ -41,3 +41,4 @@ User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://vim.zayarnaing.com/sitemap.xml
+Agentmap: https://vim.zayarnaing.com/.well-known/ai-catalog.json

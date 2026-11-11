@@ -60,6 +60,7 @@ ${lessons
 - MCP server (streamable HTTP): ${SITE}/mcp — tools \`list_lessons\`, \`get_lesson\`; card at [/.well-known/mcp/server-card.json](${SITE}/.well-known/mcp/server-card.json)
 - Markdown negotiation: request any page with \`Accept: text/markdown\`
 - Agent skill: [/.well-known/agent-skills/index.json](${SITE}/.well-known/agent-skills/index.json)
+- Capability manifest (ARD): [/.well-known/ai-catalog.json](${SITE}/.well-known/ai-catalog.json)
 
 ## Source
 
@@ -180,6 +181,23 @@ public and read-only:
 There are no protected resources, no tokens, and no rate keys. User progress
 lives only in the visitor's own browser (localStorage) and is not accessible
 server-side.
+
+## Agent registration
+
+- **Audience:** any AI agent or client. No allow-list.
+- **Registration:** not required. There is no registration or provisioning
+  endpoint, because there is nothing to register for.
+- **Supported methods:** anonymous only. Send requests without credentials.
+- **Credentials:** none. Do not send an \`Authorization\` header; no API keys,
+  OAuth tokens or client IDs are issued or checked.
+- **OAuth metadata:** none is published (no \`/.well-known/oauth-protected-resource\`
+  or \`/.well-known/oauth-authorization-server\`), since no resource is protected.
+
+## Discovery
+
+- Capability manifest (ARD): [/.well-known/ai-catalog.json](${SITE}/.well-known/ai-catalog.json)
+- MCP server card: [/.well-known/mcp/server-card.json](${SITE}/.well-known/mcp/server-card.json)
+- API catalog: [/.well-known/api-catalog](${SITE}/.well-known/api-catalog)
 `
 );
 
@@ -274,6 +292,64 @@ writeFileSync(
             "Query the Vim TypeTutor curriculum (38 Vim lessons, 246 exercises) via its JSON API, MCP server, or Markdown content negotiation.",
           url: `${SITE}/.well-known/agent-skills/vim-typetutor/SKILL.md`,
           sha256: createHash("sha256").update(skillMd).digest("hex"),
+        },
+      ],
+    },
+    null,
+    2
+  )
+);
+
+/* ---------- ARD capability manifest (/.well-known/ai-catalog.json) ---------- */
+// Agentic Resource Discovery: one entry per agent-facing capability. CORS and
+// the JSON content type are set in public/_headers.
+const HOST = new URL(SITE).hostname;
+writeFileSync(
+  join(dist, ".well-known/ai-catalog.json"),
+  JSON.stringify(
+    {
+      specVersion: "1.0",
+      host: {
+        displayName: "Vim TypeTutor",
+        identifier: `did:web:${HOST}`,
+        url: SITE,
+      },
+      entries: [
+        {
+          identifier: `urn:air:${HOST}:mcp:vim-typetutor`,
+          displayName: "Vim TypeTutor MCP server",
+          description:
+            "Read-only MCP server (streamable HTTP) with tools list_lessons and get_lesson. No authentication.",
+          type: "application/mcp-server-card+json",
+          url: `${SITE}/.well-known/mcp/server-card.json`,
+          representativeQueries: [
+            "List the Vim lessons for beginners",
+            "Get the exercises for the Vim visual block lesson",
+            "Which Vim lesson teaches text objects like ci\"?",
+          ],
+        },
+        {
+          identifier: `urn:air:${HOST}:api:lessons`,
+          displayName: "Vim TypeTutor lessons API",
+          description: `Public read-only JSON API for ${lessons.length} Vim lessons and ${totalExercises} exercises.`,
+          type: "application/vnd.oai.openapi+json",
+          url: `${SITE}/openapi.json`,
+          representativeQueries: [
+            "Fetch a Vim lesson curriculum as JSON",
+            "Get the goal state and par keystrokes for a Vim exercise",
+            "List all Vim lesson slugs and categories",
+          ],
+        },
+        {
+          identifier: `urn:air:${HOST}:skill:vim-typetutor`,
+          displayName: "Vim TypeTutor agent skill",
+          description: "How an agent can query the curriculum via the JSON API, MCP server or Markdown pages.",
+          type: "text/markdown",
+          url: `${SITE}/.well-known/agent-skills/vim-typetutor/SKILL.md`,
+          representativeQueries: [
+            "How do I use the Vim TypeTutor API as an agent?",
+            "Learn Vim motions with interactive exercises",
+          ],
         },
       ],
     },
