@@ -1,6 +1,6 @@
 # Vim TypeTutor (vim007)
 
-**Live:** [vim007.zayarnaing-pp.workers.dev](https://vim007.zayarnaing-pp.workers.dev) · 30 lessons / 194 exercises, each ending in a practice session.
+**Live:** [vim.zayarnaing.com](https://vim.zayarnaing.com) · 30 lessons / 194 exercises, each ending in a practice session.
 
 Built from the implementation guide in `../documents/vim-typetutor-implementation.md`.
 
@@ -45,7 +45,7 @@ Create `src/lessons/NN-name.json` following the schema in `src/lessons/types.ts`
 
 ## Deploy
 
-Pushing a `production-*` tag deploys to Cloudflare Workers via GitHub Actions (`.github/workflows/deploy.yml`).
+Pushing a `production-*` tag deploys to Cloudflare Workers via GitHub Actions (`.github/workflows/deploy.yml`). The app is served at `https://vim.zayarnaing.com` (a Workers custom domain); the `workers.dev` URL stays on and redirects its pages there.
 
 ## Roadmap
 

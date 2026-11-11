@@ -9,7 +9,7 @@ import { createHash } from "node:crypto";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
-const SITE = "https://vim007.zayarnaing-pp.workers.dev";
+const SITE = "https://vim.zayarnaing.com";
 
 const lessons = readdirSync(join(root, "src/lessons"))
   .filter((f) => /^\d+-.*\.json$/.test(f))

@@ -40,4 +40,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://vim007.zayarnaing-pp.workers.dev/sitemap.xml
+Sitemap: https://vim.zayarnaing.com/sitemap.xml

@@ -4,6 +4,7 @@
 // invoke it. All data is public and read-only; there is no auth.
 
 const MCP_PROTOCOL = "2025-06-18";
+const CANONICAL_ORIGIN = "https://vim.zayarnaing.com";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -181,6 +182,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Page routes on workers.dev move to the custom domain. The API, MCP
+    // server and api-catalog stay served there so existing clients keep working.
+    if (url.hostname.endsWith(".workers.dev") && markdownPathFor(pathname)) {
+      return Response.redirect(CANONICAL_ORIGIN + pathname + url.search, 301);
+    }
 
     if (pathname === "/mcp") return handleMcp(request, env);
     if (pathname.startsWith("/api/")) return handleApi(request, env);
