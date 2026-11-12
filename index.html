@@ -32,13 +32,8 @@
     <script>
       // Apply the saved theme before React mounts to avoid a flash of the wrong theme.
       const saved = localStorage.getItem("vim-typetutor:theme");
-      const theme =
-        saved === "light" || saved === "dark"
-          ? saved
-          : matchMedia("(prefers-color-scheme: light)").matches
-            ? "light"
-            : "dark";
-      document.documentElement.dataset.theme = theme;
+      // Dark is the default; light only applies once the user picks it.
+      document.documentElement.dataset.theme = saved === "light" ? "light" : "dark";
       // Mark JS as available before first paint so the static crawler
       // snapshot inside #root (injected at build time) never flashes.
       document.documentElement.dataset.js = "1";

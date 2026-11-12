@@ -6,8 +6,8 @@ const KEY = "vim-typetutor:theme";
 
 function initialTheme(): Theme {
   const saved = localStorage.getItem(KEY);
-  if (saved === "light" || saved === "dark") return saved;
-  return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  // Dark is the default; light only applies once the user picks it.
+  return saved === "light" ? "light" : "dark";
 }
 
 type ThemeState = {

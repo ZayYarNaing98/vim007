@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getLesson } from "../lessons";
+import { getLesson, lessons } from "../lessons";
 import type { CursorPos } from "../lessons/types";
 import { checkGoal } from "../engine/goalChecker";
 import { useAppStore } from "../store/useAppStore";
@@ -33,6 +33,9 @@ export function LessonPage() {
   const lastStateRef = useRef<{ buffer: string; cursor: CursorPos } | null>(null);
 
   const exercise = lesson?.exercises[exIndex];
+  const lessonIndex = lesson ? lessons.indexOf(lesson) : -1;
+  const prevLesson = lessonIndex > 0 ? lessons[lessonIndex - 1] : undefined;
+  const nextLesson = lessonIndex >= 0 ? lessons[lessonIndex + 1] : undefined;
 
   const resetExercise = useCallback(() => {
     keystrokesRef.current = 0;
@@ -158,9 +161,18 @@ export function LessonPage() {
             >
               Practice again
             </button>
-            <button className="btn btn-primary" onClick={() => navigate("/")}>
-              Back to lessons
-            </button>
+            {nextLesson ? (
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate(`/lesson/${nextLesson.slug}`)}
+              >
+                Next: {nextLesson.title} →
+              </button>
+            ) : (
+              <button className="btn btn-primary" onClick={() => navigate("/")}>
+                Back to lessons
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -170,11 +182,18 @@ export function LessonPage() {
   return (
     <div className="page lesson-page">
       <div className="lesson-header">
-        <Link to="/" className="back-link">
-          ← Lessons
-        </Link>
+        <p className="lesson-eyebrow">
+          Lesson {String(lesson.order).padStart(2, "0")} · {lesson.category.replace(/-/g, " ")}
+        </p>
         <h1>{lesson.title}</h1>
         <p className="lesson-intro">{renderInstruction(lesson.intro)}</p>
+        <div className="key-row" translate="no">
+          {lesson.keys.map((k) => (
+            <kbd key={k} className="kbd-lg">
+              {k}
+            </kbd>
+          ))}
+        </div>
       </div>
 
       <InstructionPanel
@@ -185,6 +204,19 @@ export function LessonPage() {
       />
 
       <div className="editor-wrap">
+        <div
+          className="exercise-progress"
+          role="progressbar"
+          aria-label="Lesson progress"
+          aria-valuemin={0}
+          aria-valuemax={lesson.exercises.length}
+          aria-valuenow={exIndex + (solved ? 1 : 0)}
+        >
+          <div
+            className="exercise-progress-fill"
+            style={{ width: `${((exIndex + (solved ? 1 : 0)) / lesson.exercises.length) * 100}%` }}
+          />
+        </div>
         <VimEditor
           key={`${exercise.id}-${attemptNo}`}
           initialCode={exercise.initialCode}
@@ -210,7 +242,7 @@ export function LessonPage() {
         )}
       </div>
 
-      <div className="lesson-nav">
+      <div className="exercise-nav">
         <button
           className="btn btn-ghost"
           disabled={exIndex === 0}
@@ -226,6 +258,31 @@ export function LessonPage() {
           Next exercise ›
         </button>
       </div>
+
+      <nav className="lesson-pager" aria-label="Other lessons">
+        {prevLesson && (
+          <Link to={`/lesson/${prevLesson.slug}`} className="pager-card prev">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" />
+            </svg>
+            <span className="pager-text">
+              <span className="pager-label">Back</span>
+              <span>{prevLesson.title}</span>
+            </span>
+          </Link>
+        )}
+        {nextLesson && (
+          <Link to={`/lesson/${nextLesson.slug}`} className="pager-card next">
+            <span className="pager-text">
+              <span className="pager-label">Next</span>
+              <span>{nextLesson.title}</span>
+            </span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        )}
+      </nav>
     </div>
   );
 }

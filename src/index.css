@@ -1,52 +1,72 @@
-/* Dark theme (default): near-black with sage green + warm orange accents. */
+/* Dark theme (default): slate-blue surfaces, sky-blue primary, monospace UI. */
 :root {
-  --bg: #0f1412;
-  --bg-header: #0b100e;
-  --bg-card: #161d1a;
-  --bg-inset: #0b100e;
-  --border: #262f2b;
-  --text: #e7ece9;
-  --text-muted: #93a09a;
-  --accent: #93c6a4;
-  --on-accent: #10201a;
-  --accent-soft: #1d2b24;
-  --orange: #e39a72;
-  --orange-soft: rgba(227, 154, 114, 0.13);
-  --orange-border: rgba(227, 154, 114, 0.35);
-  --yellow: #e6d38a;
-  --red: #e08b8b;
-  --purple: #c7a3dc;
-  --overlay: rgba(10, 14, 12, 0.82);
-  --practice-tint: rgba(199, 163, 220, 0.1);
-  --shadow: none;
-  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.35);
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
-    "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg: #2a303c;
+  --bg-header: #252a34;
+  --bg-card: #222730;
+  --bg-inset: #1e222b;
+  --bg-editor: #191d24;
+  --bg-btn: #191d24;
+  --bg-hover: rgba(194, 208, 234, 0.06);
+  --border: #1d2129;
+  --text: #c2d0ea;
+  --text-strong: #ffffff;
+  --text-muted: #8793ab;
+  --accent: #0ea5e9;
+  --on-accent: #00212f;
+  --accent-soft: rgba(14, 165, 233, 0.14);
+  --teal: #1fb2a6;
+  --green: #36d399;
+  --yellow: #fbbd23;
+  --red: #f87272;
+  --purple: #c4a7f5;
+  --kbd-bg: #334155;
+  --kbd-text: #ffffff;
+  --kbd-border: rgba(194, 208, 234, 0.2);
+  --mode-normal: #81aaff;
+  --mode-insert: #36d399;
+  --mode-visual: #c4a7f5;
+  --overlay: rgba(25, 29, 36, 0.86);
+  --practice-tint: rgba(196, 167, 245, 0.1);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.35);
+  --header-h: 3.5rem;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 :root[data-theme="light"] {
-  --bg: #e9eef3;
+  --bg: #f3f5f9;
   --bg-header: #ffffff;
   --bg-card: #ffffff;
-  --bg-inset: #f0f4f7;
-  --border: #dde4ea;
-  --text: #182428;
-  --text-muted: #5d6b71;
-  --accent: #1e5b45;
+  --bg-inset: #e9edf3;
+  --bg-editor: #ffffff;
+  --bg-btn: #e2e8f0;
+  --bg-hover: rgba(30, 41, 59, 0.05);
+  --border: #d6dde8;
+  --text: #334155;
+  --text-strong: #0f172a;
+  --text-muted: #5f6b7e;
+  --accent: #0369a1;
   --on-accent: #ffffff;
-  --accent-soft: #ddeae2;
-  --orange: #d2622e;
-  --orange-soft: #faeadf;
-  --orange-border: #f0d3bd;
-  --yellow: #8f5e15;
+  --accent-soft: rgba(3, 105, 161, 0.1);
+  --teal: #0f766e;
+  --green: #0f8a5f;
+  --yellow: #a16207;
   --red: #c0344b;
   --purple: #7847bd;
-  --overlay: rgba(233, 238, 243, 0.85);
+  --kbd-bg: #e2e8f0;
+  --kbd-text: #0f172a;
+  --kbd-border: rgba(15, 23, 42, 0.22);
+  --mode-normal: #81aaff;
+  --mode-insert: #5fd8a8;
+  --mode-visual: #c4a7f5;
+  --overlay: rgba(243, 245, 249, 0.88);
   --practice-tint: rgba(120, 71, 189, 0.07);
-  --shadow: 0 1px 2px rgba(23, 42, 58, 0.05), 0 8px 24px rgba(23, 42, 58, 0.06);
-  --shadow-hover: 0 2px 4px rgba(23, 42, 58, 0.06), 0 12px 32px rgba(23, 42, 58, 0.1);
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 * {
@@ -64,14 +84,21 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  line-height: 1.6;
   transition: background 0.2s, color 0.2s;
 }
 
 h1,
-h2.serif {
-  font-family: var(--font-serif);
-  font-weight: 500;
+h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-strong);
   letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+strong {
+  color: var(--text-strong);
 }
 
 code,
@@ -79,61 +106,99 @@ kbd {
   font-family: var(--font-mono);
 }
 
+/* Keyboard-key look: slate cap with a thicker bottom edge. */
+kbd,
 code {
-  background: var(--orange-soft);
-  border: 1px solid var(--orange-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.9em;
+  min-height: 1.8em;
+  padding: 0 0.45em;
+  background: var(--kbd-bg);
+  color: var(--kbd-text);
+  border: 1px solid var(--kbd-border);
+  border-bottom-width: 2px;
   border-radius: 6px;
-  padding: 0.1em 0.4em;
-  color: var(--orange);
-  font-size: 0.88em;
+  font-size: 0.82em;
+  line-height: 1.2;
+  vertical-align: middle;
+  white-space: pre;
 }
 
 kbd {
-  display: inline-block;
-  background: var(--orange-soft);
-  border: 1px solid var(--orange-border);
-  border-radius: 6px;
-  padding: 0.1em 0.45em;
   margin: 0 0.15em;
-  color: var(--orange);
-  font-size: 0.82em;
 }
 
-/* Small uppercase monospace labels used across cards. */
+kbd.kbd-lg {
+  min-width: 2.7rem;
+  min-height: 2.7rem;
+  padding: 0 0.7rem;
+  margin: 0;
+  border-radius: 8px;
+  font-size: 1.05rem;
+}
+
+/* Small uppercase labels used across cards. */
 .mono-label,
 .exercise-counter,
 .lesson-number,
 .lesson-status,
-.overview-label {
-  font-family: var(--font-mono);
+.overview-label,
+.lesson-eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   font-size: 0.7rem;
   color: var(--text-muted);
 }
 
-/* ---------- layout ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* ---------- header ---------- */
 
 .app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 1.5rem;
-  background: var(--bg-header);
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
 }
 
-.app-header .brand {
+.app-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--header-h);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.brand {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--text);
+  font-size: 1rem;
+  color: var(--text-strong);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .brand-badge {
@@ -142,53 +207,92 @@ kbd {
   justify-content: center;
   width: 1.8rem;
   height: 1.8rem;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--accent);
   color: var(--on-accent);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
 }
 
-.app-header nav {
+.main-nav {
+  display: flex;
+  align-self: stretch;
+  gap: 0.25rem;
+}
+
+.main-nav a {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1.4rem;
-}
-
-.app-header nav a {
+  padding: 0 1rem;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.app-header nav a.active {
-  color: var(--text);
+  font-size: 0.875rem;
   font-weight: 600;
+  transition: color 0.15s;
 }
 
-.theme-toggle {
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--text-strong);
+}
+
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--text-strong);
+}
+
+.icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.15rem;
-  height: 2.15rem;
-  border-radius: 50%;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-strong);
 }
+
+.menu-toggle {
+  display: none;
+  margin-left: -0.5rem;
+}
+
+/* ---------- layout ---------- */
 
 main {
   max-width: 920px;
   margin: 0 auto;
   padding: 1.5rem;
+}
+
+.app-body.with-sidebar {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.app-body.with-sidebar main {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 2rem 2.5rem 4rem;
 }
 
 .page h1 {
@@ -199,31 +303,124 @@ main {
   color: var(--text-muted);
 }
 
+/* ---------- lesson sidebar ---------- */
+
+.lesson-sidebar {
+  position: sticky;
+  top: var(--header-h);
+  width: 21rem;
+  flex-shrink: 0;
+  max-height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem 0 2rem;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-group + .sidebar-group {
+  margin-top: 1rem;
+}
+
+.sidebar-title {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: var(--teal);
+}
+
+.sidebar-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem calc(1.25rem - 4px);
+  border-left: 4px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.sidebar-item:hover {
+  background: var(--bg-hover);
+}
+
+.sidebar-item.active {
+  border-left-color: var(--accent);
+  background: var(--bg-hover);
+  color: var(--text-strong);
+}
+
+.sidebar-item-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.sidebar-item-title svg {
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+.sidebar-keys {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+.sidebar-keys kbd {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
 /* ---------- buttons ---------- */
 
 .btn {
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   padding: 0.55rem 1.2rem;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   font-family: inherit;
+  text-decoration: none;
   cursor: pointer;
-  background: var(--bg-card);
+  background: var(--bg-btn);
   color: var(--text);
-  transition: border-color 0.15s, filter 0.15s;
+  transition: border-color 0.15s, filter 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: default;
   pointer-events: none;
 }
 
 .btn-primary {
   background: var(--accent);
-  border-color: var(--accent);
   color: var(--on-accent);
-  font-weight: 600;
 }
 
 .btn-ghost:hover {
@@ -231,41 +428,40 @@ main {
 }
 
 .btn-primary:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.1);
 }
 
 .btn-hint {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.45rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
 }
 
 /* ---------- home: hero ---------- */
 
 .hero {
-  margin: 2.2rem 0 2rem;
+  margin: 2rem 0;
 }
 
 .hero-eyebrow {
-  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   font-size: 0.72rem;
-  color: var(--text-muted);
+  color: var(--teal);
   margin: 0 0 0.75rem;
 }
 
 .hero h1 {
-  font-size: clamp(2.1rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   margin: 0 0 0.9rem;
 }
 
 .hero-sub {
   color: var(--text-muted);
-  max-width: 34rem;
-  line-height: 1.6;
+  max-width: 40rem;
   margin: 0;
 }
 
@@ -274,7 +470,7 @@ main {
 .overview-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
   padding: 1.5rem 1.75rem;
   margin-bottom: 2rem;
@@ -296,8 +492,9 @@ main {
 }
 
 .overview-percent-value {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 2.5rem;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--accent);
 }
@@ -314,37 +511,33 @@ main {
 
 .overview-value {
   font-size: 1.55rem;
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.2;
+  color: var(--text-strong);
 }
 
 .overview-value.in-progress {
-  color: var(--orange);
+  color: var(--yellow);
 }
 
 /* ---------- progress bars ---------- */
 
 .progress-track {
-  height: 7px;
+  height: 6px;
   border-radius: 999px;
   background: var(--bg-inset);
-  border: 1px solid var(--border);
   overflow: hidden;
-}
-
-.progress-track.small {
-  height: 6px;
 }
 
 .progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--green);
   transition: width 0.4s ease-out;
 }
 
 .progress-fill.started {
-  background: var(--orange);
+  background: var(--yellow);
 }
 
 /* ---------- home: lesson cards ---------- */
@@ -352,16 +545,16 @@ main {
 .lesson-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
+  gap: 1.25rem;
 }
 
 .lesson-card {
   display: block;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
-  padding: 1.4rem 1.5rem;
+  padding: 1.3rem 1.4rem;
   text-decoration: none;
   color: var(--text);
   transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
@@ -384,17 +577,17 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.7rem;
-  height: 2.7rem;
-  border-radius: 12px;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 8px;
   background: var(--accent-soft);
   color: var(--accent);
   flex-shrink: 0;
 }
 
 .lesson-icon.complete {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--green);
+  color: #06281b;
 }
 
 .lesson-number {
@@ -408,21 +601,19 @@ main {
   width: 1.45rem;
   height: 1.45rem;
   border-radius: 50%;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
+  border: 1.5px solid var(--green);
+  color: var(--green);
   flex-shrink: 0;
 }
 
 .lesson-card h2 {
   margin: 0 0 0.35rem;
-  font-size: 1.2rem;
-  font-weight: 650;
+  font-size: 1.15rem;
 }
 
 .lesson-summary {
   color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
   margin: 0 0 0.9rem;
 }
 
@@ -444,49 +635,48 @@ main {
 }
 
 .lesson-status.complete span:first-child {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .lesson-status.started span:first-child {
-  color: var(--orange);
+  color: var(--yellow);
 }
 
 /* ---------- lesson page ---------- */
 
-.lesson-header {
-  margin-top: 0.5rem;
+.lesson-page {
+  max-width: 54rem;
+}
+
+.lesson-eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--teal);
 }
 
 .lesson-header h1 {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  margin: 0.6rem 0 0.4rem;
-}
-
-.back-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.back-link:hover {
-  color: var(--accent);
+  font-size: clamp(1.8rem, 4vw, 2.25rem);
+  margin: 0 0 0.9rem;
 }
 
 .lesson-intro {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-top: 0.25rem;
-  max-width: 46rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.key-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0;
 }
 
 .instruction-panel {
+  margin: 2rem 0 1rem;
+  padding: 1rem 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 1.3rem 1.5rem;
-  margin: 1.4rem 0;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
 }
 
 .instruction-header {
@@ -499,11 +689,11 @@ main {
 
 .allowed-keys {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .instruction-panel.practice {
-  border-color: var(--purple);
+  border-left-color: var(--purple);
 }
 
 .practice-badge {
@@ -512,76 +702,150 @@ main {
   color: var(--purple);
   border: 1px solid var(--purple);
   border-radius: 999px;
-  padding: 0.1rem 0.6rem;
+  padding: 0.05rem 0.6rem;
   margin-right: 0.6rem;
-  letter-spacing: 0.1em;
 }
 
 .practice-note {
   color: var(--purple);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0.6rem 0 0;
 }
 
 .instruction-text {
-  font-size: 1.12rem;
-  line-height: 1.6;
-  margin: 0.8rem 0 0;
+  font-size: 1.05rem;
+  color: var(--text-strong);
+  margin: 0.7rem 0 0;
 }
 
 .blocked-key-warning {
   color: var(--yellow);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0.5rem 0 0;
 }
 
 .hint-area {
-  margin-top: 0.9rem;
+  margin-top: 0.8rem;
 }
 
 .hint-text {
   color: var(--yellow);
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   margin: 0;
 }
 
-.lesson-nav {
+.exercise-nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* Previous / next lesson cards at the bottom of a lesson. */
+.lesson-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3.5rem;
+}
+
+.pager-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg-btn);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text-strong);
+  text-decoration: none;
+  font-weight: 600;
+  transition: border-color 0.15s;
+}
+
+.pager-card:hover {
+  border-color: var(--accent);
+}
+
+.pager-card.next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.pager-card svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.pager-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pager-label {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
 /* ---------- editor ---------- */
 
 .editor-wrap {
   position: relative;
+  background: var(--bg-editor);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 6px;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
-.editor-wrap .cm-editor {
-  font-size: 15px;
-}
-
-/* Match the page's near-black surface in dark mode (the stock dark theme is gray). */
-:root:not([data-theme="light"]) .editor-wrap .cm-editor,
-:root:not([data-theme="light"]) .editor-wrap .cm-gutters {
+/* Lesson progress strip along the top edge of the editor. */
+.exercise-progress {
+  height: 6px;
   background: var(--bg-inset);
 }
 
+.exercise-progress-fill {
+  height: 100%;
+  background: var(--green);
+  transition: width 0.4s ease-out;
+}
+
+.editor-wrap .cm-editor {
+  font-size: 16px;
+  background: var(--bg-editor);
+}
+
+.editor-wrap .cm-editor.cm-focused {
+  outline: none;
+}
+
+.editor-wrap .cm-scroller {
+  font-family: var(--font-mono);
+  line-height: 1.7;
+  padding-top: 0.5rem;
+}
+
+.editor-wrap .cm-gutters {
+  background: var(--bg-editor);
+  border-right: none;
+  color: var(--text-muted);
+}
+
 :root:not([data-theme="light"]) .editor-wrap .cm-activeLine {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 :root:not([data-theme="light"]) .editor-wrap .cm-activeLineGutter {
-  background: rgba(255, 255, 255, 0.07);
+  background: transparent;
+  color: var(--text-strong);
+  font-weight: 600;
 }
 
 /* Vim search/ex prompt (`/`, `:`) panel */
 .editor-wrap .cm-panels {
-  background: var(--bg-inset);
+  background: var(--bg-editor);
   color: var(--text);
   border-top: 1px solid var(--border);
   font-family: var(--font-mono);
@@ -601,31 +865,32 @@ main {
 .vim-status-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: var(--bg-inset);
-  border-top: 1px solid var(--border);
-  padding: 0.45rem 0.95rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+  align-items: stretch;
+  font-size: 0.875rem;
 }
 
+/* Mode badge, flush with the bottom-left corner like a real statusline. */
 .vim-mode {
+  padding: 0.15rem 1.25rem 0.15rem 0.75rem;
   font-weight: 700;
+  color: #000000;
+  transition: background 0.15s;
 }
 
 .vim-mode-normal {
-  color: var(--accent);
+  background: var(--mode-normal);
 }
 
 .vim-mode-insert {
-  color: var(--orange);
+  background: var(--mode-insert);
 }
 
 .vim-mode-visual {
-  color: var(--purple);
+  background: var(--mode-visual);
 }
 
 .vim-keystrokes {
+  padding: 0.15rem 0.75rem;
   color: var(--text-muted);
 }
 
@@ -652,22 +917,22 @@ main {
 
 .feedback-card {
   text-align: center;
-  background: var(--bg-card);
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: var(--shadow-hover);
   padding: 1.5rem 2.5rem;
 }
 
 .feedback-card h2 {
   margin: 0.5rem 0 0.25rem;
-  color: var(--accent);
+  color: var(--green);
 }
 
 .feedback-rank {
   font-size: 2.4rem;
   font-weight: 800;
-  font-family: var(--font-mono);
+  line-height: 1.2;
 }
 
 .rank-S {
@@ -675,11 +940,11 @@ main {
 }
 
 .rank-A {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .rank-B {
-  color: var(--orange);
+  color: var(--accent);
 }
 
 .rank-C {
@@ -693,7 +958,7 @@ main {
 
 .feedback-label {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0.25rem 0 1rem;
 }
 
@@ -720,7 +985,7 @@ main {
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
   padding: 1rem 1.5rem;
   text-align: center;
@@ -728,15 +993,15 @@ main {
 }
 
 .stat-value {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.9rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent);
 }
 
 .stat-label {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .skill-bars {
@@ -753,23 +1018,22 @@ main {
 }
 
 .skill-name {
-  width: 7.5rem;
+  width: 8.5rem;
   text-transform: capitalize;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .skill-bar {
   flex: 1;
-  height: 9px;
+  height: 8px;
   background: var(--bg-inset);
-  border: 1px solid var(--border);
   border-radius: 999px;
   overflow: hidden;
 }
 
 .skill-bar-fill {
   height: 100%;
-  background: var(--accent);
+  background: var(--green);
   border-radius: 999px;
   transition: width 0.4s ease-out;
 }
@@ -778,15 +1042,52 @@ main {
   width: 2.5rem;
   text-align: right;
   color: var(--text-muted);
-  font-family: var(--font-mono);
   font-size: 0.85rem;
 }
 
 .practice-suggestion {
-  color: var(--orange);
+  color: var(--yellow);
 }
 
 /* ---------- responsive ---------- */
+
+@media (max-width: 1023px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  /* The sidebar becomes a slide-in drawer under the header. */
+  .lesson-sidebar {
+    position: fixed;
+    top: var(--header-h);
+    bottom: 0;
+    left: 0;
+    z-index: 90;
+    width: min(21rem, 86vw);
+    max-height: none;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-out;
+    visibility: hidden;
+  }
+
+  .lesson-sidebar.open {
+    transform: none;
+    visibility: visible;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    z-index: 80;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .app-body.with-sidebar main {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+}
 
 @media (max-width: 720px) {
   .lesson-grid {
@@ -795,16 +1096,17 @@ main {
 }
 
 @media (max-width: 640px) {
-  main {
-    padding: 1rem;
+  main,
+  .app-body.with-sidebar main {
+    padding: 1rem 1rem 2.5rem;
   }
 
-  .app-header {
-    padding: 0.6rem 1rem;
+  .app-header-inner {
+    padding: 0 1rem;
   }
 
-  .app-header nav {
-    gap: 0.9rem;
+  .main-nav a {
+    padding: 0 0.6rem;
   }
 
   .hero {
@@ -823,12 +1125,14 @@ main {
     padding-right: 1.4rem;
   }
 
-  .instruction-panel {
-    padding: 0.95rem 1.1rem;
+  .instruction-text {
+    font-size: 0.95rem;
   }
 
-  .instruction-text {
-    font-size: 1rem;
+  kbd.kbd-lg {
+    min-width: 2.3rem;
+    min-height: 2.3rem;
+    font-size: 0.95rem;
   }
 
   .editor-wrap .cm-editor {
@@ -845,18 +1149,23 @@ main {
   }
 
   .skill-name {
-    width: 5.5rem;
-    font-size: 0.85rem;
+    width: 6.5rem;
+    font-size: 0.8rem;
   }
 
   .feedback-actions {
     gap: 0.5rem;
   }
+
+  .pager-card {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }
 
-@media (max-width: 420px) {
-  .app-header .brand {
-    font-size: 0.95rem;
+@media (max-width: 480px) {
+  .brand-name {
+    display: none;
   }
 
   .lesson-card {
@@ -869,6 +1178,5 @@ main {
 
   .vim-status-bar {
     font-size: 0.75rem;
-    padding: 0.35rem 0.6rem;
   }
 }
